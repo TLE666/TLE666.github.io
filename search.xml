@@ -3,6 +3,21 @@
   
     
     <entry>
+      <title>OI中卡常的那些事儿</title>
+      <link href="/2018/10/01/OI%E4%B8%AD%E5%8D%A1%E5%B8%B8%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B%E5%84%BF/"/>
+      <url>/2018/10/01/OI%E4%B8%AD%E5%8D%A1%E5%B8%B8%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B%E5%84%BF/</url>
+      <content type="html"><![CDATA[<p>在$OI$竞赛中，我们有时<del>经常</del>会被卡常……</p><p><strong>怎么办呢？？？</strong></p><p>下面是几种 <em>较为常用（$C++$中的）</em> 的卡常方法：</p><hr><h2 id="1-快读"><a href="#1-快读" class="headerlink" title="1.快读"></a>1.快读</h2><p>十分常用，建议背下模板！</p><p>原理：$getchar()$比$scanf()$快。</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdlib&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span></span>&#123;</span><br><span class="line"><span class="keyword">int</span> s=<span class="number">0</span>,w=<span class="number">1</span>;<span class="keyword">char</span> ch=getchar();</span><br><span class="line">    <span class="keyword">while</span>(ch&lt;<span class="string">'0'</span>||ch&gt;<span class="string">'9'</span>)&#123; <span class="keyword">if</span>(ch==<span class="string">'-'</span>) w=<span class="number">-1</span>;ch=getchar();&#125;<span class="comment">//如果输入的是换行符、负号……需要判一下！</span></span><br><span class="line">    <span class="keyword">while</span>(ch&gt;=<span class="string">'0'</span>&amp;&amp;ch&lt;=<span class="string">'9'</span>) s=s*<span class="number">10</span>+ch-<span class="string">'0'</span>,ch=getchar();<span class="comment">//输入数字部分</span></span><br><span class="line">    <span class="keyword">return</span> s*w;<span class="comment">//返回值：符号(+,-) × 数的绝对值</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"%d\n"</span>,read());<span class="comment">//酷(zuo)炫(si)写法</span></span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><hr><h2 id="2-函数声明的-inline"><a href="#2-函数声明的-inline" class="headerlink" title="2.函数声明的$inline$"></a>2.函数声明的$inline$</h2><p>注意：只能在简单函数中使用（才有效）！</p><p>如果这个函数中有$for$，递归；那就不算简单函数！</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdlib&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> a,b;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>&#123;</span><br><span class="line"><span class="keyword">return</span> a+b;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line"><span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;a,&amp;b);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,add(a,b));</span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><hr><h2 id="3-for-循环的-register"><a href="#3-for-循环的-register" class="headerlink" title="3.$for$循环的$register$"></a>3.$for$循环的$register$</h2><p>将频繁出现的变量临时寄存在$CPU$中，不可访问位置(&amp;n)</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdlib&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXN 100100</span></span><br><span class="line"><span class="keyword">int</span> n,a[MAXN];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line"><span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">register</span> <span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;a[i]);</span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><hr><h2 id="4-逗号替代分号"><a href="#4-逗号替代分号" class="headerlink" title="4.逗号替代分号"></a>4.逗号替代分号</h2><p>$RT.$</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">c=a+b,c++;<span class="comment">//慢</span></span><br><span class="line">c=a+b,c++;<span class="comment">//快</span></span><br></pre></td></tr></table></figure><hr><p>大概就这些了吧。。。</p><h3 id="END"><a href="#END" class="headerlink" title="$END.$"></a>$END.$</h3>]]></content>
+      
+      
+        <tags>
+            
+            <tag> C++ </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>Hello, Hexo Blog!</title>
       <link href="/2018/08/29/Hello-Hexo-Blog/"/>
       <url>/2018/08/29/Hello-Hexo-Blog/</url>
@@ -36,20 +51,6 @@
   
     
     <entry>
-      <title>关于</title>
-      <link href="/about/index.html"/>
-      <url>/about/index.html</url>
-      <content type="html"><![CDATA[<p>王泽华：<br><em>本人乃无实力瑟瑟发抖萌新</em><br>C++是个好东西。。。<br>$QQ$邮箱：<a href="mailto:patrick_rdfz@qq.com" target="_blank" rel="noopener">patrick_rdfz@qq.com</a><br>大力推荐洛谷！！！  <a href="https://www.luogu.org/" target="_blank" rel="noopener">https://www.luogu.org/</a> <del>欢迎加好友</del></p>]]></content>
-    </entry>
-    
-    <entry>
-      <title>文章分类</title>
-      <link href="/categories/index.html"/>
-      <url>/categories/index.html</url>
-      <content type="html"><![CDATA[]]></content>
-    </entry>
-    
-    <entry>
       <title>搜索</title>
       <link href="/search/index.html"/>
       <url>/search/index.html</url>
@@ -57,9 +58,23 @@
     </entry>
     
     <entry>
+      <title>关于</title>
+      <link href="/about/index.html"/>
+      <url>/about/index.html</url>
+      <content type="html"><![CDATA[<p>王泽华：<br><em>本人乃无实力瑟瑟发抖萌新</em><br>C++是个好东西。。。<br>$QQ$邮箱：<a href="mailto:patrick_rdfz@qq.com" target="_blank" rel="noopener">patrick_rdfz@qq.com</a><br>大力推荐洛谷！！！  <a href="https://www.luogu.org/" target="_blank" rel="noopener">https://www.luogu.org/</a> <del>欢迎加好友</del></p>]]></content>
+    </entry>
+    
+    <entry>
       <title>标签</title>
       <link href="/tags/index.html"/>
       <url>/tags/index.html</url>
+      <content type="html"><![CDATA[]]></content>
+    </entry>
+    
+    <entry>
+      <title>文章分类</title>
+      <link href="/categories/index.html"/>
+      <url>/categories/index.html</url>
       <content type="html"><![CDATA[]]></content>
     </entry>
     
