@@ -36,17 +36,17 @@
   
     
     <entry>
-      <title>标签</title>
-      <link href="/tags/index.html"/>
-      <url>/tags/index.html</url>
-      <content type="html"><![CDATA[]]></content>
-    </entry>
-    
-    <entry>
       <title>关于</title>
       <link href="/about/index.html"/>
       <url>/about/index.html</url>
       <content type="html"><![CDATA[<p>王泽华：<br><em>本人乃无实力瑟瑟发抖萌新</em><br>C++是个好东西。。。<br>$QQ$邮箱：<a href="mailto:patrick_rdfz@qq.com" target="_blank" rel="noopener">patrick_rdfz@qq.com</a><br>大力推荐洛谷！！！  <a href="https://www.luogu.org/" target="_blank" rel="noopener">https://www.luogu.org/</a> <del>欢迎加好友</del></p><p>打发时间的好东西——<a href="http://www.saolei.org/" target="_blank" rel="noopener">扫雷</a> 和 <a href="http://2048game.com/" target="_blank" rel="noopener">2048</a>，还有<a href="http://www.taotools.cn/games/sudoku/" target="_blank" rel="noopener">数独</a>！</p>]]></content>
+    </entry>
+    
+    <entry>
+      <title>标签</title>
+      <link href="/tags/index.html"/>
+      <url>/tags/index.html</url>
+      <content type="html"><![CDATA[]]></content>
     </entry>
     
     <entry>
