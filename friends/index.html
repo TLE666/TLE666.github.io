@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   
-  <title>关于 | P_Wang&#39;s Blog</title>
+  <title>友链 | P_Wang&#39;s Blog</title>
   
   
   <meta name="description" content="OIer!">
@@ -165,13 +165,13 @@
   <div class="meta" id="header-meta">
     
       
-          <h1 class="title">关于</h1>
+          <h1 class="title">友链</h1>
       
     
 
     
       <time class="metatag time">
-        <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;2018-08-31
+        <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;2019-01-26
       </time>
     
 
@@ -192,8 +192,7 @@
 
     <section class="article typo">
       <div class="article-entry" itemprop="articleBody">
-        <p><em>本人乃无实力瑟瑟发抖萌新</em></p>
-<p>欢迎加QQ随时<del>吊打</del>我哦~</p>
+        <p><a href="https://acfunction.github.io/" target="_blank" rel="noopener">${\color{Cyan}AcF’s \ Blog}$</a></p>
 
       </div>
         
@@ -206,6 +205,45 @@
 
 <!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
 
+    <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    "HTML-CSS": {
+      preferredFont: "TeX",
+      availableFonts: ["STIX","TeX"],
+      linebreaks: { automatic:true },
+      EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+    },
+    tex2jax: {
+      inlineMath: [ ["$", "$"], ["\\(","\\)"] ],
+      processEscapes: true,
+      ignoreClass: "tex2jax_ignore|dno",
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      equationNumbers: { autoNumber: "AMS" },
+      noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } },
+      Macros: { href: "{}" }
+    },
+    messageStyle: "none"
+  });
+</script>
+<!-- 给MathJax元素添加has-jax class -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += (all[i].SourceElement().parentNode.className ? ' ' : '') + 'has-jax';
+    }
+    console.log("mathjax did loaded!");
+  });
+</script>
+<!-- 通过连接CDN加载MathJax的js代码 -->
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
 
 <br>
 
@@ -217,7 +255,7 @@
 
 <script>
     window.subData = {
-        title: '关于',
+        title: '友链',
         tools: true
     }
 </script>
