@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   
-  <title>并查集入门 | P_Wang&#39;s Blog</title>
+  <title>浅谈二分 | P_Wang&#39;s Blog</title>
   
   
   <meta name="description" content="OIer!">
@@ -165,13 +165,13 @@
   <div class="meta" id="header-meta">
     
       
-          <h1 class="title">并查集入门</h1>
+          <h1 class="title">浅谈二分</h1>
       
     
 
     
       <time class="metatag time">
-        <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;2018-10-04
+        <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;2019-01-27
       </time>
     
 
@@ -195,45 +195,112 @@
 
     <section class="article typo">
       <div class="article-entry" itemprop="articleBody">
-        <p><strong>并查集</strong>是维护集合相关问题的利器！</p>
+        <p> 二分法的定义是什么？它的用途又是什么呢？这篇文章将会介绍一下二分法在各类问题中的应用。</p>
 <a id="more"></a>
-<h2 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h2><p><strong>并查集是个好东西！</strong></p>
-<blockquote>
-<h2 id="它能搞和集合相关的东西……"><a href="#它能搞和集合相关的东西……" class="headerlink" title="它能搞和集合相关的东西……"></a>它能搞和集合相关的东西……</h2><p>常用的有：_最小生成树（$Kruskal$）；判联通块、连通图……_</p>
-</blockquote>
-<hr>
-<p>二话不说，先上代码！</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdlib&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXN 100100</span></span><br><span class="line"><span class="keyword">int</span> n,m,fa[MAXN];</span><br><span class="line"><span class="keyword">bool</span> flag[MAXN];</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span>&#123; <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) fa[i]=i;&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">Find</span> <span class="params">(<span class="keyword">int</span> i)</span></span>&#123; <span class="keyword">return</span> (fa[i]==i?i:fa[i]=Find(fa[i]));&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">Union</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span>&#123; fa[x]=y;&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> u,v; init();</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;n,&amp;m);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++)&#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;u,&amp;v);</span><br><span class="line">        <span class="keyword">if</span>(Find(u)!=Find(v)) Union(Find(u),Find(v));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>$Find()$函数是路径压缩，<del>不用理解，以后自然会懂</del></p>
-<p>$Union()$是将两个队列合到一起。</p>
-<p>E.G. 数据：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">3 2</span><br><span class="line">1 2</span><br><span class="line">1 3</span><br></pre></td></tr></table></figure>
 <ul>
-<li><ol>
-<li>将1, 2所在的集合合并</li>
-<li>$Find(1)=2, Find(2)=2, Find(3)=3$</li>
-</ol>
-</li>
-<li><ol>
-<li>将2, 3所在的集合合并</li>
-<li>$Find(1)=3, Find(2)=3, Find(3)=3$ ——&gt;&gt; 路径压缩</li>
-</ol>
+<li>大家一定对二分法有所耳闻吧！它的定义是什么？它的用途又是什么？下面我就来介绍一下二分法及其用途。</li>
+</ul>
+<h2 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h2><h3 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h3><p>找出函数$f(x) = 3x - 3$在闭区间$[0，4]$的零点。</p>
+<h3 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h3><ul>
+<li>首先，令$L = -1$，$R = 1$。</li>
+<li>然后进行如下操作，直到$f(mid) = 0$为止。</li>
+</ul>
+<ol>
+<li>算出$L$和$R$的代数平均数$mid$，且$mid \in \mathbb{Z}$，即整数$mid = \lfloor \dfrac{a + b}{2} \rfloor$。</li>
+<li><ul>
+<li>若$f(mid) = 0$，找到答案<ul>
+<li>若$f(mid) &gt; 0$，让$b = mid$，缩小区间</li>
+<li>若$f(mid) &lt; 0$，让$a = mid$，缩小区间</li>
+</ul>
 </li>
 </ul>
-<h2 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h2><h3 id="修复公路"><a href="#修复公路" class="headerlink" title="修复公路"></a><a href="https://www.luogu.org/problemnew/show/P1111" target="_blank" rel="noopener">修复公路</a></h3><p>最小生成树模板题！</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdlib&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXN 1010</span></span><br><span class="line"><span class="keyword">int</span> n,m,ans,fa[MAXN];</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">edge</span>&#123;</span><span class="comment">//所有的边（图）</span></span><br><span class="line">    <span class="keyword">int</span> u,v,w;</span><br><span class="line">    <span class="keyword">bool</span> <span class="keyword">operator</span> &lt;(<span class="keyword">const</span> edge &amp;x)&#123;</span><br><span class="line">        <span class="keyword">return</span> w&lt;x.w;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;e[MAXN*MAXN];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Find</span><span class="params">(<span class="keyword">int</span> i)</span></span>&#123; <span class="keyword">return</span> !fa[i]?i:fa[i]=Find(fa[i]);&#125;<span class="comment">//并查集部分</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Union</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span>&#123; fa[x]=y;&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> u,v,w;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;n,&amp;m);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++) <span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>,&amp;e[i].u,&amp;e[i].v,&amp;e[i].w);</span><br><span class="line">    sort(e+<span class="number">1</span>,e+m+<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++)</span><br><span class="line">        <span class="keyword">if</span>(Find(e[i].u)!=Find(e[i].v))&#123;<span class="comment">//最小生成树 Kruskal</span></span><br><span class="line">            ans=e[i].w;</span><br><span class="line">            Union(Find(e[i].u),Find(e[i].v));</span><br><span class="line">        &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=n;j++)</span><br><span class="line">            <span class="keyword">if</span>(Find(i)!=Find(j))&#123;</span><br><span class="line">                <span class="built_in">puts</span>(<span class="string">"-1"</span>);</span><br><span class="line">                <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,ans);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li>回到步骤$1$。<br> 如果你没有明白的话，那就看图吧。。。</li>
+</ol>
+<p><img src="https://s1.ax1x.com/2018/12/20/FDTt1S.png" alt="函数求零点"></p>
+<ol>
+<li>$L = 0, R = 4, mid = \lfloor \dfrac{0 + 4}{2} \rfloor = 2$</li>
+<li>$f(mid) = f(2) = 3 &gt; 0$</li>
+<li>因为$f(x)$为单调递增函数，所以零点肯定在$2$左边。</li>
+<li>缩小范围至$[0,2]$，$R = 2$。</li>
+<li>此时$mid = \lfloor \dfrac{0 + 2}{2} \rfloor= 1$</li>
+<li>$f(mid) = f(1) = 0$！</li>
+<li>找到答案$0$。</li>
+</ol>
+<h3 id="例题回顾（条件）"><a href="#例题回顾（条件）" class="headerlink" title="例题回顾（条件）"></a>例题回顾（条件）</h3><ul>
+<li>在上面的例题中，能够正确地使用以上“缩小范围区间”的解法的条件是什么呢?</li>
+<li>显然，函数$f(x)$需要是单调的，而到底是递增还是递减就无所谓了。</li>
+</ul>
+<h2 id="二分法"><a href="#二分法" class="headerlink" title="二分法"></a>二分法</h2><ul>
+<li>对于区间$[a, b]$上连续不断且$f(a) \times f(b) &lt; 0$的函数$y=f(x)$，通过不断地把函数$f(x)$的零点所在的区间一分为二，使区间的两个端点逐步逼近零点，进而得到零点近似值的方法叫二分法。</li>
+</ul>
+<p>在信息学中，二分法最常见的体现就是<strong>二分答案</strong>。</p>
+<p>在这篇随笔中，我主要讲解的就是二分答案。</p>
+<h2 id="二分答案"><a href="#二分答案" class="headerlink" title="二分答案"></a>二分答案</h2><ul>
+<li>二分答案,是通过不断缩小解可能存在的范围,从而求得问题答案的方法。</li>
+</ul>
+<h3 id="举例"><a href="#举例" class="headerlink" title="举例"></a>举例</h3><p><strong>猜数字</strong></p>
+<ul>
+<li><p>事先准备一个$[1, 100]$的正整数，让电脑猜。每次猜测会告诉猜数与答案的大小关系。</p>
+</li>
+<li><p>朴素的方法：枚举法，从$1 - 100$依次尝试，直到猜对为止。时间复杂度为$O(n)$。</p>
+</li>
+<li>二分答案：<br>  $L = 1, R = 100, mid = \lfloor \dfrac{L + R}{2} \rfloor = 50$，设答案为$ans$。<br>  只要$L \leqslant R$，尝试$mid$，<script type="math/tex; mode=display">\left\{
+  \begin{aligned}
+  & 若mid > ans，则R = mid； \\
+  & 若mid < ans，则L = mid + 1； \\
+  & 若mid = ans，猜对了。
+  \end{aligned}
+  \right.</script>  时间复杂度为$O(log n)$。</li>
+</ul>
+<h3 id="为什么二分"><a href="#为什么二分" class="headerlink" title="为什么二分"></a>为什么二分</h3><ul>
+<li>更充分地利用已知条件，大幅度减少遍历范围</li>
+<li>二分答案具有“先猜后证”的特点，可以给题目多增加一个条件，也许可以大幅度减小算法的时间开销</li>
+</ul>
+<h3 id="在什么情况下可以二分"><a href="#在什么情况下可以二分" class="headerlink" title="在什么情况下可以二分"></a>在什么情况下可以二分</h3><ul>
+<li>答案存在单调性<br>  <img src="https://img2018.cnblogs.com/blog/1565734/201812/1565734-20181220230238655-2078160257.png" alt=""></li>
+</ul>
+<p>什么意思呢？</p>
+<p>我们不妨假设答案满足条件为$1$，不满足为$0$；</p>
+<p>那么如果一个答案序列为$0000000111$或$1111100000$，都存在单调性，那就都可以；</p>
+<p>而如果序列是$000011011000110000$，那就不满足单调性，于是就不能进行二分答案了。</p>
+<h3 id="能够解决的问题"><a href="#能够解决的问题" class="headerlink" title="能够解决的问题"></a>能够解决的问题</h3><p>二分答案能够解决哪些问题呢？如下：</p>
+<ul>
+<li>最大的最小值</li>
+<li>最小的最大值</li>
+<li>在满足条件的情况下的最小（大）值</li>
+<li>最接近一个值的值</li>
+<li>…… 在一个单调序列中特殊的点基本上都能二分。</li>
+</ul>
+<h3 id="模板（-C-）"><a href="#模板（-C-）" class="headerlink" title="模板（$C++$）"></a>模板（$C++$）</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 这是一个求满足条件的最小值的二分模板</span></span><br><span class="line"><span class="keyword">int</span> left = <span class="number">0</span>, right = MAX, mid, ans; <span class="comment">// left为左边界，right为右边界</span></span><br><span class="line"><span class="keyword">while</span>(left &lt;= right)&#123; <span class="comment">// 只要存在区间</span></span><br><span class="line">    mid = (left + right) &gt;&gt; <span class="number">1</span>; <span class="comment">// 等价于(left + right) / 2，只不过这样写运行速度会稍快一些</span></span><br><span class="line">    <span class="keyword">if</span>(check(mid)) ans = mid, right = mid - <span class="number">1</span>; <span class="comment">// 如果mid满足条件，那ans（答案）肯定不大于mid</span></span><br><span class="line">    <span class="keyword">else</span> left = mid + <span class="number">1</span>; <span class="comment">// 如果不能满足条件，ans区间最小值肯定大于mid</span></span><br><span class="line">&#125; <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, ans); <span class="comment">// 输出答案</span></span><br></pre></td></tr></table></figure>
+<p>为什么第五行要加上<code>ans = mid</code>呢？</p>
+<p>原因：如果$mid$恰好就是正确答案，$check(mid)$满足，为$true$，于是进入本句。如果将$right$设为$mid - 1$的话，就永远得不到$ans$了（可以想一想为什么）</p>
+<p>这就出现了另一种写法——</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 这是一个求满足条件的最小值的二分模板</span></span><br><span class="line"><span class="keyword">int</span> left = <span class="number">0</span>, right = MAX, mid; <span class="comment">// left为左边界，right为右边界</span></span><br><span class="line"><span class="keyword">while</span>(left &lt; right)&#123; <span class="comment">// #注意这里改变#</span></span><br><span class="line">    mid = (left + right) &gt;&gt; <span class="number">1</span>; <span class="comment">// 等价于(left + right) / 2，只不过这样写运行速度会稍快一些</span></span><br><span class="line">    <span class="keyword">if</span>(check(mid)) right = mid; <span class="comment">// #注意这里也改变#</span></span><br><span class="line">    <span class="keyword">else</span> left = mid + <span class="number">1</span>; <span class="comment">// 如果不能满足条件，ans区间最小值肯定大于mid</span></span><br><span class="line">&#125; <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, right); <span class="comment">// 输出答案</span></span><br></pre></td></tr></table></figure>
+<p>不过我个人建议还是写第一种好（更好理解，不容易错）。</p>
+<p>那这两段代码中的$check$函数是干什么的呢？</p>
+<p>其实，布尔型函数$check(x)$是用来判断$x$条件下是否能成功（满足题目条件）。</p>
+<h3 id="练习题"><a href="#练习题" class="headerlink" title="练习题"></a>练习题</h3><ul>
+<li><a href="https://www.luogu.org/problemnew/show/P1843" target="_blank" rel="noopener">奶牛晒衣服</a></li>
+<li><a href="https://www.luogu.org/problemnew/show/P1396" target="_blank" rel="noopener">营救</a> （如果不会最小生成树请自动跳过~）</li>
+<li><a href="https://www.luogu.org/problemnew/show/P2678" target="_blank" rel="noopener">$NOIP2015$ 跳石头</a></li>
+<li><p><a href="https://www.luogu.org/problemnew/show/P1439" target="_blank" rel="noopener">【模板】最长公共子序列</a></p>
+</li>
+<li><p>……</p>
+</li>
+</ul>
 
       </div>
         
           <section class='meta' id="footer-meta">
             
-              <time class="metatag time" itemprop="dateUpdated" datetime="2019-01-27T11:43:34+08:00" content="2019-01-27"><i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>
+              <time class="metatag time" itemprop="dateUpdated" datetime="2019-01-27T11:47:27+08:00" content="2019-01-27"><i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>
                 &nbsp;2019-01-27
               </time>
             
             
                 
-                <div class="metatag tags"><a class="tag" href="/tags/C/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>&nbsp;C++</a></div> <div class="metatag tags"><a class="tag" href="/tags/算法讲解/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>&nbsp;算法讲解</a></div> <div class="metatag tags"><a class="tag" href="/tags/并查集/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>&nbsp;并查集</a></div>
+                <div class="metatag tags"><a class="tag" href="/tags/C/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>&nbsp;C++</a></div> <div class="metatag tags"><a class="tag" href="/tags/算法讲解/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>&nbsp;算法讲解</a></div> <div class="metatag tags"><a class="tag" href="/tags/二分/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>&nbsp;二分</a></div>
             
             
           </section>
@@ -246,21 +313,40 @@
                         <span class="art-item-left">
                             <h6><i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;上一页</h6>
                             <h4>
-                                <a href="/2019/01/27/洛谷P1627中位数/" rel="prev" title="洛谷P1627中位数">
+                                <a href="/2019/01/27/快速读入详解/" rel="prev" title="快速读入详解">
                                   
-                                      洛谷P1627中位数
+                                      快速读入详解
                                   
                                 </a>
                             </h4>
                             
                                 
                                 <h6 class="tags">
-                                    <a class="tag" href="/tags/C/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>C++</a> <a class="tag" href="/tags/题解/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>题解</a>
+                                    <a class="tag" href="/tags/C/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>C++</a> <a class="tag" href="/tags/算法详解/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>算法详解</a> <a class="tag" href="/tags/卡常/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>卡常</a>
                                 </h6>
                             
                         </span>
                     </section>
                 
+                
+                    <section class="next">
+                        <span class="art-item-right" aria-hidden="true">
+                            <h6>下一页&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
+                            <h4>
+                                <a href="/2019/01/27/洛谷P1462通往奥格瑞玛的道路/" rel="prev" title="洛谷P1462通往奥格瑞玛的道路">
+                                    
+                                        洛谷P1462通往奥格瑞玛的道路
+                                    
+                                </a>
+                            </h4>
+                            
+                                
+                                <h6 class="tags">
+                                    <a class="tag" href="/tags/C/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>C++</a> <a class="tag" href="/tags/题解/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>题解</a> <a class="tag" href="/tags/图论/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>图论</a>
+                                </h6>
+                            
+                        </span>
+                    </section>
                 
             </div>
         
@@ -329,11 +415,11 @@
             
                 <li><a href="http://tle666.gitub.io/2019/01/27/快速读入详解/">快速读入详解</a></li>
             
-                <li><a href="http://tle666.gitub.io/2019/01/27/浅谈二分/">浅谈二分</a></li>
-            
                 <li><a href="http://tle666.gitub.io/2019/01/27/洛谷P1462通往奥格瑞玛的道路/">洛谷P1462通往奥格瑞玛的道路</a></li>
             
                 <li><a href="http://tle666.gitub.io/2019/01/27/洛谷P1627中位数/">洛谷P1627中位数</a></li>
+            
+                <li><a href="http://tle666.gitub.io/2018/10/04/并查集/">并查集入门</a></li>
             
         </ul>
     </div>
@@ -349,7 +435,7 @@
 
 <script>
     window.subData = {
-        title: '并查集入门',
+        title: '浅谈二分',
         tools: true
     }
 </script>

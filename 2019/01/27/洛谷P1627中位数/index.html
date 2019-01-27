@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   
-  <title>并查集入门 | P_Wang&#39;s Blog</title>
+  <title>洛谷P1627中位数 | P_Wang&#39;s Blog</title>
   
   
   <meta name="description" content="OIer!">
@@ -165,13 +165,13 @@
   <div class="meta" id="header-meta">
     
       
-          <h1 class="title">并查集入门</h1>
+          <h1 class="title">洛谷P1627中位数</h1>
       
     
 
     
       <time class="metatag time">
-        <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;2018-10-04
+        <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;2019-01-27
       </time>
     
 
@@ -195,45 +195,36 @@
 
     <section class="article typo">
       <div class="article-entry" itemprop="articleBody">
-        <p><strong>并查集</strong>是维护集合相关问题的利器！</p>
-<a id="more"></a>
-<h2 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h2><p><strong>并查集是个好东西！</strong></p>
-<blockquote>
-<h2 id="它能搞和集合相关的东西……"><a href="#它能搞和集合相关的东西……" class="headerlink" title="它能搞和集合相关的东西……"></a>它能搞和集合相关的东西……</h2><p>常用的有：_最小生成树（$Kruskal$）；判联通块、连通图……_</p>
-</blockquote>
-<hr>
-<p>二话不说，先上代码！</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdlib&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXN 100100</span></span><br><span class="line"><span class="keyword">int</span> n,m,fa[MAXN];</span><br><span class="line"><span class="keyword">bool</span> flag[MAXN];</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span>&#123; <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) fa[i]=i;&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">Find</span> <span class="params">(<span class="keyword">int</span> i)</span></span>&#123; <span class="keyword">return</span> (fa[i]==i?i:fa[i]=Find(fa[i]));&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">Union</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span>&#123; fa[x]=y;&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> u,v; init();</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;n,&amp;m);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++)&#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;u,&amp;v);</span><br><span class="line">        <span class="keyword">if</span>(Find(u)!=Find(v)) Union(Find(u),Find(v));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>$Find()$函数是路径压缩，<del>不用理解，以后自然会懂</del></p>
-<p>$Union()$是将两个队列合到一起。</p>
-<p>E.G. 数据：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">3 2</span><br><span class="line">1 2</span><br><span class="line">1 3</span><br></pre></td></tr></table></figure>
-<ul>
-<li><ol>
-<li>将1, 2所在的集合合并</li>
-<li>$Find(1)=2, Find(2)=2, Find(3)=3$</li>
-</ol>
+        <h5 id="题目传送门"><a href="#题目传送门" class="headerlink" title="题目传送门"></a><a href="https://www.luogu.org/problem/show?pid=1627" target="_blank" rel="noopener">题目传送门</a></h5><a id="more"></a>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><h3 id="标记一遍相对大小，大的标1，小的标-1。只要连续-n-项和为0，就能满足题目条件。"><a href="#标记一遍相对大小，大的标1，小的标-1。只要连续-n-项和为0，就能满足题目条件。" class="headerlink" title="标记一遍相对大小，大的标1，小的标-1。只要连续 n 项和为0，就能满足题目条件。"></a>标记一遍相对大小，大的标1，小的标-1。只要连续 n 项和为0，就能满足题目条件。</h3><h3 id="首先一遍找到中位数位置-pos，放个数组-flag-标记查找中的数与目标中位数的相对大小："><a href="#首先一遍找到中位数位置-pos，放个数组-flag-标记查找中的数与目标中位数的相对大小：" class="headerlink" title="首先一遍找到中位数位置 pos，放个数组 flag 标记查找中的数与目标中位数的相对大小："></a>首先一遍找到中位数位置 pos，放个数组 flag 标记查找中的数与目标中位数的相对大小：</h3><p>1 -&gt; 比中位数大</p>
+<p>-1 -&gt; 比中位数小</p>
+<p>0 -&gt; 找到中位数！标记pos</p>
+<p>还是举个实例吧……</p>
+<p>数组：1 1 -1 -1 -1 pos 1 -1 1</p>
+<h3 id="然后从-pos-1-走一遍到1，也就是反过来。再拿一个变量-sum-标记每往左走一个时数组-flag-这一项与这之前的项之和。怎么标？用哈希的方法！（开个数组-f-）那万一-sum-值为负怎么办？数组的下标可没有负的！凉拌-把所有-sum-值统统加上一个足够大的值-“KEY”-。妈妈再也不用担心下标的值为负啦！"><a href="#然后从-pos-1-走一遍到1，也就是反过来。再拿一个变量-sum-标记每往左走一个时数组-flag-这一项与这之前的项之和。怎么标？用哈希的方法！（开个数组-f-）那万一-sum-值为负怎么办？数组的下标可没有负的！凉拌-把所有-sum-值统统加上一个足够大的值-“KEY”-。妈妈再也不用担心下标的值为负啦！" class="headerlink" title="然后从 (pos - 1) 走一遍到1，也就是反过来。再拿一个变量 sum 标记每往左走一个时数组 flag 这一项与这之前的项之和。怎么标？用哈希的方法！（开个数组 f ）那万一 sum 值为负怎么办？数组的下标可没有负的！凉拌~ 把所有 sum 值统统加上一个足够大的值 “KEY” 。妈妈再也不用担心下标的值为负啦！"></a>然后从 (pos - 1) 走一遍到1，也就是反过来。再拿一个变量 sum 标记每往左走一个时数组 flag 这一项与这之前的项之和。怎么标？用哈希的方法！（开个数组 f ）那万一 sum 值为负怎么办？数组的下标可没有负的！凉拌~ 把所有 sum 值统统加上一个足够大的值 “KEY” 。妈妈再也不用担心下标的值为负啦！</h3><p>这时的 sum 数组：-1 -2 -3 -2 -1</p>
+<p>这时的 f 数组：f [ -1 + KEY ] = 2 ;  f [ -2 + KEY ] = 2 ; f [ -3 + KEY ] = 1 ;</p>
+<h3 id="做完这些以后，最后从-pos-1-走一遍到-n-正着走。和上边一样，记录-sum-值。不过这次得多一个步骤——每次要找-pos-左边的对应值。"><a href="#做完这些以后，最后从-pos-1-走一遍到-n-正着走。和上边一样，记录-sum-值。不过这次得多一个步骤——每次要找-pos-左边的对应值。" class="headerlink" title="做完这些以后，最后从 (pos + 1) 走一遍到 n ,正着走。和上边一样，记录 sum 值。不过这次得多一个步骤——每次要找 pos 左边的对应值。"></a>做完这些以后，最后从 (pos + 1) 走一遍到 n ,正着走。和上边一样，记录 sum 值。不过这次得多一个步骤——每次要找 pos 左边的对应值。</h3><p>从 pos 向右</p>
+<ol>
+<li><p>sum=1 -&gt; 左边 sum=-1 -&gt; 两次 ∴ ans+=2;</p>
 </li>
-<li><ol>
-<li>将2, 3所在的集合合并</li>
-<li>$Find(1)=3, Find(2)=3, Find(3)=3$ ——&gt;&gt; 路径压缩</li>
-</ol>
+<li><p>sum=0 -&gt; 左边 sum=0 -&gt; 无</p>
 </li>
-</ul>
-<h2 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h2><h3 id="修复公路"><a href="#修复公路" class="headerlink" title="修复公路"></a><a href="https://www.luogu.org/problemnew/show/P1111" target="_blank" rel="noopener">修复公路</a></h3><p>最小生成树模板题！</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdlib&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXN 1010</span></span><br><span class="line"><span class="keyword">int</span> n,m,ans,fa[MAXN];</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">edge</span>&#123;</span><span class="comment">//所有的边（图）</span></span><br><span class="line">    <span class="keyword">int</span> u,v,w;</span><br><span class="line">    <span class="keyword">bool</span> <span class="keyword">operator</span> &lt;(<span class="keyword">const</span> edge &amp;x)&#123;</span><br><span class="line">        <span class="keyword">return</span> w&lt;x.w;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;e[MAXN*MAXN];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Find</span><span class="params">(<span class="keyword">int</span> i)</span></span>&#123; <span class="keyword">return</span> !fa[i]?i:fa[i]=Find(fa[i]);&#125;<span class="comment">//并查集部分</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Union</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span>&#123; fa[x]=y;&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> u,v,w;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;n,&amp;m);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++) <span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>,&amp;e[i].u,&amp;e[i].v,&amp;e[i].w);</span><br><span class="line">    sort(e+<span class="number">1</span>,e+m+<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++)</span><br><span class="line">        <span class="keyword">if</span>(Find(e[i].u)!=Find(e[i].v))&#123;<span class="comment">//最小生成树 Kruskal</span></span><br><span class="line">            ans=e[i].w;</span><br><span class="line">            Union(Find(e[i].u),Find(e[i].v));</span><br><span class="line">        &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=n;j++)</span><br><span class="line">            <span class="keyword">if</span>(Find(i)!=Find(j))&#123;</span><br><span class="line">                <span class="built_in">puts</span>(<span class="string">"-1"</span>);</span><br><span class="line">                <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,ans);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+<li><p>sum=1 -&gt; 左边 sum=-1 -&gt; 两次 ∴ ans+=2;</p>
+</li>
+</ol>
+<h3 id="最后输出-ans-即可。"><a href="#最后输出-ans-即可。" class="headerlink" title="最后输出 ans 即可。"></a>最后输出 ans 即可。</h3><p>C++ 代码如下：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;//头文件</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdlib&gt;//头文件</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;<span class="comment">//命名空间</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> KEY 100001<span class="comment">//定义一个足够大的数</span></span></span><br><span class="line"><span class="keyword">int</span> n,b,pos,a[<span class="number">100010</span>],flag[<span class="number">100010</span>],f[<span class="number">200010</span>],s,ans;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;n,&amp;b);<span class="comment">//输入</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;<span class="comment">//第一次循环</span></span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;a[i]);</span><br><span class="line">        <span class="keyword">if</span>(a[i]==b) pos=i;<span class="comment">//就是中位数</span></span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(a[i]&gt;b) flag[i]=<span class="number">1</span>;<span class="comment">//大的标1</span></span><br><span class="line">        <span class="keyword">else</span> flag[i]=<span class="number">-1</span>;<span class="comment">//小的标-1</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=pos<span class="number">-1</span>;i&gt;=<span class="number">1</span>;i--)&#123;<span class="comment">//第二次循环</span></span><br><span class="line">        s+=flag[i];<span class="comment">//计算此次sum值</span></span><br><span class="line">        f[s+KEY]++;</span><br><span class="line">        <span class="keyword">if</span>(s==<span class="number">0</span>) ans++;<span class="comment">//找到满足题意只在 pos 左侧的连续子序列！</span></span><br><span class="line">    &#125;</span><br><span class="line">    s=<span class="number">0</span>;<span class="comment">//为第三次循环的累加做准备</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=pos+<span class="number">1</span>;i&lt;=n;i++)&#123;<span class="comment">//第三次循环</span></span><br><span class="line">        s+=flag[i];<span class="comment">//计算此次sum值</span></span><br><span class="line">        <span class="keyword">if</span>(s==<span class="number">0</span>) ans++;<span class="comment">//找到满足题意只在 pos 右侧的连续子序列！</span></span><br><span class="line">        ans+=f[-s+KEY];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,++ans);<span class="comment">//还少一次只由 pos 自己组成的连续子序列（也满足条件！）</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       </div>
         
           <section class='meta' id="footer-meta">
             
-              <time class="metatag time" itemprop="dateUpdated" datetime="2019-01-27T11:43:34+08:00" content="2019-01-27"><i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>
+              <time class="metatag time" itemprop="dateUpdated" datetime="2019-01-27T11:48:44+08:00" content="2019-01-27"><i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>
                 &nbsp;2019-01-27
               </time>
             
             
                 
-                <div class="metatag tags"><a class="tag" href="/tags/C/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>&nbsp;C++</a></div> <div class="metatag tags"><a class="tag" href="/tags/算法讲解/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>&nbsp;算法讲解</a></div> <div class="metatag tags"><a class="tag" href="/tags/并查集/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>&nbsp;并查集</a></div>
+                <div class="metatag tags"><a class="tag" href="/tags/C/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>&nbsp;C++</a></div> <div class="metatag tags"><a class="tag" href="/tags/题解/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>&nbsp;题解</a></div>
             
             
           </section>
@@ -246,21 +237,40 @@
                         <span class="art-item-left">
                             <h6><i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;上一页</h6>
                             <h4>
-                                <a href="/2019/01/27/洛谷P1627中位数/" rel="prev" title="洛谷P1627中位数">
+                                <a href="/2019/01/27/洛谷P1462通往奥格瑞玛的道路/" rel="prev" title="洛谷P1462通往奥格瑞玛的道路">
                                   
-                                      洛谷P1627中位数
+                                      洛谷P1462通往奥格瑞玛的道路
                                   
                                 </a>
                             </h4>
                             
                                 
                                 <h6 class="tags">
-                                    <a class="tag" href="/tags/C/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>C++</a> <a class="tag" href="/tags/题解/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>题解</a>
+                                    <a class="tag" href="/tags/C/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>C++</a> <a class="tag" href="/tags/题解/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>题解</a> <a class="tag" href="/tags/图论/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>图论</a>
                                 </h6>
                             
                         </span>
                     </section>
                 
+                
+                    <section class="next">
+                        <span class="art-item-right" aria-hidden="true">
+                            <h6>下一页&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
+                            <h4>
+                                <a href="/2018/10/04/并查集/" rel="prev" title="并查集入门">
+                                    
+                                        并查集入门
+                                    
+                                </a>
+                            </h4>
+                            
+                                
+                                <h6 class="tags">
+                                    <a class="tag" href="/tags/C/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>C++</a> <a class="tag" href="/tags/算法讲解/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>算法讲解</a> <a class="tag" href="/tags/并查集/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>并查集</a>
+                                </h6>
+                            
+                        </span>
+                    </section>
                 
             </div>
         
@@ -333,7 +343,7 @@
             
                 <li><a href="http://tle666.gitub.io/2019/01/27/洛谷P1462通往奥格瑞玛的道路/">洛谷P1462通往奥格瑞玛的道路</a></li>
             
-                <li><a href="http://tle666.gitub.io/2019/01/27/洛谷P1627中位数/">洛谷P1627中位数</a></li>
+                <li><a href="http://tle666.gitub.io/2018/10/04/并查集/">并查集入门</a></li>
             
         </ul>
     </div>
@@ -349,7 +359,7 @@
 
 <script>
     window.subData = {
-        title: '并查集入门',
+        title: '洛谷P1627中位数',
         tools: true
     }
 </script>
