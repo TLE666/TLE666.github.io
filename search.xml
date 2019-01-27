@@ -16,7 +16,7 @@
             
             <tag> C++ </tag>
             
-            <tag> 算法详解 </tag>
+            <tag> 算法讲解 </tag>
             
             <tag> 卡常 </tag>
             
@@ -131,28 +131,6 @@
     
     
     <entry>
-      <title>关于</title>
-      <link href="/about/index.html"/>
-      <url>/about/index.html</url>
-      
-        <content type="html"><![CDATA[<p><em>本人乃无实力瑟瑟发抖萌新</em></p><p>欢迎加QQ随时<del>吊打</del>我哦~</p>]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>搜索</title>
-      <link href="/search/index.html"/>
-      <url>/search/index.html</url>
-      
-        <content type="html"><![CDATA[]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>友链</title>
       <link href="/friends/index.html"/>
       <url>/friends/index.html</url>
@@ -164,9 +142,31 @@
     
     
     <entry>
+      <title>关于</title>
+      <link href="/about/index.html"/>
+      <url>/about/index.html</url>
+      
+        <content type="html"><![CDATA[<p><em>本人乃无实力瑟瑟发抖萌新</em></p><p>欢迎加QQ随时<del>吊打</del>我哦~</p>]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>标签</title>
       <link href="/tags/index.html"/>
       <url>/tags/index.html</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>搜索</title>
+      <link href="/search/index.html"/>
+      <url>/search/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       
