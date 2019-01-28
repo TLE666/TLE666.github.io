@@ -5,9 +5,9 @@
   <subtitle>自己选择的路，跪着也要走完。</subtitle>
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://tle666.gitub.io/"/>
+  <link href="http://tle666.github.io/"/>
   <updated>2019-01-27T03:52:07.671Z</updated>
-  <id>http://tle666.gitub.io/</id>
+  <id>http://tle666.github.io/</id>
   
   <author>
     <name>P_Wang</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>快速读入详解</title>
-    <link href="http://tle666.gitub.io/2019/01/27/%E5%BF%AB%E9%80%9F%E8%AF%BB%E5%85%A5%E8%AF%A6%E8%A7%A3/"/>
-    <id>http://tle666.gitub.io/2019/01/27/快速读入详解/</id>
+    <link href="http://tle666.github.io/2019/01/27/%E5%BF%AB%E9%80%9F%E8%AF%BB%E5%85%A5%E8%AF%A6%E8%A7%A3/"/>
+    <id>http://tle666.github.io/2019/01/27/快速读入详解/</id>
     <published>2019-01-27T03:41:50.000Z</published>
     <updated>2019-01-27T03:52:07.671Z</updated>
     
@@ -32,18 +32,18 @@
     </summary>
     
     
-      <category term="C++" scheme="http://tle666.gitub.io/tags/C/"/>
+      <category term="C++" scheme="http://tle666.github.io/tags/C/"/>
     
-      <category term="算法讲解" scheme="http://tle666.gitub.io/tags/%E7%AE%97%E6%B3%95%E8%AE%B2%E8%A7%A3/"/>
+      <category term="算法讲解" scheme="http://tle666.github.io/tags/%E7%AE%97%E6%B3%95%E8%AE%B2%E8%A7%A3/"/>
     
-      <category term="卡常" scheme="http://tle666.gitub.io/tags/%E5%8D%A1%E5%B8%B8/"/>
+      <category term="卡常" scheme="http://tle666.github.io/tags/%E5%8D%A1%E5%B8%B8/"/>
     
   </entry>
   
   <entry>
     <title>浅谈二分</title>
-    <link href="http://tle666.gitub.io/2019/01/27/%E6%B5%85%E8%B0%88%E4%BA%8C%E5%88%86/"/>
-    <id>http://tle666.gitub.io/2019/01/27/浅谈二分/</id>
+    <link href="http://tle666.github.io/2019/01/27/%E6%B5%85%E8%B0%88%E4%BA%8C%E5%88%86/"/>
+    <id>http://tle666.github.io/2019/01/27/浅谈二分/</id>
     <published>2019-01-27T03:39:50.000Z</published>
     <updated>2019-01-27T03:59:03.795Z</updated>
     
@@ -56,18 +56,18 @@
     </summary>
     
     
-      <category term="C++" scheme="http://tle666.gitub.io/tags/C/"/>
+      <category term="C++" scheme="http://tle666.github.io/tags/C/"/>
     
-      <category term="算法讲解" scheme="http://tle666.gitub.io/tags/%E7%AE%97%E6%B3%95%E8%AE%B2%E8%A7%A3/"/>
+      <category term="算法讲解" scheme="http://tle666.github.io/tags/%E7%AE%97%E6%B3%95%E8%AE%B2%E8%A7%A3/"/>
     
-      <category term="二分" scheme="http://tle666.gitub.io/tags/%E4%BA%8C%E5%88%86/"/>
+      <category term="二分" scheme="http://tle666.github.io/tags/%E4%BA%8C%E5%88%86/"/>
     
   </entry>
   
   <entry>
     <title>洛谷P1462通往奥格瑞玛的道路</title>
-    <link href="http://tle666.gitub.io/2019/01/27/%E6%B4%9B%E8%B0%B7P1462%E9%80%9A%E5%BE%80%E5%A5%A5%E6%A0%BC%E7%91%9E%E7%8E%9B%E7%9A%84%E9%81%93%E8%B7%AF/"/>
-    <id>http://tle666.gitub.io/2019/01/27/洛谷P1462通往奥格瑞玛的道路/</id>
+    <link href="http://tle666.github.io/2019/01/27/%E6%B4%9B%E8%B0%B7P1462%E9%80%9A%E5%BE%80%E5%A5%A5%E6%A0%BC%E7%91%9E%E7%8E%9B%E7%9A%84%E9%81%93%E8%B7%AF/"/>
+    <id>http://tle666.github.io/2019/01/27/洛谷P1462通往奥格瑞玛的道路/</id>
     <published>2019-01-27T03:36:50.000Z</published>
     <updated>2019-01-27T03:48:18.675Z</updated>
     
@@ -80,18 +80,18 @@
     </summary>
     
     
-      <category term="C++" scheme="http://tle666.gitub.io/tags/C/"/>
+      <category term="C++" scheme="http://tle666.github.io/tags/C/"/>
     
-      <category term="题解" scheme="http://tle666.gitub.io/tags/%E9%A2%98%E8%A7%A3/"/>
+      <category term="题解" scheme="http://tle666.github.io/tags/%E9%A2%98%E8%A7%A3/"/>
     
-      <category term="图论" scheme="http://tle666.gitub.io/tags/%E5%9B%BE%E8%AE%BA/"/>
+      <category term="图论" scheme="http://tle666.github.io/tags/%E5%9B%BE%E8%AE%BA/"/>
     
   </entry>
   
   <entry>
     <title>洛谷P1627中位数</title>
-    <link href="http://tle666.gitub.io/2019/01/27/%E6%B4%9B%E8%B0%B7P1627%E4%B8%AD%E4%BD%8D%E6%95%B0/"/>
-    <id>http://tle666.gitub.io/2019/01/27/洛谷P1627中位数/</id>
+    <link href="http://tle666.github.io/2019/01/27/%E6%B4%9B%E8%B0%B7P1627%E4%B8%AD%E4%BD%8D%E6%95%B0/"/>
+    <id>http://tle666.github.io/2019/01/27/洛谷P1627中位数/</id>
     <published>2019-01-27T03:33:40.000Z</published>
     <updated>2019-01-27T03:48:44.349Z</updated>
     
@@ -104,16 +104,16 @@
     </summary>
     
     
-      <category term="C++" scheme="http://tle666.gitub.io/tags/C/"/>
+      <category term="C++" scheme="http://tle666.github.io/tags/C/"/>
     
-      <category term="题解" scheme="http://tle666.gitub.io/tags/%E9%A2%98%E8%A7%A3/"/>
+      <category term="题解" scheme="http://tle666.github.io/tags/%E9%A2%98%E8%A7%A3/"/>
     
   </entry>
   
   <entry>
     <title>并查集入门</title>
-    <link href="http://tle666.gitub.io/2018/10/04/%E5%B9%B6%E6%9F%A5%E9%9B%86/"/>
-    <id>http://tle666.gitub.io/2018/10/04/并查集/</id>
+    <link href="http://tle666.github.io/2018/10/04/%E5%B9%B6%E6%9F%A5%E9%9B%86/"/>
+    <id>http://tle666.github.io/2018/10/04/并查集/</id>
     <published>2018-10-04T03:21:10.000Z</published>
     <updated>2019-01-27T03:43:34.209Z</updated>
     
@@ -126,11 +126,11 @@
     </summary>
     
     
-      <category term="C++" scheme="http://tle666.gitub.io/tags/C/"/>
+      <category term="C++" scheme="http://tle666.github.io/tags/C/"/>
     
-      <category term="算法讲解" scheme="http://tle666.gitub.io/tags/%E7%AE%97%E6%B3%95%E8%AE%B2%E8%A7%A3/"/>
+      <category term="算法讲解" scheme="http://tle666.github.io/tags/%E7%AE%97%E6%B3%95%E8%AE%B2%E8%A7%A3/"/>
     
-      <category term="并查集" scheme="http://tle666.gitub.io/tags/%E5%B9%B6%E6%9F%A5%E9%9B%86/"/>
+      <category term="并查集" scheme="http://tle666.github.io/tags/%E5%B9%B6%E6%9F%A5%E9%9B%86/"/>
     
   </entry>
   
