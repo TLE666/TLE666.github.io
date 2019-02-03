@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   
-  <title>友链 | P_Wang&#39;s Blog</title>
+  <title>树链剖分详解 | P_Wang&#39;s Blog</title>
   
   
   <meta name="description" content="OIer!">
@@ -203,22 +203,25 @@
     <div class="l_body">
     <div class='container clearfix'>
         <div class='l_main'>
-            <article id="page" class="post white-box article-type-page" itemscope itemprop="blogPost">
+            <article id="post" class="post white-box article-type-post" itemscope itemprop="blogPost">
   
 <section class='meta'>
   
   <div class="meta" id="header-meta">
     
       
-          <h1 class="title">友链</h1>
+          <h1 class="title">树链剖分详解</h1>
       
     
 
     
       <time class="metatag time">
-        <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;2019-01-26
+        <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;2019-02-02
       </time>
     
+
+    
+      
 
     
 
@@ -237,11 +240,96 @@
 
     <section class="article typo">
       <div class="article-entry" itemprop="articleBody">
-        <p><a href="https://acfunction.github.io/" target="_blank" rel="noopener">$AcF$</a></p>
+        <h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a><strong>Introduction</strong></h1><p>当我们想要同时完成</p>
+<ul>
+<li>求树上$u$到$v$的权值和</li>
+<li>将树上$u$到$v$的权值都加$d$</li>
+</ul>
+<p>这两种操作时，会怎么做呢？</p>
+<p>相信我们对于这两种操作分别都会解决，但是如果一旦放到同一道题里，我们就会束手无策了。</p>
+<p>树链剖分便由此而来了。</p>
+<a id="more"></a>
+<h1 id="Definition"><a href="#Definition" class="headerlink" title="Definition"></a><strong>Definition</strong></h1><blockquote>
+<p> 树剖是通过将一棵有根树分成多个链，然后利用各种数据结构（如线段树等）来维护这棵链，从而间接地维护这棵树。</p>
+</blockquote>
+<p>首先，为了方便我们对树剖的理解，我们需要知道一些很基础很重要的概念：</p>
+<ul>
+<li>$size_i$：以$i$为根的子树中结点个数</li>
+<li>$dfn_i$：$i$结点的$dfs$序，即其新编号</li>
+<li>$pre_i$：$dfn$的反函数，若$dfn_i\ =\ j$，则$pre_j\ =\ i$，即$dfn_{pre_i}\ =\ 1$。</li>
+<li>$fa_i$：$i$结点的父亲结点（除$dfn$和$pre$外，一切结点编号非特殊说明均为默认编号）</li>
+<li>$dep_i$：$i$的深度，默认根的深度为$1$，即$dep_{root}\ =\ 1$</li>
+<li>$w_i$：$i$结点的权值</li>
+<li>重儿子：一个结点所有子结点中$size​$最大的子节点，用$wson[i]​$表示</li>
+<li>轻儿子：一个结点所有子结点中除了重儿子的其它所有子结点</li>
+<li>重边：一个结点和它的重儿子的连边</li>
+<li>轻边：一个节点和它的轻儿子的连边</li>
+<li>重链：由多条重边首尾顺次连接而成的链（路径）</li>
+<li>轻链：有多条轻边首尾顺次连接而成的链（路径）</li>
+<li>$top_i$：$i$所在的重链的链首（可以证明每个结点都在一条重链上）</li>
+</ul>
+<p>上一张 <del>众人皆知的</del> 百度百科的图：</p>
+<p><img src="https://s2.ax1x.com/2019/02/02/k8LSfK.jpg" alt="图片没了吗？可以到百度百科上看"></p>
 
       </div>
         
+          <section class='meta' id="footer-meta">
+            
+              <time class="metatag time" itemprop="dateUpdated" datetime="2019-02-02T23:14:18+08:00" content="2019-02-02"><i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>
+                &nbsp;2019-02-02
+              </time>
+            
+            
+                
+                <div class="metatag tags"><a class="tag" href="/tags/C/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>&nbsp;C++</a></div> <div class="metatag tags"><a class="tag" href="/tags/算法详解/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>&nbsp;算法详解</a></div> <div class="metatag tags"><a class="tag" href="/tags/树链剖分/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>&nbsp;树链剖分</a></div>
+            
+            
+          </section>
+        
 
+        
+            <div class="prev-next">
+                
+                    <section class="prev">
+                        <span class="art-item-left">
+                            <h6><i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;上一页</h6>
+                            <h4>
+                                <a href="/2019/02/03/公式/" rel="prev" title="数学公式">
+                                  
+                                      数学公式
+                                  
+                                </a>
+                            </h4>
+                            
+                                
+                                <h6 class="tags">
+                                    <a class="tag" href="/tags/数学/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>数学</a> <a class="tag" href="/tags/三角函数/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>三角函数</a> <a class="tag" href="/tags/代数/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>代数</a> <a class="tag" href="/tags/几何/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>几何</a> <a class="tag" href="/tags/公式/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>公式</a>
+                                </h6>
+                            
+                        </span>
+                    </section>
+                
+                
+                    <section class="next">
+                        <span class="art-item-right" aria-hidden="true">
+                            <h6>下一页&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
+                            <h4>
+                                <a href="/2019/02/02/[BZOJ5165]树上倍增/" rel="prev" title="[BZOJ5165] 树上倍增">
+                                    
+                                        [BZOJ5165] 树上倍增
+                                    
+                                </a>
+                            </h4>
+                            
+                                
+                                <h6 class="tags">
+                                    <a class="tag" href="/tags/C/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>C++</a> <a class="tag" href="/tags/LCA/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>LCA</a> <a class="tag" href="/tags/倍增/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>倍增</a> <a class="tag" href="/tags/题解/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>题解</a>
+                                </h6>
+                            
+                        </span>
+                    </section>
+                
+            </div>
         
 
     </section>
@@ -300,6 +388,25 @@
     <section class="article typo">
 
       
+        
+
+    <div class="recommended_posts">
+        <h4><i class="fas fa-bookmark fa-fw" aria-hidden="true"></i>&nbsp;相关文章</h4>
+        <ul>
+            
+                <li><a href="http://tle666.github.io/2019/02/03/公式/">数学公式</a></li>
+            
+                <li><a href="http://tle666.github.io/2019/02/02/[BZOJ5165]树上倍增/">[BZOJ5165] 树上倍增</a></li>
+            
+                <li><a href="http://tle666.github.io/2019/01/27/快速读入详解/">快速读入详解</a></li>
+            
+                <li><a href="http://tle666.github.io/2019/01/27/浅谈二分/">浅谈二分</a></li>
+            
+        </ul>
+    </div>
+
+
+      
 
       
         <h4><i class="fas fa-comments fa-fw" aria-hidden="true"></i>&nbsp;评论</h4>
@@ -322,10 +429,11 @@
 
 <script>
     window.subData = {
-        title: '友链',
+        title: '树链剖分详解',
         tools: true
     }
 </script>
+
 
         </div>
         <aside class='l_side'>
