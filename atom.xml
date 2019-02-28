@@ -123,11 +123,11 @@
     
       <category term="C++" scheme="http://tle666.github.io/tags/C/"/>
     
-      <category term="题解" scheme="http://tle666.github.io/tags/%E9%A2%98%E8%A7%A3/"/>
-    
       <category term="LCA" scheme="http://tle666.github.io/tags/LCA/"/>
     
       <category term="倍增" scheme="http://tle666.github.io/tags/%E5%80%8D%E5%A2%9E/"/>
+    
+      <category term="题解" scheme="http://tle666.github.io/tags/%E9%A2%98%E8%A7%A3/"/>
     
   </entry>
   
