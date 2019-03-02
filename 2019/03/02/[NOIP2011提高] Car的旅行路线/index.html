@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   
-  <title>数学公式 | P_Wang&#39;s Blog</title>
+  <title>[NOIP2011提高] Car的旅行路线 | P_Wang&#39;s Blog</title>
   
   
   <meta name="description" content="OIer!">
@@ -210,13 +210,13 @@
   <div class="meta" id="header-meta">
     
       
-          <h1 class="title">数学公式</h1>
+          <h1 class="title">[NOIP2011提高] Car的旅行路线</h1>
       
     
 
     
       <time class="metatag time">
-        <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;2019-02-19
+        <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;2019-03-02
       </time>
     
 
@@ -240,69 +240,38 @@
 
     <section class="article typo">
       <div class="article-entry" itemprop="articleBody">
-        <p>这里有一些重要的初高中数学公式，可供参考。</p>
+        <h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a><strong>Description</strong></h1><p>给你$n$个矩形，每个矩形自己的四个顶点两两相同，并且经过的费用为长度乘$t$；而所有矩形之间路程的费用为长度乘$T$（不包括同一矩形内两点的边）。</p>
+<p>求$A$点到$B$点的最小费用。</p>
+<p>对于$100$%的数据，数据组数$\leq10$，矩形个数$\leq100$。</p>
 <a id="more"></a>
-<h2 id="恒等变形"><a href="#恒等变形" class="headerlink" title="恒等变形"></a>恒等变形</h2><p>$a^3 + b^3 = (a + b)(a^2 - ab + b)$</p>
-<p>$a^3 + b^3 + c^3 - 3abc = (a + b + c)(a^2 + a^2 + c^2 - a - b - c) = \dfrac{1}{2}(a + b + c)((a - b)^2 + (b - c)^2 + (c - a)^2)$</p>
-<p>$2(a^2 + b^2 + c^2 - ab - bc - ca) = (a - b)^2 + (b - c)^2 + (c - a)^2 \geqslant 0$</p>
-<p>$(a + b)(b + c)(c + a) = ab^2 + bc^2 + ca^2 + a^2b + b^2c + c^2a + 2abc$</p>
-<p>$(a - b)(b - c)(c - a) = ab^2 + bc^2 + ca^2 - a^2b - b^2c - c^2a$</p>
-<p>$(a + b + c)(ab + bc + ca) = ab^2 + bc^2 + ca^2 + a^2b + b^2c + c^2a + 3abc$</p>
-<p>$(a^2 + b^2)(c^2 + d^2) = (ad - bc)^2 + (ac - bd)^2$</p>
-<p>$(a_1^2 + a_2^2 + a_3^2 + \cdots + a_n^2)(b_1^2 + b_2^2 + b_3^2 + \cdots + b_n^2) \geqslant (a_1b_1 + a_2b_2 + a_3b_3 + \cdots + a_nb_n)^2$ —— $Cauchy$不等式</p>
-<p>$(a + b + c) ^ 3 = a ^ 3 + b ^ 3 + c ^ 3 + 3a^2b + 3ab^2 + 3b^2c + 3bc^2 +3c^2a + 3ca^2 + 6abc$</p>
-<h2 id="几何定理"><a href="#几何定理" class="headerlink" title="几何定理"></a>几何定理</h2><h3 id="斯特瓦尔特定理"><a href="#斯特瓦尔特定理" class="headerlink" title="斯特瓦尔特定理"></a>斯特瓦尔特定理</h3><p><img src="https://gss1.bdstatic.com/9vo3dSag_xI4khGkpoWK1HF6hhy/baike/c0%3Dbaike80%2C5%2C5%2C80%2C26/sign=904237c40cfa513d45a7648c5c043e9e/9825bc315c6034a85f121a99cf13495409237631.jpg" alt="斯特瓦尔特"></p>
-<p>$BD \cdot AC^2 + DC \cdot AB^2 = BC \cdot AD^2 + BD \cdot DC \cdot BC$</p>
-<h4 id="推论：中线长公式"><a href="#推论：中线长公式" class="headerlink" title="推论：中线长公式"></a>推论：中线长公式</h4><p>$AD = \frac{1}{2} \sqrt{2(AB^2 + AC^2) - BC^2}$</p>
-<h3 id="欧拉线"><a href="#欧拉线" class="headerlink" title="欧拉线"></a>欧拉线</h3><p><img src="https://gss2.bdstatic.com/9fo3dSag_xI4khGkpoWK1HF6hhy/baike/c0%3Dbaike92%2C5%2C5%2C92%2C30/sign=03bba6fdda43ad4bb2234e92e36b31ca/6159252dd42a2834ee136d5350b5c9ea15cebf35.jpg" alt=""></p>
-<p>$\triangle ABC$ 的外心 $O$ 、重心 $G$、垂心 $H$ 共线。</p>
-<h3 id="九点圆"><a href="#九点圆" class="headerlink" title="九点圆"></a>九点圆</h3><p><img src="https://gss2.bdstatic.com/9fo3dSag_xI4khGkpoWK1HF6hhy/baike/c0%3Dbaike80%2C5%2C5%2C80%2C26/sign=897ee43bf9dcd100d991f07313e22c75/622762d0f703918f125573fc503d269759eec404.jpg" alt="九点圆"></p>
-<p>在任意的三角形中，三边的中点、三条高的垂足、三条高的交点(垂心)与三角形顶点连线的中点，这九个点共圆。</p>
-<h3 id="西姆松线"><a href="#西姆松线" class="headerlink" title="西姆松线"></a>西姆松线</h3><p><img src="https://gss2.bdstatic.com/-fo3dSag_xI4khGkpoWK1HF6hhy/baike/c0%3Dbaike92%2C5%2C5%2C92%2C30/sign=594aed747d3e6709aa0d4dad5aaef458/0b7b02087bf40ad19c15d6b0552c11dfa8eccef4.jpg" alt="西姆松线"></p>
-<p>过三角形外接圆上异于三角形顶点的任意一点作三边或其延长线上的垂线，则三垂足共线。</p>
-<h3 id="史坦纳定理"><a href="#史坦纳定理" class="headerlink" title="史坦纳定理"></a>史坦纳定理</h3><p><img src="http://5b0988e595225.cdn.sohucs.com/images/20180208/0230f38f899b448b9369832637f73f95.png" alt="史坦纳定理"></p>
-<p>$H$ 为$\triangle ABC$ 垂心，$D$为$\triangle ABC$ 外异于三角形顶点的任意一点，则点$D$关于$\triangle ABC$的西姆松线通过线段$DH$的中点。</p>
-<h2 id="三角函数"><a href="#三角函数" class="headerlink" title="三角函数"></a>三角函数</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>$\cot\alpha = \frac{1}{\tan\alpha} \qquad \sec\alpha = \frac{1}{\cos\alpha} \qquad \csc\alpha = \frac{1}{\sin\alpha}$</p>
-<h3 id="诱导公式"><a href="#诱导公式" class="headerlink" title="诱导公式"></a>诱导公式</h3><p>$\sin ( \pi + \alpha) =- \sin \alpha \qquad \cos(\pi + \alpha) = -\cos \alpha \qquad \tan (\pi + \alpha) = \tan \alpha$</p>
-<p>$\sin (-\alpha) = -\sin\alpha \qquad \cos (-\alpha) = \cos\alpha \qquad \tan(-\alpha) = -\tan\alpha$</p>
-<p>$\sin (\pi - \alpha) = \sin \alpha \qquad \cos (\pi - \alpha) = -\cos\alpha \qquad \tan(\pi - \alpha) = -\tan\alpha$</p>
-<p>$\sin(2\pi - \alpha) = -\sin\alpha \qquad \cos(2\pi - \alpha) = \cos\alpha \qquad \tan(2\pi - \alpha) = -\tan\alpha$</p>
-<p>$\sin (\frac{\pi}{2} + \alpha) = \cos\alpha \qquad \sin(\frac{\pi}{2} - \alpha) = \cos\alpha$</p>
-<p>$\cos(\frac{\pi}{2} + \alpha) = -\sin\alpha \qquad \cos(\frac{\pi}{2} - \alpha) = \sin\alpha$</p>
-<p>$\tan(\frac{\pi}{2} + \alpha) = -\cot\alpha \qquad \tan(\frac{\pi}{2} - \alpha) = \cot\alpha$</p>
-<h3 id="两角和（差）公式"><a href="#两角和（差）公式" class="headerlink" title="两角和（差）公式"></a>两角和（差）公式</h3><p>$\sin(\alpha \pm \beta) = \sin\alpha\cos\beta \pm \cos\alpha\sin\beta$</p>
-<p>$\cos(\alpha \pm \beta) = \cos\alpha\cos\beta \mp \sin\alpha\sin\beta$</p>
-<p>$\tan(\alpha \pm \beta) = \frac{\tan\alpha \pm \tan\beta}{1 \mp \tan\alpha\tan\beta}$</p>
-<h3 id="二倍角公式"><a href="#二倍角公式" class="headerlink" title="二倍角公式"></a>二倍角公式</h3><p>$\sin 2\alpha = 2\sin\alpha\cos\alpha$</p>
-<p>$\cos2\alpha = 2\cos^2\alpha - 1 = 1 - 2\sin^2\alpha = \frac{1-\tan^2\alpha}{1+\tan^2\alpha}$</p>
-<p>$\tan2\alpha = \frac{2\tan\alpha}{1-\tan^2\alpha}$</p>
-<h3 id="三倍角公式"><a href="#三倍角公式" class="headerlink" title="三倍角公式"></a>三倍角公式</h3><p>$\sin(3\alpha) = 3\sin\alpha - 4\sin^3\alpha \qquad \cos(3\alpha) = 4\cos ^ 3\alpha - 3\cos\alpha$</p>
-<h3 id="降幂公式"><a href="#降幂公式" class="headerlink" title="降幂公式"></a>降幂公式</h3><p>$\sin^2\alpha = \frac{1 - \cos2\alpha}{2} \qquad \cos^2\alpha = \frac{1 + \cos2\alpha}{2} \qquad \tan^2\alpha = \frac{1 - \cos2\alpha}{1 + \cos2\alpha}$</p>
-<h3 id="辅助角公式"><a href="#辅助角公式" class="headerlink" title="辅助角公式"></a>辅助角公式</h3><p>$a\sin x + b\cos x = \sqrt{a^2 + b^2}(\frac{a\sin x}{\sqrt{a^2 + b^2}} + \frac{b\cos x}{\sqrt{a^2 + b^2}})$ 或</p>
-<p>$a\sin x + b\cos x = \sqrt{a^2 + b^2}\sin(x + \varphi)$，其中 $\sin\varphi = \frac{b}{\sqrt{a ^ 2 + b ^ 2}},\ \cos\varphi = \frac{a}{\sqrt{a^2 + b^2}}$</p>
-<h3 id="万能公式"><a href="#万能公式" class="headerlink" title="万能公式"></a>万能公式</h3><p>$\sin\alpha = \frac{2\tan\frac{\alpha}{2}}{1 + \tan^2\frac{\alpha}{2}}$</p>
-<p>$\cos\alpha = \frac{1 - \tan^2\frac{\alpha}{2}}{1 + \tan^2\frac{\alpha}{2}}$</p>
-<p>$\tan\alpha = \frac{2\tan\frac{\alpha}{2}}{1 - \tan^2\frac{\alpha}{2}}$</p>
-<h3 id="和差化积"><a href="#和差化积" class="headerlink" title="和差化积"></a>和差化积</h3><p>$\sin\alpha \pm \sin\beta = 2\sin\frac{\alpha \pm \beta}{2}\cos\frac{\alpha \mp \beta}{2}$</p>
-<p>$\cos\alpha + \cos\beta = 2\cos\frac{\alpha + \beta}{2}\cos\frac{\alpha - \beta}{2}$</p>
-<p>$\cos\alpha - \cos\beta = -2\sin\frac{\alpha + \beta}{2}\sin\frac{\alpha - \beta}{2}$</p>
-<p>$\tan\alpha \pm \tan\beta = \frac{\sin(\alpha \pm \beta)}{\cos\alpha\cos\beta}$</p>
-<h3 id="积化和差"><a href="#积化和差" class="headerlink" title="积化和差"></a>积化和差</h3><p>$\sin\alpha\cos\beta = \frac{1}{2}(\sin(\alpha + \beta) + \sin(\alpha - \beta))$</p>
-<p>$\cos\alpha\sin\beta = \frac{1}{2}(\sin(\alpha + \beta) - \sin(\alpha - \beta))$</p>
-<p>$\cos\alpha\cos\beta = \frac{1}{2}(\cos(\alpha +\beta) + \cos(\alpha - \beta))$</p>
-<p>$\sin\alpha\sin\beta = -\frac{1}{2}(\cos(\alpha + \beta) - \cos(\alpha - \beta))$</p>
+<p><a href="https://www.luogu.org/problemnew/show/P1027" target="_blank" rel="noopener">题目链接戳这里</a></p>
+<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a><strong>Solution</strong></h1><p><del>打死我也不告诉你我Floyd模板打错了</del></p>
+<p>通过$floyd$处理出任意两点（注意不是矩形）之间的最小费用即可。</p>
+<p>但这道题细节还是不少的——</p>
+<ul>
+<li><p>只给你矩形的三个顶点</p>
+<p>  先通过勾股定理逆定理来求出哪个是直角，然后第四个点的坐标就出来了。</p>
+</li>
+<li><p>矩形可以是歪的，即它的边不一定平行于坐标轴。</p>
+</li>
+<li>多组数据注意初始化。</li>
+<li>飞机和汽车费用不一样，需要分别计算。</li>
+<li>最后只输出1位小数</li>
+</ul>
+<p>$Hint$：两点间距离公式 $dis\ =\ \sqrt{(x_1 - x_2) ^ 2 + (y_1 - y_2) ^ 2}$</p>
+<h1 id="Code"><a href="#Code" class="headerlink" title="Code"></a><strong>Code</strong></h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdlib&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXN 110</span></span><br><span class="line"><span class="keyword">int</span> _, S, t, A, B, tot;</span><br><span class="line"><span class="keyword">double</span> w[MAXN][MAXN], ans; <span class="comment">// w 是两点间的最小费用</span></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">double</span> <span class="title">sq</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123; <span class="keyword">return</span> (<span class="keyword">double</span>)x * x;&#125;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">point</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> id, t, x, y; <span class="comment">// id 城市编号，t 列车费用</span></span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">INIT</span><span class="params">(<span class="keyword">int</span> _id, <span class="keyword">int</span> <span class="keyword">_t</span>, <span class="keyword">int</span> _x, <span class="keyword">int</span> _y)</span> </span>&#123;</span><br><span class="line">        id = _id, t = <span class="keyword">_t</span>, x = _x, y = _y;</span><br><span class="line">    &#125; <span class="comment">// 赋值函数（更简单的忘了怎么写了 QwQ</span></span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">double</span> <span class="title">dis</span><span class="params">(point &amp;a)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">sqrt</span>(sq(x - a.x) + sq(y - a.y));</span><br><span class="line">    &#125; <span class="comment">// 两点间距离</span></span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">rct</span><span class="params">(point &amp;a, point &amp;b, point &amp;c)</span> </span>&#123;</span><br><span class="line">        id = a.id, t = a.t;</span><br><span class="line">        <span class="keyword">int</span> P = sq(a.x - b.x) + sq(a.y - b.y),</span><br><span class="line">            Q = sq(b.x - c.x) + sq(b.y - c.y),</span><br><span class="line">            R = sq(c.x - a.x) + sq(c.y - a.y);</span><br><span class="line">        <span class="keyword">if</span>(P + Q == R)</span><br><span class="line">            x = a.x + c.x - b.x,</span><br><span class="line">            y = a.y + c.y - b.y;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(P + R == Q)</span><br><span class="line">            x = b.x + c.x - a.x,</span><br><span class="line">            y = b.y + c.y - a.y;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            x = a.x + b.x - c.x,</span><br><span class="line">            y = a.y + b.y - c.y;</span><br><span class="line">    &#125; <span class="comment">// 处理第四个点的坐标</span></span><br><span class="line">&#125; p[MAXN];</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">prework</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">static</span> point P, Q;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">double</span> c, d;</span><br><span class="line">    <span class="built_in">memset</span>(w, <span class="number">0x3f</span>, <span class="keyword">sizeof</span>(w));</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= tot; i++)</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= tot; j++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(i == j) <span class="keyword">continue</span> ;</span><br><span class="line">            P = p[i], Q = p[j],</span><br><span class="line">            d = P.dis(Q), c = <span class="number">0.0</span>;</span><br><span class="line">            <span class="keyword">if</span>(P.id == Q.id)</span><br><span class="line">                c = d * P.t;</span><br><span class="line">            <span class="keyword">else</span> c = d * (<span class="keyword">double</span>)t;</span><br><span class="line">            w[i][j] = w[j][i] = c;</span><br><span class="line">        &#125;</span><br><span class="line">&#125; <span class="comment">// 处理距离，注意初始化</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> x1, y1, x2, y2, x3, y3, <span class="keyword">_t</span>;</span><br><span class="line">    point p1, p2, p3, p4;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;_);</span><br><span class="line">    <span class="keyword">while</span>(_--) &#123; <span class="comment">// 多组数据</span></span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d%d%d%d"</span>, &amp;S, &amp;t, &amp;A, &amp;B);</span><br><span class="line">        tot = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= S; i++) &#123;</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">"%d%d%d%d%d%d%d"</span>,</span><br><span class="line">            &amp;x1, &amp;y1, &amp;x2, &amp;y2, &amp;x3, &amp;y3, &amp;<span class="keyword">_t</span>);</span><br><span class="line">            p1.INIT(i, <span class="keyword">_t</span>, x1, y1), p2.INIT(i, <span class="keyword">_t</span>, x2, y2),</span><br><span class="line">            p3.INIT(i, <span class="keyword">_t</span>, x3, y3), p4.rct(p1, p2, p3);</span><br><span class="line">            p[++tot] = p1, p[++tot] = p2,</span><br><span class="line">            p[++tot] = p3, p[++tot] = p4;</span><br><span class="line">        &#125; prework();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> k = <span class="number">1</span>; k &lt;= tot; k++) <span class="comment">// 一开始把 k 套到最里面了。。</span></span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= tot; i++)</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= tot; j++)</span><br><span class="line">                    w[i][j] = min(w[i][j], w[i][k] + w[k][j]);</span><br><span class="line">        ans = <span class="number">0x7f7f7f7f</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= tot; i++)</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= tot; j++)</span><br><span class="line">                <span class="keyword">if</span>(p[i].id == A &amp;&amp; p[j].id == B)</span><br><span class="line">                    ans = min(ans, w[i][j]);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%.1lf\n"</span>, ans); <span class="comment">// 只保留1位！</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">1</span></span><br><span class="line"><span class="comment">3 10 1 3</span></span><br><span class="line"><span class="comment">1 1 1 3 3 1 30</span></span><br><span class="line"><span class="comment">2 5 7 4 5 2 1</span></span><br><span class="line"><span class="comment">8 6 8 8 11 6 3</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
 
       </div>
         
           <section class='meta' id="footer-meta">
             
-              <time class="metatag time" itemprop="dateUpdated" datetime="2019-02-19T16:03:58+08:00" content="2019-02-19"><i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>
-                &nbsp;2019-02-19
+              <time class="metatag time" itemprop="dateUpdated" datetime="2019-03-02T22:49:47+08:00" content="2019-03-02"><i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>
+                &nbsp;2019-03-02
               </time>
             
             
                 
-                <div class="metatag tags"><a class="tag" href="/tags/数学/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>&nbsp;数学</a></div> <div class="metatag tags"><a class="tag" href="/tags/三角函数/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>&nbsp;三角函数</a></div> <div class="metatag tags"><a class="tag" href="/tags/代数/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>&nbsp;代数</a></div> <div class="metatag tags"><a class="tag" href="/tags/几何/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>&nbsp;几何</a></div> <div class="metatag tags"><a class="tag" href="/tags/公式/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>&nbsp;公式</a></div>
+                <div class="metatag tags"><a class="tag" href="/tags/C/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>&nbsp;C++</a></div> <div class="metatag tags"><a class="tag" href="/tags/题解/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>&nbsp;题解</a></div> <div class="metatag tags"><a class="tag" href="/tags/图论/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>&nbsp;图论</a></div> <div class="metatag tags"><a class="tag" href="/tags/最短路/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>&nbsp;最短路</a></div> <div class="metatag tags"><a class="tag" href="/tags/Floyd/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>&nbsp;Floyd</a></div>
             
             
           </section>
@@ -311,40 +280,21 @@
         
             <div class="prev-next">
                 
-                    <section class="prev">
-                        <span class="art-item-left">
-                            <h6><i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;上一页</h6>
+                
+                    <section class="next">
+                        <span class="art-item-right" aria-hidden="true">
+                            <h6>下一页&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
                             <h4>
                                 <a href="/2019/02/23/[USACO15DEC] 最大流/" rel="prev" title="[USACO15DEC] 最大流">
-                                  
-                                      [USACO15DEC] 最大流
-                                  
+                                    
+                                        [USACO15DEC] 最大流
+                                    
                                 </a>
                             </h4>
                             
                                 
                                 <h6 class="tags">
                                     <a class="tag" href="/tags/C/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>C++</a> <a class="tag" href="/tags/题解/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>题解</a> <a class="tag" href="/tags/图论/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>图论</a> <a class="tag" href="/tags/树链剖分/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>树链剖分</a>
-                                </h6>
-                            
-                        </span>
-                    </section>
-                
-                
-                    <section class="next">
-                        <span class="art-item-right" aria-hidden="true">
-                            <h6>下一页&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
-                            <h4>
-                                <a href="/2019/02/02/树链剖分详解/" rel="prev" title="树链剖分详解">
-                                    
-                                        树链剖分详解
-                                    
-                                </a>
-                            </h4>
-                            
-                                
-                                <h6 class="tags">
-                                    <a class="tag" href="/tags/C/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>C++</a> <a class="tag" href="/tags/树链剖分/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>树链剖分</a> <a class="tag" href="/tags/算法讲解/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>算法讲解</a>
                                 </h6>
                             
                         </span>
@@ -415,9 +365,9 @@
         <h4><i class="fas fa-bookmark fa-fw" aria-hidden="true"></i>&nbsp;相关文章</h4>
         <ul>
             
-                <li><a href="http://tle666.github.io/2019/03/02/[NOIP2011提高] Car的旅行路线/">[NOIP2011提高] Car的旅行路线</a></li>
-            
                 <li><a href="http://tle666.github.io/2019/02/23/[USACO15DEC] 最大流/">[USACO15DEC] 最大流</a></li>
+            
+                <li><a href="http://tle666.github.io/2019/02/19/公式/">数学公式</a></li>
             
                 <li><a href="http://tle666.github.io/2019/02/02/树链剖分详解/">树链剖分详解</a></li>
             
@@ -450,7 +400,7 @@
 
 <script>
     window.subData = {
-        title: '数学公式',
+        title: '[NOIP2011提高] Car的旅行路线',
         tools: true
     }
 </script>
