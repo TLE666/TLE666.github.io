@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://tle666.github.io/"/>
-  <updated>2019-03-02T14:49:47.098Z</updated>
+  <updated>2019-03-03T01:14:02.267Z</updated>
   <id>http://tle666.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>平面向量练习小结</title>
+    <link href="http://tle666.github.io/2019/03/02/%E5%B9%B3%E9%9D%A2%E5%90%91%E9%87%8F%E7%BB%83%E4%B9%A0%E5%B0%8F%E7%BB%93/"/>
+    <id>http://tle666.github.io/2019/03/02/平面向量练习小结/</id>
+    <published>2019-03-02T15:02:11.000Z</published>
+    <updated>2019-03-03T01:14:02.267Z</updated>
+    
+    <content type="html"><![CDATA[<p>最近做了一些关于平面向量的习题，发现了一种近乎万能的套路。</p><p><strong>这篇文章不适合向量零基础的同学看。</strong></p><a id="more"></a><h1 id="坐标表示法"><a href="#坐标表示法" class="headerlink" title="坐标表示法"></a><strong>坐标表示法</strong></h1><p>对于向量，我们能不能制定一种与坐标类似，与有序数对一一对应的方法呢？</p><p>这就是向量的“万能方法”——坐标表示法。</p><p>对于向量$\overrightarrow{AB}$，我们令$A$为坐标的原点，以两个夹角不为零的向量为坐标轴，不妨设$\overrightarrow{p}$为$x$轴，$\overrightarrow{q}$为$y$轴。我们可以将$\overrightarrow{AB}$定义为$(x,\ y)$，其中$x,y \in \mathbb{R}$。此时满足$\overrightarrow{AB} = x \overrightarrow{p} + y \overrightarrow{q}$。</p><p>通常，为了方便起见，我们就将$\overrightarrow{p}$和$\overrightarrow{q}$设为$x$轴和$y$轴正半轴方向上的的单位向量。</p><p>这样，题目中复杂的条件就可以通过下面的公式化繁而简了。</p><h1 id="一些有用的公式"><a href="#一些有用的公式" class="headerlink" title="一些有用的公式"></a><strong>一些有用的公式</strong></h1><blockquote><p>在以下公式中，默认$\overrightarrow{A} = (x_1,y_1),\ \overrightarrow{B} = (x_2,y_2)$</p></blockquote><p>$\overrightarrow{A} + \overrightarrow{B} = (x_1 + y_1, x_2 + y_2)$</p><p>$\overrightarrow{A} - \overrightarrow{B} = (x_1 - y_1, x_2 - y_2)$</p><p>$\overrightarrow{A} \cdot \overrightarrow{B} = x_1x_2+y_1y_2$</p><p>由此我们可以推出</p><p>$\cos&lt;\overrightarrow{A}, \overrightarrow{B}&gt; = \frac{x_1x_2 + y_1y_2}{\sqrt{x_1^2 + y_1^2} \cdot \sqrt{x_2^2 + y_2^2}}$</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;最近做了一些关于平面向量的习题，发现了一种近乎万能的套路。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;这篇文章不适合向量零基础的同学看。&lt;/strong&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="数学" scheme="http://tle666.github.io/tags/%E6%95%B0%E5%AD%A6/"/>
+    
+      <category term="公式" scheme="http://tle666.github.io/tags/%E5%85%AC%E5%BC%8F/"/>
+    
+      <category term="平面向量" scheme="http://tle666.github.io/tags/%E5%B9%B3%E9%9D%A2%E5%90%91%E9%87%8F/"/>
+    
+  </entry>
   
   <entry>
     <title>[NOIP2011提高] Car的旅行路线</title>
@@ -93,13 +118,13 @@
     
       <category term="数学" scheme="http://tle666.github.io/tags/%E6%95%B0%E5%AD%A6/"/>
     
+      <category term="公式" scheme="http://tle666.github.io/tags/%E5%85%AC%E5%BC%8F/"/>
+    
       <category term="三角函数" scheme="http://tle666.github.io/tags/%E4%B8%89%E8%A7%92%E5%87%BD%E6%95%B0/"/>
     
       <category term="代数" scheme="http://tle666.github.io/tags/%E4%BB%A3%E6%95%B0/"/>
     
       <category term="几何" scheme="http://tle666.github.io/tags/%E5%87%A0%E4%BD%95/"/>
-    
-      <category term="公式" scheme="http://tle666.github.io/tags/%E5%85%AC%E5%BC%8F/"/>
     
   </entry>
   
@@ -128,9 +153,9 @@
     
       <category term="C++" scheme="http://tle666.github.io/tags/C/"/>
     
-      <category term="树链剖分" scheme="http://tle666.github.io/tags/%E6%A0%91%E9%93%BE%E5%89%96%E5%88%86/"/>
-    
       <category term="算法讲解" scheme="http://tle666.github.io/tags/%E7%AE%97%E6%B3%95%E8%AE%B2%E8%A7%A3/"/>
+    
+      <category term="树链剖分" scheme="http://tle666.github.io/tags/%E6%A0%91%E9%93%BE%E5%89%96%E5%88%86/"/>
     
   </entry>
   
@@ -153,11 +178,11 @@
     
       <category term="C++" scheme="http://tle666.github.io/tags/C/"/>
     
+      <category term="题解" scheme="http://tle666.github.io/tags/%E9%A2%98%E8%A7%A3/"/>
+    
       <category term="LCA" scheme="http://tle666.github.io/tags/LCA/"/>
     
       <category term="倍增" scheme="http://tle666.github.io/tags/%E5%80%8D%E5%A2%9E/"/>
-    
-      <category term="题解" scheme="http://tle666.github.io/tags/%E9%A2%98%E8%A7%A3/"/>
     
   </entry>
   
