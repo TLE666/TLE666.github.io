@@ -287,14 +287,14 @@ var _hmt = _hmt || [];
 <p><img src="https://s2.ax1x.com/2019/03/09/ApKzHH.png" alt="img"></p>
 <h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a><strong>Code</strong></h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">inline</span> node *<span class="title">merge</span><span class="params">(node *l, node *r)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(!l || !r) <span class="keyword">return</span> l ? l : r; <span class="comment">// 如果有一边为空</span></span><br><span class="line">    <span class="keyword">if</span>(l-&gt;rnd &lt; r-&gt;rnd) &#123;</span><br><span class="line">        l-&gt;push(), l-&gt;rs = merge(l-&gt;rs, r);</span><br><span class="line">        l-&gt;upd(); <span class="keyword">return</span> l;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        r-&gt;push(), r-&gt;ls = merge(l, r-&gt;ls);</span><br><span class="line">        r-&gt;upd(); <span class="keyword">return</span> r;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="Split"><a href="#Split" class="headerlink" title="Split"></a><strong>Split</strong></h2><h3 id="1-按权值split"><a href="#1-按权值split" class="headerlink" title="1.按权值split"></a><strong>1.按权值split</strong></h3><p><strong>首先得有个基准值 a ，即权值小于等于 a 的节点全部进入左树（下图中会将此类节点染红），大于a的节点全部进入右树（下图中会将此类节点染蓝）。这里以a=25为例。</strong></p>
-<p><strong><img src="https://images2018.cnblogs.com/blog/1370382/201808/1370382-20180814151354629-1834698289.png" alt="img"></strong></p>
-<p><strong>首先，发现rot的权值=15&lt;25，由平衡树的性质可知，rot的左子树所有节点权值一定小于25，所以rot和它的的左子树全部进入左树，继续拆分rot的右子树。<img src="https://images2018.cnblogs.com/blog/1370382/201808/1370382-20180814151705841-883573993.png" alt="img"></strong></p>
+<p><strong><img src="https://s2.ax1x.com/2019/03/10/AphjbV.png" alt="img"></strong></p>
+<p><strong>首先，发现rot的权值=15&lt;25，由平衡树的性质可知，rot的左子树所有节点权值一定小于25，所以rot和它的的左子树全部进入左树，继续拆分rot的右子树。<img src="https://s2.ax1x.com/2019/03/10/Ap49C4.png" alt="img"></strong></p>
 <p><strong>32&gt;25，所以 rot 和它的右子树全部进入右树，继续拆分 rot 的左子树。</strong></p>
-<p><strong><img src="https://images2018.cnblogs.com/blog/1370382/201808/1370382-20180814152031129-173576768.png" alt="img"></strong></p>
+<p><strong><img src="https://s2.ax1x.com/2019/03/10/Ap4Eb6.png" alt="img"></strong></p>
 <p><strong>29&gt;25，同上。</strong></p>
-<p><strong><img src="https://images2018.cnblogs.com/blog/1370382/201808/1370382-20180814152200105-596500097.png" alt="img"></strong></p>
+<p><strong><img src="https://s2.ax1x.com/2019/03/10/Ap4ZVK.png" alt="img"></strong></p>
 <p><strong>24&lt;25，所以拆分右子树。</strong></p>
-<p><strong><img src="https://images2018.cnblogs.com/blog/1370382/201808/1370382-20180814152358910-1250419705.png" alt="img"></strong></p>
+<p><strong><img src="https://s2.ax1x.com/2019/03/10/Ap4uPe.png" alt="img"></strong></p>
 <p><strong>27&gt;25，所以拆分左子树。</strong></p>
 <p><strong><img src="https://images2018.cnblogs.com/blog/1370382/201808/1370382-20180814152536646-1615235790.png" alt="img"></strong></p>
 <p><strong>发现此时rot为0，所以拆分完毕，返回。</strong></p>
@@ -332,8 +332,8 @@ var _hmt = _hmt || [];
         
           <section class='meta' id="footer-meta">
             
-              <time class="metatag time" itemprop="dateUpdated" datetime="2019-03-09T22:58:44+08:00" content="2019-03-09"><i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>
-                &nbsp;2019-03-09
+              <time class="metatag time" itemprop="dateUpdated" datetime="2019-03-10T13:32:36+08:00" content="2019-03-10"><i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>
+                &nbsp;2019-03-10
               </time>
             
             
@@ -346,6 +346,25 @@ var _hmt = _hmt || [];
 
         
             <div class="prev-next">
+                
+                    <section class="prev">
+                        <span class="art-item-left">
+                            <h6><i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;上一页</h6>
+                            <h4>
+                                <a href="/2019/03/10/[SCOI2009]windy树/" rel="prev" title="[SCOI2009] windy 树">
+                                  
+                                      [SCOI2009] windy 树
+                                  
+                                </a>
+                            </h4>
+                            
+                                
+                                <h6 class="tags">
+                                    <a class="tag" href="/tags/C/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>C++</a> <a class="tag" href="/tags/DP/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>DP</a> <a class="tag" href="/tags/数位DP/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>数位DP</a>
+                                </h6>
+                            
+                        </span>
+                    </section>
                 
                 
                     <section class="next">
@@ -432,13 +451,13 @@ var _hmt = _hmt || [];
         <h4><i class="fas fa-bookmark fa-fw" aria-hidden="true"></i>&nbsp;相关文章</h4>
         <ul>
             
+                <li><a href="http://tle666.github.io/2019/03/10/[SCOI2009]windy树/">[SCOI2009] windy 树</a></li>
+            
                 <li><a href="http://tle666.github.io/2019/03/06/[luogu1558] 色板游戏/">[luogu1558] 色板游戏</a></li>
             
                 <li><a href="http://tle666.github.io/2019/03/02/平面向量练习小结/">平面向量练习小结</a></li>
             
                 <li><a href="http://tle666.github.io/2019/03/02/[NOIP2011提高] Car的旅行路线/">[NOIP2011提高] Car的旅行路线</a></li>
-            
-                <li><a href="http://tle666.github.io/2019/02/23/[USACO15DEC] 最大流/">[USACO15DEC] 最大流</a></li>
             
         </ul>
     </div>
@@ -535,7 +554,7 @@ var _hmt = _hmt || [];
 </header>
 
     <div class='content pure'>
-      <a href="/tags/C/" style="font-size: 24px; color: #555">C++</a> <a href="/tags/Floyd/" style="font-size: 14px; color: #999">Floyd</a> <a href="/tags/LCA/" style="font-size: 14px; color: #999">LCA</a> <a href="/tags/SPFA/" style="font-size: 14px; color: #999">SPFA</a> <a href="/tags/fhq-treap/" style="font-size: 14px; color: #999">fhq-treap</a> <a href="/tags/三角函数/" style="font-size: 14px; color: #999">三角函数</a> <a href="/tags/二分/" style="font-size: 16.5px; color: #888">二分</a> <a href="/tags/代数/" style="font-size: 14px; color: #999">代数</a> <a href="/tags/倍增/" style="font-size: 14px; color: #999">倍增</a> <a href="/tags/公式/" style="font-size: 16.5px; color: #888">公式</a> <a href="/tags/几何/" style="font-size: 14px; color: #999">几何</a> <a href="/tags/卡常/" style="font-size: 14px; color: #999">卡常</a> <a href="/tags/图论/" style="font-size: 19px; color: #777">图论</a> <a href="/tags/平面向量/" style="font-size: 14px; color: #999">平面向量</a> <a href="/tags/并查集/" style="font-size: 14px; color: #999">并查集</a> <a href="/tags/数学/" style="font-size: 16.5px; color: #888">数学</a> <a href="/tags/最短路/" style="font-size: 16.5px; color: #888">最短路</a> <a href="/tags/树链剖分/" style="font-size: 16.5px; color: #888">树链剖分</a> <a href="/tags/算法讲解/" style="font-size: 21.5px; color: #666">算法讲解</a> <a href="/tags/线段树/" style="font-size: 19px; color: #777">线段树</a> <a href="/tags/题解/" style="font-size: 21.5px; color: #666">题解</a>
+      <a href="/tags/C/" style="font-size: 24px; color: #555">C++</a> <a href="/tags/DP/" style="font-size: 14px; color: #999">DP</a> <a href="/tags/Floyd/" style="font-size: 14px; color: #999">Floyd</a> <a href="/tags/LCA/" style="font-size: 14px; color: #999">LCA</a> <a href="/tags/SPFA/" style="font-size: 14px; color: #999">SPFA</a> <a href="/tags/fhq-treap/" style="font-size: 14px; color: #999">fhq-treap</a> <a href="/tags/三角函数/" style="font-size: 14px; color: #999">三角函数</a> <a href="/tags/二分/" style="font-size: 16.5px; color: #888">二分</a> <a href="/tags/代数/" style="font-size: 14px; color: #999">代数</a> <a href="/tags/倍增/" style="font-size: 14px; color: #999">倍增</a> <a href="/tags/公式/" style="font-size: 16.5px; color: #888">公式</a> <a href="/tags/几何/" style="font-size: 14px; color: #999">几何</a> <a href="/tags/卡常/" style="font-size: 14px; color: #999">卡常</a> <a href="/tags/图论/" style="font-size: 19px; color: #777">图论</a> <a href="/tags/平面向量/" style="font-size: 14px; color: #999">平面向量</a> <a href="/tags/并查集/" style="font-size: 14px; color: #999">并查集</a> <a href="/tags/数位DP/" style="font-size: 14px; color: #999">数位DP</a> <a href="/tags/数学/" style="font-size: 16.5px; color: #888">数学</a> <a href="/tags/最短路/" style="font-size: 16.5px; color: #888">最短路</a> <a href="/tags/树链剖分/" style="font-size: 16.5px; color: #888">树链剖分</a> <a href="/tags/算法讲解/" style="font-size: 21.5px; color: #666">算法讲解</a> <a href="/tags/线段树/" style="font-size: 19px; color: #777">线段树</a> <a href="/tags/题解/" style="font-size: 21.5px; color: #666">题解</a>
     </div>
   </section>
 
