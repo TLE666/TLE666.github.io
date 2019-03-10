@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://tle666.github.io/"/>
-  <updated>2019-03-10T05:59:34.139Z</updated>
+  <updated>2019-03-10T06:48:56.029Z</updated>
   <id>http://tle666.github.io/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>[SCOI2009] windy 树</title>
-    <link href="http://tle666.github.io/2019/03/10/%5BSCOI2009%5Dwindy%E6%A0%91/"/>
-    <id>http://tle666.github.io/2019/03/10/[SCOI2009]windy树/</id>
+    <title>[SCOI2009] windy 数</title>
+    <link href="http://tle666.github.io/2019/03/10/%5BSCOI2009%5Dwindy%E6%95%B0/"/>
+    <id>http://tle666.github.io/2019/03/10/[SCOI2009]windy数/</id>
     <published>2019-03-10T05:40:03.000Z</published>
-    <updated>2019-03-10T05:59:34.139Z</updated>
+    <updated>2019-03-10T06:48:56.029Z</updated>
     
     <content type="html"><![CDATA[<h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a><strong>Description</strong></h1><p>求$A$，$B$之间所有满足相邻两位之间差$\geq2$的整数。</p><a id="more"></a><p>对于$100$%的数据，</p><p>$1 \leq A \leq B \leq 2 \times 10^9$。</p><h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a><strong>Solution</strong></h1><p>数位$DP$模板题。</p><p>令$dp_{i,j}$表示第$i$位，上一位为$j$的总方案数（一直到结束）。</p><p>然后逐位$DP$即可。</p><h1 id="Code"><a href="#Code" class="headerlink" title="Code"></a><strong>Code</strong></h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdlib&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line">ll dp[<span class="number">110</span>][<span class="number">11</span>], d[<span class="number">110</span>];</span><br><span class="line"><span class="function"><span class="keyword">inline</span> ll <span class="title">calc</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> p)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(dp[x][p] + <span class="number">1</span>) <span class="keyword">return</span> dp[x][p];</span><br><span class="line">    <span class="keyword">if</span>(!x) <span class="keyword">return</span> dp[x][p] = <span class="number">1</span>;</span><br><span class="line">    ll res = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> q = <span class="number">0</span>; q &lt; <span class="number">10</span>; q++)</span><br><span class="line">        <span class="keyword">if</span>(<span class="built_in">abs</span>(p - q) &gt;= <span class="number">2</span>)</span><br><span class="line">            res += calc(x - <span class="number">1</span>, q);</span><br><span class="line">    <span class="keyword">return</span> dp[x][p] = res;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> ll <span class="title">solve</span><span class="params">(ll x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> m = <span class="number">0</span>, ans = <span class="number">0</span>, pre = <span class="number">-110</span>;</span><br><span class="line">    <span class="keyword">while</span>(x) d[m++] = x % <span class="number">10</span>, x /= <span class="number">10</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; m; i++)</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= <span class="number">9</span>; j++)</span><br><span class="line">            ans += calc(i - <span class="number">1</span>, j);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = m - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = (i == m - <span class="number">1</span>); j &lt; d[i]; j++)</span><br><span class="line">            <span class="keyword">if</span>(<span class="built_in">abs</span>(pre - j) &gt;= <span class="number">2</span>)</span><br><span class="line">                ans += calc(i, j);</span><br><span class="line">        <span class="keyword">if</span>(<span class="built_in">abs</span>(pre - d[i]) &lt; <span class="number">2</span>) <span class="keyword">break</span> ;</span><br><span class="line">        pre = d[i];</span><br><span class="line">    &#125; <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    ll l, r;</span><br><span class="line">    <span class="built_in">memset</span>(dp, <span class="number">-1</span>, <span class="keyword">sizeof</span>(dp));</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%lld%lld"</span>, &amp;l, &amp;r);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%lld\n"</span>, solve(r + <span class="number">1</span>) - solve(l));</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
     
@@ -176,9 +176,9 @@
     
       <category term="图论" scheme="http://tle666.github.io/tags/%E5%9B%BE%E8%AE%BA/"/>
     
-      <category term="树链剖分" scheme="http://tle666.github.io/tags/%E6%A0%91%E9%93%BE%E5%89%96%E5%88%86/"/>
-    
       <category term="线段树" scheme="http://tle666.github.io/tags/%E7%BA%BF%E6%AE%B5%E6%A0%91/"/>
+    
+      <category term="树链剖分" scheme="http://tle666.github.io/tags/%E6%A0%91%E9%93%BE%E5%89%96%E5%88%86/"/>
     
   </entry>
   
@@ -235,9 +235,9 @@
     
       <category term="C++" scheme="http://tle666.github.io/tags/C/"/>
     
-      <category term="树链剖分" scheme="http://tle666.github.io/tags/%E6%A0%91%E9%93%BE%E5%89%96%E5%88%86/"/>
-    
       <category term="线段树" scheme="http://tle666.github.io/tags/%E7%BA%BF%E6%AE%B5%E6%A0%91/"/>
+    
+      <category term="树链剖分" scheme="http://tle666.github.io/tags/%E6%A0%91%E9%93%BE%E5%89%96%E5%88%86/"/>
     
       <category term="算法讲解" scheme="http://tle666.github.io/tags/%E7%AE%97%E6%B3%95%E8%AE%B2%E8%A7%A3/"/>
     
