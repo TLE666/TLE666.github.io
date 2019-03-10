@@ -135,13 +135,13 @@
             
             <tag> 数学 </tag>
             
+            <tag> 公式 </tag>
+            
             <tag> 三角函数 </tag>
             
             <tag> 代数 </tag>
             
             <tag> 几何 </tag>
-            
-            <tag> 公式 </tag>
             
         </tags>
       
@@ -333,6 +333,17 @@
     
     
     <entry>
+      <title>友链</title>
+      <link href="/friends/index.html"/>
+      <url>/friends/index.html</url>
+      
+        <content type="html"><![CDATA[<p><a href="https://acfunction.github.io/" target="_blank" rel="noopener">$AcF​$</a></p><p><a href="https://www.luogu.org/blog/55650/" target="_blank" rel="noopener">神仙$HLT$的<del>luogu</del>博客</a></p><p><a href="https://hahahh0.github.io/" target="_blank" rel="noopener">巨佬$WZL$的博客</a></p>]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>关于</title>
       <link href="/about/index.html"/>
       <url>/about/index.html</url>
@@ -355,11 +366,11 @@
     
     
     <entry>
-      <title>友链</title>
-      <link href="/friends/index.html"/>
-      <url>/friends/index.html</url>
+      <title>标签</title>
+      <link href="/tags/index.html"/>
+      <url>/tags/index.html</url>
       
-        <content type="html"><![CDATA[<p><a href="https://acfunction.github.io/" target="_blank" rel="noopener">$AcF​$</a></p><p><a href="https://www.luogu.org/blog/55650/" target="_blank" rel="noopener">神仙$HLT$的<del>luogu</del>博客</a></p><p><a href="https://hahahh0.github.io/" target="_blank" rel="noopener">巨佬$WZL$的博客</a></p>]]></content>
+        <content type="html"><![CDATA[]]></content>
       
     </entry>
     
@@ -369,17 +380,6 @@
       <title>搜索</title>
       <link href="/search/index.html"/>
       <url>/search/index.html</url>
-      
-        <content type="html"><![CDATA[]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>标签</title>
-      <link href="/tags/index.html"/>
-      <url>/tags/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       
