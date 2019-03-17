@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   
-  <title>[SCOI2009] windy 数 | P_Wang&#39;s Blog</title>
+  <title>[SPOJ1043] GSS1 | P_Wang&#39;s Blog</title>
   
   
   <meta name="description" content="OIer!">
@@ -219,13 +219,13 @@ var _hmt = _hmt || [];
   <div class="meta" id="header-meta">
     
       
-          <h1 class="title">[SCOI2009] windy 数</h1>
+          <h1 class="title">[SPOJ1043] GSS1</h1>
       
     
 
     
       <time class="metatag time">
-        <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;2019-03-10
+        <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;2019-03-17
       </time>
     
 
@@ -249,26 +249,36 @@ var _hmt = _hmt || [];
 
     <section class="article typo">
       <div class="article-entry" itemprop="articleBody">
-        <h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a><strong>Description</strong></h1><p>求$A$，$B$之间所有满足相邻两位之间差$\geq2$的整数。</p>
+        <h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a><strong>Description</strong></h1><p>给一段可能有负数的序列，查询最大子段和。</p>
+<p>对于$100 \%$的数据，序列长度$N \leq 50000$，$a[i] \leq 15007$</p>
 <a id="more"></a>
-<p>对于$100$%的数据，</p>
-<p>$1 \leq A \leq B \leq 2 \times 10^9$。</p>
-<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a><strong>Solution</strong></h1><p>数位$DP$模板题。</p>
-<p>令$dp_{i,j}$表示第$i$位，上一位为$j$的总方案数（一直到结束）。</p>
-<p>然后逐位$DP$即可。</p>
-<h1 id="Code"><a href="#Code" class="headerlink" title="Code"></a><strong>Code</strong></h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdlib&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line">ll dp[<span class="number">110</span>][<span class="number">11</span>], d[<span class="number">110</span>];</span><br><span class="line"><span class="function"><span class="keyword">inline</span> ll <span class="title">calc</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> p)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(dp[x][p] + <span class="number">1</span>) <span class="keyword">return</span> dp[x][p];</span><br><span class="line">    <span class="keyword">if</span>(!x) <span class="keyword">return</span> dp[x][p] = <span class="number">1</span>;</span><br><span class="line">    ll res = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> q = <span class="number">0</span>; q &lt; <span class="number">10</span>; q++)</span><br><span class="line">        <span class="keyword">if</span>(<span class="built_in">abs</span>(p - q) &gt;= <span class="number">2</span>)</span><br><span class="line">            res += calc(x - <span class="number">1</span>, q);</span><br><span class="line">    <span class="keyword">return</span> dp[x][p] = res;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> ll <span class="title">solve</span><span class="params">(ll x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> m = <span class="number">0</span>, ans = <span class="number">0</span>, pre = <span class="number">-110</span>;</span><br><span class="line">    <span class="keyword">while</span>(x) d[m++] = x % <span class="number">10</span>, x /= <span class="number">10</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; m; i++)</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= <span class="number">9</span>; j++)</span><br><span class="line">            ans += calc(i - <span class="number">1</span>, j);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = m - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = (i == m - <span class="number">1</span>); j &lt; d[i]; j++)</span><br><span class="line">            <span class="keyword">if</span>(<span class="built_in">abs</span>(pre - j) &gt;= <span class="number">2</span>)</span><br><span class="line">                ans += calc(i, j);</span><br><span class="line">        <span class="keyword">if</span>(<span class="built_in">abs</span>(pre - d[i]) &lt; <span class="number">2</span>) <span class="keyword">break</span> ;</span><br><span class="line">        pre = d[i];</span><br><span class="line">    &#125; <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    ll l, r;</span><br><span class="line">    <span class="built_in">memset</span>(dp, <span class="number">-1</span>, <span class="keyword">sizeof</span>(dp));</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%lld%lld"</span>, &amp;l, &amp;r);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%lld\n"</span>, solve(r + <span class="number">1</span>) - solve(l));</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><a href="https://www.luogu.org/problemnew/show/SP1043" target="_blank" rel="noopener">题目链接戳这里</a></p>
+<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a><strong>Solution</strong></h1><p>线段树查询最大子段和。</p>
+<p>这里需要维护四个信息：</p>
+<ul>
+<li>$s$ 区间和</li>
+<li>$mx$ 区间最大子段和</li>
+<li>$lmx$ 区间前缀和最大值</li>
+<li>$rmx$ 区间后缀和最大值</li>
+</ul>
+<p>则维护的时候就像这样</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">s = ls-&gt;s + rs-&gt;s,</span><br><span class="line">mx = max(ls-&gt;rmx + rs-&gt;lmx, max(ls-&gt;mx, rs-&gt;mx)), <span class="comment">// 注意有三种情况</span></span><br><span class="line">lmx = max(ls-&gt;lmx, ls-&gt;s + rs-&gt;lmx),</span><br><span class="line">rmx = max(rs-&gt;rmx, rs-&gt;s + ls-&gt;rmx);</span><br></pre></td></tr></table></figure>
+<p>其中$ls​$，$rs​$分别是左子，右子。</p>
+<p>还有一个注意事项：$query$（查询）的时候返回值要是$node*$！只有这样才能够维护四个信息。</p>
+<h1 id="Code"><a href="#Code" class="headerlink" title="Code"></a><strong>Code</strong></h1><p><del>码风在这种题里很重要</del></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdlib&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN = <span class="number">1001000</span>;</span><br><span class="line"><span class="keyword">int</span> n, m, a[MAXN];</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> left, right, mx, lmx, rmx, s;</span><br><span class="line">    node *ls, *rs;</span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">upd</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        s = ls-&gt;s + rs-&gt;s,</span><br><span class="line">        mx = max(ls-&gt;rmx + rs-&gt;lmx, max(ls-&gt;mx, rs-&gt;mx)),</span><br><span class="line">        lmx = max(ls-&gt;lmx, ls-&gt;s + rs-&gt;lmx),</span><br><span class="line">        rmx = max(rs-&gt;rmx, rs-&gt;s + ls-&gt;rmx);</span><br><span class="line">    &#125;</span><br><span class="line">&#125; pool[MAXN &lt;&lt; <span class="number">5</span>], *root, *cnt = pool;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">build</span><span class="params">(node *r, <span class="keyword">int</span> left, <span class="keyword">int</span> right)</span> </span>&#123;</span><br><span class="line">    r-&gt;left = left, r-&gt;right = right;</span><br><span class="line">    <span class="keyword">if</span>(left == right) &#123;</span><br><span class="line">        r-&gt;s = r-&gt;mx = r-&gt;lmx = r-&gt;rmx = a[left];</span><br><span class="line">        <span class="keyword">return</span> ;</span><br><span class="line">    &#125; <span class="keyword">int</span> mid = (left + right) &gt;&gt; <span class="number">1</span>;</span><br><span class="line">    node *ls = ++cnt, *rs = ++cnt;</span><br><span class="line">    r-&gt;ls = ls, r-&gt;rs = rs;</span><br><span class="line">    build(ls, left, mid), build(rs, mid + <span class="number">1</span>, right);</span><br><span class="line">    r-&gt;upd();</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> node *<span class="title">query</span><span class="params">(node *r, <span class="keyword">int</span> left, <span class="keyword">int</span> right)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(r-&gt;left == left &amp;&amp; r-&gt;right == right) <span class="keyword">return</span> r;</span><br><span class="line">    <span class="keyword">if</span>(r-&gt;ls-&gt;right &gt;= right) <span class="keyword">return</span> query(r-&gt;ls, left, right);</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(r-&gt;rs-&gt;left &lt;= left) <span class="keyword">return</span> query(r-&gt;rs, left, right);</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        node *L, *R, *res;</span><br><span class="line">        L = query(r-&gt;ls, left, r-&gt;ls-&gt;right),</span><br><span class="line">        R = query(r-&gt;rs, r-&gt;rs-&gt;left, right),</span><br><span class="line">        res = ++cnt,</span><br><span class="line">        res-&gt;s = L-&gt;s + R-&gt;s,</span><br><span class="line">        res-&gt;left = L-&gt;left, res-&gt;right = R-&gt;right,</span><br><span class="line">        res-&gt;mx = max(L-&gt;rmx + R-&gt;lmx, max(L-&gt;mx, R-&gt;mx)),</span><br><span class="line">        res-&gt;lmx = max(L-&gt;s + R-&gt;lmx, L-&gt;lmx),</span><br><span class="line">        res-&gt;rmx = max(R-&gt;s + L-&gt;rmx, R-&gt;rmx);</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> left, right;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;a[i]);</span><br><span class="line">    build(root = cnt, <span class="number">1</span>, n);</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;m);</span><br><span class="line">    <span class="keyword">while</span>(m--) &#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;left, &amp;right);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, query(root, left, right)-&gt;mx);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       </div>
         
           <section class='meta' id="footer-meta">
             
-              <time class="metatag time" itemprop="dateUpdated" datetime="2019-03-10T14:48:56+08:00" content="2019-03-10"><i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>
-                &nbsp;2019-03-10
+              <time class="metatag time" itemprop="dateUpdated" datetime="2019-03-17T10:02:23+08:00" content="2019-03-17"><i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>
+                &nbsp;2019-03-17
               </time>
             
             
                 
-                <div class="metatag tags"><a class="tag" href="/tags/C/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>&nbsp;C++</a></div> <div class="metatag tags"><a class="tag" href="/tags/DP/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>&nbsp;DP</a></div> <div class="metatag tags"><a class="tag" href="/tags/数位DP/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>&nbsp;数位DP</a></div>
+                <div class="metatag tags"><a class="tag" href="/tags/C/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>&nbsp;C++</a></div> <div class="metatag tags"><a class="tag" href="/tags/线段树/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>&nbsp;线段树</a></div>
             
             
           </section>
@@ -277,40 +287,21 @@ var _hmt = _hmt || [];
         
             <div class="prev-next">
                 
-                    <section class="prev">
-                        <span class="art-item-left">
-                            <h6><i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;上一页</h6>
+                
+                    <section class="next">
+                        <span class="art-item-right" aria-hidden="true">
+                            <h6>下一页&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
                             <h4>
                                 <a href="/2019/03/15/[ZJOI2009] 时态同步/" rel="prev" title="[ZJOI2009] 时态同步">
-                                  
-                                      [ZJOI2009] 时态同步
-                                  
+                                    
+                                        [ZJOI2009] 时态同步
+                                    
                                 </a>
                             </h4>
                             
                                 
                                 <h6 class="tags">
                                     <a class="tag" href="/tags/C/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>C++</a> <a class="tag" href="/tags/DP/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>DP</a> <a class="tag" href="/tags/题解/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>题解</a> <a class="tag" href="/tags/图论/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>图论</a> <a class="tag" href="/tags/树形DP/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>树形DP</a>
-                                </h6>
-                            
-                        </span>
-                    </section>
-                
-                
-                    <section class="next">
-                        <span class="art-item-right" aria-hidden="true">
-                            <h6>下一页&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
-                            <h4>
-                                <a href="/2019/03/09/非旋Treap详解/" rel="prev" title="非旋 Treap 详解">
-                                    
-                                        非旋 Treap 详解
-                                    
-                                </a>
-                            </h4>
-                            
-                                
-                                <h6 class="tags">
-                                    <a class="tag" href="/tags/算法讲解/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>算法讲解</a> <a class="tag" href="/tags/fhq-treap/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>fhq-treap</a>
                                 </h6>
                             
                         </span>
@@ -381,9 +372,9 @@ var _hmt = _hmt || [];
         <h4><i class="fas fa-bookmark fa-fw" aria-hidden="true"></i>&nbsp;相关文章</h4>
         <ul>
             
-                <li><a href="http://tle666.github.io/2019/03/17/[SPOJ1043] GSS1/">[SPOJ1043] GSS1</a></li>
-            
                 <li><a href="http://tle666.github.io/2019/03/15/[ZJOI2009] 时态同步/">[ZJOI2009] 时态同步</a></li>
+            
+                <li><a href="http://tle666.github.io/2019/03/10/[SCOI2009]windy数/">[SCOI2009] windy 数</a></li>
             
                 <li><a href="http://tle666.github.io/2019/03/09/非旋Treap详解/">非旋 Treap 详解</a></li>
             
@@ -416,7 +407,7 @@ var _hmt = _hmt || [];
 
 <script>
     window.subData = {
-        title: '[SCOI2009] windy 数',
+        title: '[SPOJ1043] GSS1',
         tools: true
     }
 </script>
