@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[「HDU6203」 ping ping ping]]></title>
+    <url>%2F2019%2F03%2F21%2F%5BHDU6203%5Dping%20ping%20ping%2F</url>
+    <content type="text"><![CDATA[Description$n+1$个点$n$条边的树（点标号 $0-n$），有若干个点无法通行，导致 $p$ 组 U V 无法连通。问无法通行的点最少有多少个。 对于$100 \%$的数据，$3 \leq n \leq 10^4$，$p \leq 5 \times 10^4$ 题目链接戳这里 Solution考虑到我们要求的是$u$到$v$上不能通行，很显然 能想到可以通过树上前序与后序$DFS$序来维护。具体方法如下： 根据所给的树预处理出每个点的前序 $DFS$ 序和后序$DFS$ 序（需一起标号），和每个点的深度。 根据 $p$ 组 U V 处理每组两点之间的 $LCA$ 。压入优先队列（$LCA$ 深度大的点优先，即往前走）。 对于出队的U V及其对应的 $LCA$ ，判断点 $U$ 或点 $V$ 是否在之前已禁止的某点的子树中。 判断点 $U$ 或点 $V​$ 是否在之前已禁止的某点的子树中。 处理方式：由于之前已经处理出每个点的前后序 $DFS$ 序 $in$ 和 $out$ 。 对于某点 $U$ 若在已禁止通行点 $P$ 的子树中，则 $In[P]≤In[U]≤Out[U]≤Out[P]In[P]≤In[U]≤Out[U]≤Out[P]$ 一定成立。 故利用树状数组区间更新单点查询。对每个禁止通行点 $P$ ，标记区间 $[In[P],Out[P]][In[P],Out[P]]$ 中所有点。查询时，若点 $In[U]$ 被标记，则说明 U V 已经被隔断。 同时，由于优先处理 $LCA$ 深度大的点，不会出现点 U V 同时在同一个被禁止通行点 $P$ 的子树内。 若 $U$ ，$V$ 均不在被禁止的点在子树内，则禁止 U V 的 $LCA$ 点，同时对答案贡献 $+1$ 。 Code123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104#include &lt;queue&gt;#include &lt;cstdio&gt;#include &lt;cstdlib&gt;#include &lt;cstring&gt;#include &lt;iostream&gt;#include &lt;algorithm&gt;using namespace std;const int N = 100100;int n, p, in[N], out[N], tot, dep[N];int st[N][25], fa[N], C[N &lt;&lt; 1], ans;bool vis[N];struct edge &#123; int v; edge *next;&#125; pool[N &lt;&lt; 1], *h[N], *cnt = pool;struct P &#123; int u, v, lca; inline bool operator &lt; (const P &amp;x) const &#123; return dep[lca] &lt; dep[x.lca]; &#125;&#125; rec;priority_queue&lt;P&gt; pq;inline void prework() &#123; // 注意多组数据的清空 ans = tot = 0, cnt = pool, tot = 0; while(!pq.empty()) pq.pop(); memset(h, NULL, sizeof(h)), memset(pool, 0, sizeof(pool)), memset(in, 0, sizeof(in)), memset(out, 0, sizeof(out)), memset(dep, 0, sizeof(dep)), memset(st, 0, sizeof(st)), memset(fa, 0, sizeof(fa)), memset(vis, false, sizeof(vis)), memset(C, 0, sizeof(C));&#125;inline void addedge(int u, int v) &#123; edge *p = ++cnt, *q = ++cnt; p-&gt;v = v, p-&gt;next = h[u], h[u] = p; q-&gt;v = u, q-&gt;next = h[v], h[v] = q;&#125;inline void dfs(int u, int depth) &#123; int v; in[u] = ++tot; dep[u] = depth, vis[u] = true; for(edge *p = h[u]; p; p = p-&gt;next) if(!vis[v = p-&gt;v]) &#123; fa[v] = u; dfs(v, depth + 1); &#125; out[u] = ++tot;&#125;inline int LCA(int u, int v) &#123; if(dep[u] &gt; dep[v]) swap(u, v); for(int i = 19; i &gt;= 0; i--) if(dep[v] - dep[u] &gt;= (1 &lt;&lt; i)) v = st[v][i]; if(u == v) return u; for(int i = 19; i &gt;= 0; i--) if(st[u][i] != st[v][i]) u = st[u][i], v = st[v][i]; return fa[u];&#125;inline int lowbit(int x) &#123; return x &amp; (-x);&#125;inline int sum(int x) &#123; int res = 0; for(; x; x -= lowbit(x)) res += C[x]; return res;&#125;inline void change(int x, int d) &#123; for(; x &lt; (N &lt;&lt; 1); x += lowbit(x)) C[x] += d;&#125;inline void work() &#123; // 主要函数 int u, v; prework(); for(int i = 1; i &lt;= n; i++) &#123; scanf("%d%d", &amp;u, &amp;v); addedge(++u, ++v); &#125; ++n, dfs(1, 1); for(int i = 1; i &lt;= n; i++) st[i][0] = fa[i]; for(int i = 1; i &lt;= 20; i++) for(int j = 1; j &lt;= n; j++) st[j][i] = st[st[j][i - 1]][i - 1]; scanf("%d", &amp;p); for(int i = 1; i &lt;= p; i++) &#123; scanf("%d%d", &amp;u, &amp;v); rec.u = ++u, rec.v = ++v, rec.lca = LCA(u, v); pq.push(rec); &#125; while(!pq.empty()) &#123; rec = pq.top(), pq.pop(); if(!(sum(in[rec.u]) + sum(in[rec.v]))) change(in[rec.lca], 1), change(out[rec.lca] + 1, -1), ans++; &#125; printf("%d\n", ans);&#125;int main() &#123; while(scanf("%d", &amp;n) != EOF) work(); return 0;&#125;]]></content>
+      <tags>
+        <tag>C++</tag>
+        <tag>树状数组</tag>
+        <tag>LCA</tag>
+        <tag>倍增</tag>
+        <tag>DFS序</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[[SPOJ1043] GSS1]]></title>
     <url>%2F2019%2F03%2F17%2F%5BSPOJ1043%5D%20GSS1%2F</url>
     <content type="text"><![CDATA[Description给一段可能有负数的序列，查询最大子段和。 对于$100 \%$的数据，序列长度$N \leq 50000$，$a[i] \leq 15007$ 题目链接戳这里 Solution线段树查询最大子段和。 这里需要维护四个信息： $s$ 区间和 $mx$ 区间最大子段和 $lmx$ 区间前缀和最大值 $rmx$ 区间后缀和最大值 则维护的时候就像这样 1234s = ls-&gt;s + rs-&gt;s,mx = max(ls-&gt;rmx + rs-&gt;lmx, max(ls-&gt;mx, rs-&gt;mx)), // 注意有三种情况lmx = max(ls-&gt;lmx, ls-&gt;s + rs-&gt;lmx),rmx = max(rs-&gt;rmx, rs-&gt;s + ls-&gt;rmx); 其中$ls​$，$rs​$分别是左子，右子。 还有一个注意事项：$query$（查询）的时候返回值要是$node*$！只有这样才能够维护四个信息。 Code码风在这种题里很重要 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556#include &lt;cstdio&gt;#include &lt;cstdlib&gt;#include &lt;iostream&gt;using namespace std;const int MAXN = 1001000;int n, m, a[MAXN];struct node &#123; int left, right, mx, lmx, rmx, s; node *ls, *rs; inline void upd() &#123; s = ls-&gt;s + rs-&gt;s, mx = max(ls-&gt;rmx + rs-&gt;lmx, max(ls-&gt;mx, rs-&gt;mx)), lmx = max(ls-&gt;lmx, ls-&gt;s + rs-&gt;lmx), rmx = max(rs-&gt;rmx, rs-&gt;s + ls-&gt;rmx); &#125;&#125; pool[MAXN &lt;&lt; 5], *root, *cnt = pool;inline void build(node *r, int left, int right) &#123; r-&gt;left = left, r-&gt;right = right; if(left == right) &#123; r-&gt;s = r-&gt;mx = r-&gt;lmx = r-&gt;rmx = a[left]; return ; &#125; int mid = (left + right) &gt;&gt; 1; node *ls = ++cnt, *rs = ++cnt; r-&gt;ls = ls, r-&gt;rs = rs; build(ls, left, mid), build(rs, mid + 1, right); r-&gt;upd();&#125;inline node *query(node *r, int left, int right) &#123; if(r-&gt;left == left &amp;&amp; r-&gt;right == right) return r; if(r-&gt;ls-&gt;right &gt;= right) return query(r-&gt;ls, left, right); else if(r-&gt;rs-&gt;left &lt;= left) return query(r-&gt;rs, left, right); else &#123; node *L, *R, *res; L = query(r-&gt;ls, left, r-&gt;ls-&gt;right), R = query(r-&gt;rs, r-&gt;rs-&gt;left, right), res = ++cnt, res-&gt;s = L-&gt;s + R-&gt;s, res-&gt;left = L-&gt;left, res-&gt;right = R-&gt;right, res-&gt;mx = max(L-&gt;rmx + R-&gt;lmx, max(L-&gt;mx, R-&gt;mx)), res-&gt;lmx = max(L-&gt;s + R-&gt;lmx, L-&gt;lmx), res-&gt;rmx = max(R-&gt;s + L-&gt;rmx, R-&gt;rmx); return res; &#125;&#125;int main() &#123; int left, right; scanf("%d", &amp;n); for(int i = 1; i &lt;= n; i++) scanf("%d", &amp;a[i]); build(root = cnt, 1, n); scanf("%d", &amp;m); while(m--) &#123; scanf("%d%d", &amp;left, &amp;right); printf("%d\n", query(root, left, right)-&gt;mx); &#125; return 0;&#125;]]></content>
@@ -112,9 +124,9 @@
     <content type="text"><![CDATA[Description维护一棵支持插入节点与求$k$个节点的$LCA$的树。 总节点数 $n\leq 3 \times 10^6$ ，操作次数 $m \leq 10^3$，$k \leq 10^3$ 题目链接： BZOJ P5165 Solution思路题目名称已经给了好嘛。。。 就是倍增啊。。 其实这题的难点不是在于思路想法，而是在于卡空间！ 操作1 $A \ x$ 新建一个节点，将它作为$x$节点的儿子，编号为当前节点总数$+1​$。 维护一下倍增$LCA$所需的信息：深度信息$dep$、倍增数组$st$ 具体的维护方法见下面的代码 1234567dep[i] = j 代表 编号为i的节点深度为j，我们默认dep[root] = 1st[i][j] = k 代表 编号为i的节点向上跳2 ^ j个点到编号为k的节点因此st[i][0]即为节点i的父亲dep[++n] = dep[x] + 1; // 即 n++, dep[n] = dep[x] + 1。 n是当前节点编号for(int i = 20; i &gt;= 0; i--) // 2 ^ 21 &gt; 3e6，因此只需维护到20即可 st[n][i] = st[st[n][i - 1]][i - 1]; // 倍增数组标准维护语句 操作2 $Q \ k\ p1\ p2\ p3\ …$ 查询$p1,\ p2,\ p3\ …$这些节点的$LCA$。其中$k$表示查询节点的个数。 这个我想没什么好讲的吧。 就是依次求$LCA$就行啦。如果不懂详见代码 Code1234567891011121314151617181920212223242526272829303132333435363738#include &lt;cstdio&gt;#include &lt;cstdlib&gt;#include &lt;iostream&gt;using namespace std;#define MAXN 3000003int n = 1, m, dep[MAXN], st[MAXN][21], P;char ch[2]; // 读入操作用，char可能会咕掉inline void insert(int x) &#123; // 新建节点操作，上文讲过 dep[++n] = dep[x] + 1, st[n][0] = x; for(register int i = 1; i &lt;= 20; i++) st[n][i] = st[st[n][i - 1]][i - 1];&#125;inline int LCA(int u, int v) &#123; // 基本的LCA操作，不解释 if(dep[u] &gt; dep[v]) swap(u, v); for(register int i = 20; i &gt;= 0; i--) if(dep[v] - dep[u] &gt;= (1 &lt;&lt; i)) v = st[v][i]; if(u == v) return u; for(register int i = 20; i &gt;= 0; i--) if(st[u][i] != st[v][i]) u = st[u][i], v = st[v][i]; return st[u][0];&#125;int main() &#123; int k, lca; dep[1] = 1; // 将root的深度设为1 scanf("%d", &amp;m); while(m--) &#123; scanf("%s%d", ch, &amp;k); if(ch[0] == 'A') insert(k); else &#123; scanf("%d", &amp;lca); //依次求LCA for(register int i = 1; i &lt; k; i++) scanf("%d", &amp;P), lca = LCA(lca, P); printf("%d\n", lca); &#125; &#125;&#125;]]></content>
       <tags>
         <tag>C++</tag>
-        <tag>题解</tag>
         <tag>LCA</tag>
         <tag>倍增</tag>
+        <tag>题解</tag>
       </tags>
   </entry>
   <entry>
@@ -171,18 +183,13 @@
   </entry>
   <entry>
     <title></title>
-    <url>%2Fbaidu_verify_U51fhF2DWG.html</url>
-    <content type="text"><![CDATA[U51fhF2DWG]]></content>
-  </entry>
-  <entry>
-    <title></title>
     <url>%2Fbaidu_verify_o1tQMBIJO5.html</url>
     <content type="text"><![CDATA[o1tQMBIJO5]]></content>
   </entry>
   <entry>
-    <title><![CDATA[文章分类]]></title>
-    <url>%2Fcategories%2Findex.html</url>
-    <content type="text"></content>
+    <title></title>
+    <url>%2Fbaidu_verify_U51fhF2DWG.html</url>
+    <content type="text"><![CDATA[U51fhF2DWG]]></content>
   </entry>
   <entry>
     <title><![CDATA[关于]]></title>
@@ -197,6 +204,11 @@
   <entry>
     <title><![CDATA[标签]]></title>
     <url>%2Ftags%2Findex.html</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
+    <title><![CDATA[文章分类]]></title>
+    <url>%2Fcategories%2Findex.html</url>
     <content type="text"></content>
   </entry>
   <entry>
