@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://tle666.github.io/"/>
-  <updated>2019-04-27T12:52:28.220Z</updated>
+  <updated>2019-04-27T12:55:22.895Z</updated>
   <id>http://tle666.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://tle666.github.io/2019/04/27/%5BSPOJ1811%5D%20LCS%20-%20Longest%20Common%20Substring/"/>
     <id>http://tle666.github.io/2019/04/27/[SPOJ1811] LCS - Longest Common Substring/</id>
     <published>2019-04-27T12:34:13.000Z</published>
-    <updated>2019-04-27T12:52:28.220Z</updated>
+    <updated>2019-04-27T12:55:22.895Z</updated>
     
     <content type="html"><![CDATA[<h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a><strong>Description</strong></h1><p>输入$2$个长度不大于$250000$的字符串，只由小写英文字母构成，要求输出这$2$个字符串的最长公共子串长度。如果没有公共子串则输出<code>0</code> 。</p><p>对于$100 \%$的数据，$|S| \leq 250000$</p><a id="more"></a><p><a href="https://www.luogu.org/problemnew/show/SP1811" target="_blank" rel="noopener">题目链接戳这里</a></p><h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a><strong>Solution</strong></h1><p>这道题可以作为后缀数组的练手题。<del>调了5个小时。。。</del></p><p>后缀数组是对一个字符串的操作啊，那这道题不是2个嘛？</p><p>把它整到一个里面就行啦！</p><p>忽然想到$Manacher$算法，中间每两个字符不是用<code>$</code>隔开了吗？</p><p>对啊！</p><p>就在两个单词中间加个<code>$</code>就行啦~</p><p>举个栗子：</p><script type="math/tex; mode=display">S_1 = "firststring"</script><script type="math/tex; mode=display">S_2 = "secondstring"</script><p>（双引号不包括在字符串中）</p><p>则整合后的字符串</p><script type="math/tex; mode=display">S = "firststring$secondstring"</script><p>很简单吧、</p><p>于是这个问题就转化为了在一个字符串里找最长重复子串啦</p><p>——这不就是$height$数组嘛</p><p>但是注意有一个小条件</p><p><strong>两个最长子串必须在不同的单词之间哦！</strong></p><p>这个<del>随便</del>判断一下就行啦。</p><h1 id="Code"><a href="#Code" class="headerlink" title="Code"></a><strong>Code</strong></h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1000100</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">char</span> s[<span class="number">2</span>][N];</span><br><span class="line"><span class="keyword">int</span> n, m, ans, len, x[N], y[N];</span><br><span class="line"><span class="keyword">int</span> rk[N], sa[N], h[N], c[N], a[N];</span><br><span class="line"><span class="comment">// 其中 h 数组就是 height 数组</span></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">rsort</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= m; i++)</span><br><span class="line">        c[i] = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">        c[x[i]]++;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= m; i++)</span><br><span class="line">        c[i] += c[i - <span class="number">1</span>];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = n; i &gt;= <span class="number">1</span>; i--)</span><br><span class="line">        sa[c[x[y[i]]]--] = y[i];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">getSA</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> p = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">        x[i] = a[i], y[i] = i;</span><br><span class="line">    rsort();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> k = <span class="number">1</span>; k &lt;= n &amp;&amp; p &lt; n; k &lt;&lt;= <span class="number">1</span>) &#123;</span><br><span class="line">        p = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = n - k + <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">            y[++p] = i;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">            <span class="keyword">if</span>(sa[i] &gt; k)</span><br><span class="line">                y[++p] = sa[i] - k;</span><br><span class="line"></span><br><span class="line">        rsort();</span><br><span class="line">        swap(x, y);</span><br><span class="line"></span><br><span class="line">        x[sa[<span class="number">1</span>]] = <span class="number">1</span>, p = <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= n; i++)</span><br><span class="line">            <span class="keyword">if</span>(y[sa[i]] == y[sa[i - <span class="number">1</span>]]</span><br><span class="line">            &amp;&amp; y[sa[i] + k] == y[sa[i - <span class="number">1</span>] + k])</span><br><span class="line">                x[sa[i]] = p - <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                x[sa[i]] = p++;</span><br><span class="line"></span><br><span class="line">        m = p;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">getH</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">        rk[sa[i]] = i;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> L = <span class="number">0</span>, j;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">        j = sa[rk[i] - <span class="number">1</span>];</span><br><span class="line">        <span class="keyword">if</span>(L) L--;</span><br><span class="line">        <span class="keyword">while</span>(a[i + L] == a[j + L])</span><br><span class="line">            L++;</span><br><span class="line">        h[rk[i]] = L;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%s%s"</span>, s[<span class="number">0</span>], s[<span class="number">1</span>]);</span><br><span class="line">    len = n = <span class="built_in">strlen</span>(s[<span class="number">0</span>]),</span><br><span class="line">    m = <span class="built_in">strlen</span>(s[<span class="number">1</span>]);</span><br><span class="line">    n += m + <span class="number">1</span>, m = <span class="number">128</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= len; i++)</span><br><span class="line">        a[i] = s[<span class="number">0</span>][i - <span class="number">1</span>];</span><br><span class="line">    a[len + <span class="number">1</span>] = <span class="string">'$'</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = len + <span class="number">2</span>; i &lt;= n; i++)</span><br><span class="line">        a[i] = s[<span class="number">1</span>][i - len - <span class="number">2</span>];</span><br><span class="line"></span><br><span class="line">    getSA();</span><br><span class="line">    getH();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= n; i++)</span><br><span class="line">        <span class="keyword">if</span>((sa[i] &gt; len &amp;&amp; sa[i - <span class="number">1</span>] &lt; len)</span><br><span class="line">        || (sa[i] &lt; len &amp;&amp; sa[i - <span class="number">1</span>] &gt; len))</span><br><span class="line">            ans = max(ans, h[i]);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, ans);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
     
@@ -34,6 +34,8 @@
     
     
       <category term="C++" scheme="http://tle666.github.io/tags/C/"/>
+    
+      <category term="题解" scheme="http://tle666.github.io/tags/%E9%A2%98%E8%A7%A3/"/>
     
       <category term="后缀数组" scheme="http://tle666.github.io/tags/%E5%90%8E%E7%BC%80%E6%95%B0%E7%BB%84/"/>
     
@@ -87,11 +89,11 @@
     
       <category term="C++" scheme="http://tle666.github.io/tags/C/"/>
     
-      <category term="树状数组" scheme="http://tle666.github.io/tags/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/"/>
-    
       <category term="LCA" scheme="http://tle666.github.io/tags/LCA/"/>
     
       <category term="倍增" scheme="http://tle666.github.io/tags/%E5%80%8D%E5%A2%9E/"/>
+    
+      <category term="树状数组" scheme="http://tle666.github.io/tags/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/"/>
     
       <category term="DFS序" scheme="http://tle666.github.io/tags/DFS%E5%BA%8F/"/>
     
@@ -139,9 +141,9 @@
     
       <category term="C++" scheme="http://tle666.github.io/tags/C/"/>
     
-      <category term="图论" scheme="http://tle666.github.io/tags/%E5%9B%BE%E8%AE%BA/"/>
-    
       <category term="题解" scheme="http://tle666.github.io/tags/%E9%A2%98%E8%A7%A3/"/>
+    
+      <category term="图论" scheme="http://tle666.github.io/tags/%E5%9B%BE%E8%AE%BA/"/>
     
       <category term="DP" scheme="http://tle666.github.io/tags/DP/"/>
     
@@ -274,9 +276,9 @@
     
       <category term="C++" scheme="http://tle666.github.io/tags/C/"/>
     
-      <category term="图论" scheme="http://tle666.github.io/tags/%E5%9B%BE%E8%AE%BA/"/>
-    
       <category term="题解" scheme="http://tle666.github.io/tags/%E9%A2%98%E8%A7%A3/"/>
+    
+      <category term="图论" scheme="http://tle666.github.io/tags/%E5%9B%BE%E8%AE%BA/"/>
     
       <category term="最短路" scheme="http://tle666.github.io/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF/"/>
     
@@ -305,13 +307,13 @@
     
       <category term="C++" scheme="http://tle666.github.io/tags/C/"/>
     
-      <category term="图论" scheme="http://tle666.github.io/tags/%E5%9B%BE%E8%AE%BA/"/>
-    
       <category term="题解" scheme="http://tle666.github.io/tags/%E9%A2%98%E8%A7%A3/"/>
     
-      <category term="线段树" scheme="http://tle666.github.io/tags/%E7%BA%BF%E6%AE%B5%E6%A0%91/"/>
+      <category term="图论" scheme="http://tle666.github.io/tags/%E5%9B%BE%E8%AE%BA/"/>
     
       <category term="树链剖分" scheme="http://tle666.github.io/tags/%E6%A0%91%E9%93%BE%E5%89%96%E5%88%86/"/>
+    
+      <category term="线段树" scheme="http://tle666.github.io/tags/%E7%BA%BF%E6%AE%B5%E6%A0%91/"/>
     
   </entry>
   
@@ -333,13 +335,13 @@
     
       <category term="数学" scheme="http://tle666.github.io/tags/%E6%95%B0%E5%AD%A6/"/>
     
-      <category term="公式" scheme="http://tle666.github.io/tags/%E5%85%AC%E5%BC%8F/"/>
-    
       <category term="三角函数" scheme="http://tle666.github.io/tags/%E4%B8%89%E8%A7%92%E5%87%BD%E6%95%B0/"/>
     
       <category term="代数" scheme="http://tle666.github.io/tags/%E4%BB%A3%E6%95%B0/"/>
     
       <category term="几何" scheme="http://tle666.github.io/tags/%E5%87%A0%E4%BD%95/"/>
+    
+      <category term="公式" scheme="http://tle666.github.io/tags/%E5%85%AC%E5%BC%8F/"/>
     
   </entry>
   
@@ -368,9 +370,9 @@
     
       <category term="C++" scheme="http://tle666.github.io/tags/C/"/>
     
-      <category term="线段树" scheme="http://tle666.github.io/tags/%E7%BA%BF%E6%AE%B5%E6%A0%91/"/>
-    
       <category term="树链剖分" scheme="http://tle666.github.io/tags/%E6%A0%91%E9%93%BE%E5%89%96%E5%88%86/"/>
+    
+      <category term="线段树" scheme="http://tle666.github.io/tags/%E7%BA%BF%E6%AE%B5%E6%A0%91/"/>
     
       <category term="算法讲解" scheme="http://tle666.github.io/tags/%E7%AE%97%E6%B3%95%E8%AE%B2%E8%A7%A3/"/>
     
@@ -395,11 +397,11 @@
     
       <category term="C++" scheme="http://tle666.github.io/tags/C/"/>
     
-      <category term="题解" scheme="http://tle666.github.io/tags/%E9%A2%98%E8%A7%A3/"/>
-    
       <category term="LCA" scheme="http://tle666.github.io/tags/LCA/"/>
     
       <category term="倍增" scheme="http://tle666.github.io/tags/%E5%80%8D%E5%A2%9E/"/>
+    
+      <category term="题解" scheme="http://tle666.github.io/tags/%E9%A2%98%E8%A7%A3/"/>
     
   </entry>
   
@@ -472,9 +474,9 @@
     
       <category term="C++" scheme="http://tle666.github.io/tags/C/"/>
     
-      <category term="图论" scheme="http://tle666.github.io/tags/%E5%9B%BE%E8%AE%BA/"/>
-    
       <category term="题解" scheme="http://tle666.github.io/tags/%E9%A2%98%E8%A7%A3/"/>
+    
+      <category term="图论" scheme="http://tle666.github.io/tags/%E5%9B%BE%E8%AE%BA/"/>
     
       <category term="最短路" scheme="http://tle666.github.io/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF/"/>
     
