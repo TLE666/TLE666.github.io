@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>决策单调性</title>
+      <link href="/2019/05/04/%E5%86%B3%E7%AD%96%E5%8D%95%E8%B0%83%E6%80%A7/"/>
+      <url>/2019/05/04/%E5%86%B3%E7%AD%96%E5%8D%95%E8%B0%83%E6%80%A7/</url>
+      
+        <content type="html"><![CDATA[<h1 id="Monge-Condition"><a href="#Monge-Condition" class="headerlink" title="Monge Condition"></a><strong>Monge Condition</strong></h1><p>即 <strong>四边形不等式</strong>；</p><p>对于 $w(i,j)$ 和依次递增的四个数 $a, b, c, d$</p><p>只要</p><script type="math/tex; mode=display">w(a, c) + w(b, d) \leq w(a, d) + w(b, c)</script><p>那么我们就说函数 $w(i, j)$ 满足四边形不等式。</p><p>就好比一个矩形，其左上角为 $(a, c)$，右下角为 $(b, d)$，左上角的值加右下角的值</p><p>其名称也是因此而来的。</p><h1 id="决策单调性"><a href="#决策单调性" class="headerlink" title="决策单调性"></a><strong>决策单调性</strong></h1><p>对于一个转移方程</p><script type="math/tex; mode=display">f_i = \min(f_j + w_{j, i})</script><p>其中 $1 \leq j &lt; i$；</p><p>设 $opt(i)$ 代表 $(f_j + w_{j, i})$ 最小时的 $j$，即</p><script type="math/tex; mode=display">f_i = f_{opt(i)} + w_{opt(i), i}</script><p>这里显然有 $opt(i) &lt; i$</p><p><strong>决策单调性</strong>就是指 $opt(i) \leq opt(i + 1)$</p><p>结论：若 $w_{i, j}$ 满足四边形不等式，则转移方程满足决策单调性，即</p><p><strong>四边形不等式推出决策单调性</strong>。</p><p>证明:</p><p>由定义，</p><script type="math/tex; mode=display">f_i = f_{opt(i)} + w_{opt(i), i}</script><script type="math/tex; mode=display">f_{i + 1} = f_{opt(i + 1)} + w_{opt(i + 1), i + 1}</script><p>$w$ 满足 $Monge\ Condition$；</p><p>若 $opt(i) &gt; opt(i + 1)$，即决策单调性不成立；</p><script type="math/tex; mode=display">opt(i + 1) < opt(i) \leq i < i + 1</script><p>令 $a = opt(i + 1),\ b = opt(i),\ c = i,\ d = i + 1$；</p><p>由 $Monge\ Condition$，</p><script type="math/tex; mode=display">w(a, c) + w(b, d) \leq w(a, d) + w(b, c)</script><p>因为 $f_i$ 和 $f_{i + 1}$ 都取到了最小值，所以 $(f_i + f_{i + 1})_{\min}$</p><p>而</p><p>$(f_i + f_{i + 1}) = f_a + f_b + w(a, d) + w(b, c)$</p><p>​                 $\geq f_a + f_b + w(a, c) + w(b, d)$</p><p>矛盾！</p><p>取法：</p><p>令 $f_i = f_{opt(i + 1)} + w_{opt(i + 1), i}$，$f_(i + 1) = f_{opt(i)} + w_{opt(i), i + 1}$，</p><p>即互换 $opt(i),\ opt(i + 1)$ 即可。</p><p>∴$opt(i) \leq opt(i + 1)$</p><p>证毕。</p><p>简单例题：</p><p><a href="https://www.luogu.org/problemnew/show/CF321E" target="_blank" rel="noopener">「CF321E」Ciel and Gondolas</a></p><p><a href="https://www.luogu.org/problemnew/show/P1912" target="_blank" rel="noopener">「NOI2009」诗人小G</a></p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> C++ </tag>
+            
+            <tag> DP </tag>
+            
+            <tag> 四边形不等式 </tag>
+            
+            <tag> 算法讲解 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>「SPOJ1811」LCS - Longest Common Substring</title>
       <link href="/2019/04/27/%5BSPOJ1811%5D%20LCS%20-%20Longest%20Common%20Substring/"/>
       <url>/2019/04/27/%5BSPOJ1811%5D%20LCS%20-%20Longest%20Common%20Substring/</url>
@@ -260,9 +285,9 @@
             
             <tag> 图论 </tag>
             
-            <tag> 树链剖分 </tag>
-            
             <tag> 线段树 </tag>
+            
+            <tag> 树链剖分 </tag>
             
         </tags>
       
@@ -283,13 +308,13 @@
             
             <tag> 数学 </tag>
             
+            <tag> 公式 </tag>
+            
             <tag> 三角函数 </tag>
             
             <tag> 代数 </tag>
             
             <tag> 几何 </tag>
-            
-            <tag> 公式 </tag>
             
         </tags>
       
@@ -310,9 +335,9 @@
             
             <tag> C++ </tag>
             
-            <tag> 树链剖分 </tag>
-            
             <tag> 线段树 </tag>
+            
+            <tag> 树链剖分 </tag>
             
             <tag> 算法讲解 </tag>
             
@@ -335,11 +360,11 @@
             
             <tag> C++ </tag>
             
+            <tag> 题解 </tag>
+            
             <tag> LCA </tag>
             
             <tag> 倍增 </tag>
-            
-            <tag> 题解 </tag>
             
         </tags>
       
@@ -471,10 +496,10 @@
     
     <entry>
       <title></title>
-      <link href="/baidu_verify_o1tQMBIJO5.html"/>
-      <url>/baidu_verify_o1tQMBIJO5.html</url>
+      <link href="/baidu_verify_U51fhF2DWG.html"/>
+      <url>/baidu_verify_U51fhF2DWG.html</url>
       
-        <content type="html"><![CDATA[o1tQMBIJO5]]></content>
+        <content type="html"><![CDATA[U51fhF2DWG]]></content>
       
     </entry>
     
@@ -482,10 +507,10 @@
     
     <entry>
       <title></title>
-      <link href="/baidu_verify_U51fhF2DWG.html"/>
-      <url>/baidu_verify_U51fhF2DWG.html</url>
+      <link href="/baidu_verify_o1tQMBIJO5.html"/>
+      <url>/baidu_verify_o1tQMBIJO5.html</url>
       
-        <content type="html"><![CDATA[U51fhF2DWG]]></content>
+        <content type="html"><![CDATA[o1tQMBIJO5]]></content>
       
     </entry>
     
@@ -525,9 +550,9 @@
     
     
     <entry>
-      <title>标签</title>
-      <link href="/tags/index.html"/>
-      <url>/tags/index.html</url>
+      <title>搜索</title>
+      <link href="/search/index.html"/>
+      <url>/search/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       
@@ -536,9 +561,9 @@
     
     
     <entry>
-      <title>搜索</title>
-      <link href="/search/index.html"/>
-      <url>/search/index.html</url>
+      <title>标签</title>
+      <link href="/tags/index.html"/>
+      <url>/tags/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       

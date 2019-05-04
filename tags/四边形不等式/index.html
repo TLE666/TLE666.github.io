@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   
-  <title>Archives: 2018/10 | P_Wang&#39;s Blog</title>
+  <title>Tag: 四边形不等式 | P_Wang&#39;s Blog</title>
   
   
   <meta name="description" content="OIer!">
@@ -213,9 +213,8 @@ var _hmt = _hmt || [];
     <div class='container clearfix'>
         <div class='l_main'>
             
-	
     <script>
-        window.subData= { title:'year : 2018.10'}
+        window.subData= { title:'标签 : 四边形不等式'}
     </script>
 
 
@@ -273,9 +272,9 @@ var _hmt = _hmt || [];
   <div class="meta" id="header-meta">
     
       <h2 class="title">
-          <a href="/2018/10/04/并查集/">
+          <a href="/2019/05/04/决策单调性/">
               
-                  并查集入门
+                  决策单调性
               
           </a>
       </h2>
@@ -283,7 +282,7 @@ var _hmt = _hmt || [];
 
     
       <time class="metatag time">
-        <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;2018-10-04
+        <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;2019-05-04
       </time>
     
 
@@ -300,14 +299,39 @@ var _hmt = _hmt || [];
 </section>
 
     <section class="article typo">
-        <p><strong>并查集</strong>是维护集合相关问题的利器！</p>
-        
-            <div class="readmore">
-                <a href="/2018/10/04/并查集/" class="flat-box">
-                    <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-                    阅读全文
-                </a>
-            </div>
+        <h1 id="Monge-Condition"><a href="#Monge-Condition" class="headerlink" title="Monge Condition"></a><strong>Monge Condition</strong></h1><p>即 <strong>四边形不等式</strong>；</p>
+<p>对于 $w(i,j)$ 和依次递增的四个数 $a, b, c, d$</p>
+<p>只要</p>
+<script type="math/tex; mode=display">w(a, c) + w(b, d) \leq w(a, d) + w(b, c)</script><p>那么我们就说函数 $w(i, j)$ 满足四边形不等式。</p>
+<p>就好比一个矩形，其左上角为 $(a, c)$，右下角为 $(b, d)$，左上角的值加右下角的值</p>
+<p>其名称也是因此而来的。</p>
+<h1 id="决策单调性"><a href="#决策单调性" class="headerlink" title="决策单调性"></a><strong>决策单调性</strong></h1><p>对于一个转移方程</p>
+<script type="math/tex; mode=display">f_i = \min(f_j + w_{j, i})</script><p>其中 $1 \leq j &lt; i$；</p>
+<p>设 $opt(i)$ 代表 $(f_j + w_{j, i})$ 最小时的 $j$，即</p>
+<script type="math/tex; mode=display">f_i = f_{opt(i)} + w_{opt(i), i}</script><p>这里显然有 $opt(i) &lt; i$</p>
+<p><strong>决策单调性</strong>就是指 $opt(i) \leq opt(i + 1)$</p>
+<p>结论：若 $w_{i, j}$ 满足四边形不等式，则转移方程满足决策单调性，即</p>
+<p><strong>四边形不等式推出决策单调性</strong>。</p>
+<p>证明:</p>
+<p>由定义，</p>
+<script type="math/tex; mode=display">f_i = f_{opt(i)} + w_{opt(i), i}</script><script type="math/tex; mode=display">f_{i + 1} = f_{opt(i + 1)} + w_{opt(i + 1), i + 1}</script><p>$w$ 满足 $Monge\ Condition$；</p>
+<p>若 $opt(i) &gt; opt(i + 1)$，即决策单调性不成立；</p>
+<script type="math/tex; mode=display">opt(i + 1) < opt(i) \leq i < i + 1</script><p>令 $a = opt(i + 1),\ b = opt(i),\ c = i,\ d = i + 1$；</p>
+<p>由 $Monge\ Condition$，</p>
+<script type="math/tex; mode=display">w(a, c) + w(b, d) \leq w(a, d) + w(b, c)</script><p>因为 $f_i$ 和 $f_{i + 1}$ 都取到了最小值，所以 $(f_i + f_{i + 1})_{\min}$</p>
+<p>而</p>
+<p>$(f_i + f_{i + 1}) = f_a + f_b + w(a, d) + w(b, c)$</p>
+<p>​                 $\geq f_a + f_b + w(a, c) + w(b, d)$</p>
+<p>矛盾！</p>
+<p>取法：</p>
+<p>令 $f_i = f_{opt(i + 1)} + w_{opt(i + 1), i}$，$f_(i + 1) = f_{opt(i)} + w_{opt(i), i + 1}$，</p>
+<p>即互换 $opt(i),\ opt(i + 1)$ 即可。</p>
+<p>∴$opt(i) \leq opt(i + 1)$</p>
+<p>证毕。</p>
+<p>简单例题：</p>
+<p><a href="https://www.luogu.org/problemnew/show/CF321E" target="_blank" rel="noopener">「CF321E」Ciel and Gondolas</a></p>
+<p><a href="https://www.luogu.org/problemnew/show/P1912" target="_blank" rel="noopener">「NOI2009」诗人小G</a></p>
+
         
 
         
@@ -315,9 +339,11 @@ var _hmt = _hmt || [];
                 
                     <a href="/tags/C/"><i class="fas fa-hashtag fa-fw"></i>C++</a>
                 
-                    <a href="/tags/算法讲解/"><i class="fas fa-hashtag fa-fw"></i>算法讲解</a>
+                    <a href="/tags/DP/"><i class="fas fa-hashtag fa-fw"></i>DP</a>
                 
-                    <a href="/tags/并查集/"><i class="fas fa-hashtag fa-fw"></i>并查集</a>
+                    <a href="/tags/四边形不等式/"><i class="fas fa-hashtag fa-fw"></i>四边形不等式</a>
+                
+                    <a href="/tags/算法讲解/"><i class="fas fa-hashtag fa-fw"></i>算法讲解</a>
                 
             </div>
         
@@ -372,8 +398,6 @@ var _hmt = _hmt || [];
 <script type="text/javascript" async
   src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
 </script>
-
-
 
 
 
