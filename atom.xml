@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://tle666.github.io/"/>
-  <updated>2019-05-04T09:48:39.648Z</updated>
+  <updated>2019-05-04T09:51:44.868Z</updated>
   <id>http://tle666.github.io/</id>
   
   <author>
@@ -21,16 +21,14 @@
     <link href="http://tle666.github.io/2019/05/04/%E5%86%B3%E7%AD%96%E5%8D%95%E8%B0%83%E6%80%A7/"/>
     <id>http://tle666.github.io/2019/05/04/决策单调性/</id>
     <published>2019-05-04T08:42:42.000Z</published>
-    <updated>2019-05-04T09:48:39.648Z</updated>
+    <updated>2019-05-04T09:51:44.868Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="Monge-Condition"><a href="#Monge-Condition" class="headerlink" title="Monge Condition"></a><strong>Monge Condition</strong></h1><p>即 <strong>四边形不等式</strong>；</p><p>对于 $w(i,j)$ 和依次递增的四个数 $a, b, c, d$</p><p>只要</p><script type="math/tex; mode=display">w(a, c) + w(b, d) \leq w(a, d) + w(b, c)</script><p>那么我们就说函数 $w(i, j)$ 满足四边形不等式。</p><p>就好比一个矩形，其左上角为 $(a, c)$，右下角为 $(b, d)$，左上角的值加右下角的值</p><p>其名称也是因此而来的。</p><h1 id="决策单调性"><a href="#决策单调性" class="headerlink" title="决策单调性"></a><strong>决策单调性</strong></h1><p>对于一个转移方程</p><script type="math/tex; mode=display">f_i = \min(f_j + w_{j, i})</script><p>其中 $1 \leq j &lt; i$；</p><p>设 $opt(i)$ 代表 $(f_j + w_{j, i})$ 最小时的 $j$，即</p><script type="math/tex; mode=display">f_i = f_{opt(i)} + w_{opt(i), i}</script><p>这里显然有 $opt(i) &lt; i$</p><p><strong>决策单调性</strong>就是指 $opt(i) \leq opt(i + 1)$</p><p>结论：若 $w_{i, j}$ 满足四边形不等式，则转移方程满足决策单调性，即</p><p><strong>四边形不等式推出决策单调性</strong>。</p><p>证明:</p><p>由定义，</p><script type="math/tex; mode=display">f_i = f_{opt(i)} + w_{opt(i), i}</script><script type="math/tex; mode=display">f_{i + 1} = f_{opt(i + 1)} + w_{opt(i + 1), i + 1}</script><p>$w$ 满足 $Monge\ Condition$；</p><p>若 $opt(i) &gt; opt(i + 1)$，即决策单调性不成立；</p><script type="math/tex; mode=display">opt(i + 1) < opt(i) \leq i < i + 1</script><p>令 $a = opt(i + 1),\ b = opt(i),\ c = i,\ d = i + 1$；</p><p>由 $Monge\ Condition$，</p><script type="math/tex; mode=display">w(a, c) + w(b, d) \leq w(a, d) + w(b, c)</script><p>因为 $f_i$ 和 $f_{i + 1}$ 都取到了最小值，所以 $(f_i + f_{i + 1})_{\min}$</p><p>而</p><p>$(f_i + f_{i + 1}) = f_a + f_b + w(a, d) + w(b, c)$</p><p>​                 $\geq f_a + f_b + w(a, c) + w(b, d)$</p><p>矛盾！</p><p>取法：</p><p>令 $f_i = f_{opt(i + 1)} + w_{opt(i + 1), i}$，$f_(i + 1) = f_{opt(i)} + w_{opt(i), i + 1}$，</p><p>即互换 $opt(i),\ opt(i + 1)$ 即可。</p><p>∴$opt(i) \leq opt(i + 1)$</p><p>证毕。</p><p>简单例题：</p><p><a href="https://www.luogu.org/problemnew/show/CF321E" target="_blank" rel="noopener">「CF321E」Ciel and Gondolas</a></p><p><a href="https://www.luogu.org/problemnew/show/P1912" target="_blank" rel="noopener">「NOI2009」诗人小G</a></p>]]></content>
+    <content type="html"><![CDATA[<p>在做动归题时，我们常会遇到复杂度过高的情况。</p><p>决策单调性可以帮你减轻复杂度带来的负担。</p><a id="more"></a><h1 id="Monge-Condition"><a href="#Monge-Condition" class="headerlink" title="Monge Condition"></a><strong>Monge Condition</strong></h1><p>即 <strong>四边形不等式</strong>；</p><p>对于 $w(i,j)$ 和依次递增的四个数 $a, b, c, d$</p><p>只要</p><script type="math/tex; mode=display">w(a, c) + w(b, d) \leq w(a, d) + w(b, c)</script><p>那么我们就说函数 $w(i, j)$ 满足四边形不等式。</p><p>就好比一个矩形，其左上角为 $(a, c)$，右下角为 $(b, d)$，左上角的值加右下角的值</p><p>其名称也是因此而来的。</p><h1 id="决策单调性"><a href="#决策单调性" class="headerlink" title="决策单调性"></a><strong>决策单调性</strong></h1><p>对于一个转移方程</p><script type="math/tex; mode=display">f_i = \min(f_j + w_{j, i})</script><p>其中 $1 \leq j &lt; i$；</p><p>设 $opt(i)$ 代表 $(f_j + w_{j, i})$ 最小时的 $j$，即</p><script type="math/tex; mode=display">f_i = f_{opt(i)} + w_{opt(i), i}</script><p>这里显然有 $opt(i) &lt; i$</p><p><strong>决策单调性</strong>就是指 $opt(i) \leq opt(i + 1)$</p><p>结论：若 $w_{i, j}$ 满足四边形不等式，则转移方程满足决策单调性，即</p><p><strong>四边形不等式推出决策单调性</strong>。</p><p>证明:</p><p>由定义，</p><script type="math/tex; mode=display">f_i = f_{opt(i)} + w_{opt(i), i}</script><script type="math/tex; mode=display">f_{i + 1} = f_{opt(i + 1)} + w_{opt(i + 1), i + 1}</script><p>$w$ 满足 $Monge\ Condition$；</p><p>若 $opt(i) &gt; opt(i + 1)$，即决策单调性不成立；</p><script type="math/tex; mode=display">opt(i + 1) < opt(i) \leq i < i + 1</script><p>令 $a = opt(i + 1),\ b = opt(i),\ c = i,\ d = i + 1$；</p><p>由 $Monge\ Condition$，</p><script type="math/tex; mode=display">w(a, c) + w(b, d) \leq w(a, d) + w(b, c)</script><p>因为 $f_i$ 和 $f_{i + 1}$ 都取到了最小值，所以 $(f_i + f_{i + 1})_{\min}$</p><p>而</p><p>$(f_i + f_{i + 1}) = f_a + f_b + w(a, d) + w(b, c)$</p><p>​                 $\geq f_a + f_b + w(a, c) + w(b, d)$</p><p>矛盾！</p><p>取法：</p><p>令 $f_i = f_{opt(i + 1)} + w_{opt(i + 1), i}$，$f_(i + 1) = f_{opt(i)} + w_{opt(i), i + 1}$，</p><p>即互换 $opt(i),\ opt(i + 1)$ 即可。</p><p>∴$opt(i) \leq opt(i + 1)$</p><p>证毕。</p><p>简单例题：</p><p><a href="https://www.luogu.org/problemnew/show/CF321E" target="_blank" rel="noopener">「CF321E」Ciel and Gondolas</a></p><p><a href="https://www.luogu.org/problemnew/show/P1912" target="_blank" rel="noopener">「NOI2009」诗人小G</a></p>]]></content>
     
     <summary type="html">
     
-      
-      
-        &lt;h1 id=&quot;Monge-Condition&quot;&gt;&lt;a href=&quot;#Monge-Condition&quot; class=&quot;headerlink&quot; title=&quot;Monge Condition&quot;&gt;&lt;/a&gt;&lt;strong&gt;Monge Condition&lt;/strong&gt;&lt;/h1&gt;&lt;p&gt;即
-      
+      &lt;p&gt;在做动归题时，我们常会遇到复杂度过高的情况。&lt;/p&gt;
+&lt;p&gt;决策单调性可以帮你减轻复杂度带来的负担。&lt;/p&gt;
     
     </summary>
     
@@ -39,9 +37,9 @@
     
       <category term="DP" scheme="http://tle666.github.io/tags/DP/"/>
     
-      <category term="四边形不等式" scheme="http://tle666.github.io/tags/%E5%9B%9B%E8%BE%B9%E5%BD%A2%E4%B8%8D%E7%AD%89%E5%BC%8F/"/>
-    
       <category term="算法讲解" scheme="http://tle666.github.io/tags/%E7%AE%97%E6%B3%95%E8%AE%B2%E8%A7%A3/"/>
+    
+      <category term="四边形不等式" scheme="http://tle666.github.io/tags/%E5%9B%9B%E8%BE%B9%E5%BD%A2%E4%B8%8D%E7%AD%89%E5%BC%8F/"/>
     
   </entry>
   
@@ -118,11 +116,11 @@
     
       <category term="C++" scheme="http://tle666.github.io/tags/C/"/>
     
+      <category term="树状数组" scheme="http://tle666.github.io/tags/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/"/>
+    
       <category term="LCA" scheme="http://tle666.github.io/tags/LCA/"/>
     
       <category term="倍增" scheme="http://tle666.github.io/tags/%E5%80%8D%E5%A2%9E/"/>
-    
-      <category term="树状数组" scheme="http://tle666.github.io/tags/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/"/>
     
       <category term="DFS序" scheme="http://tle666.github.io/tags/DFS%E5%BA%8F/"/>
     
@@ -364,13 +362,13 @@
     
       <category term="数学" scheme="http://tle666.github.io/tags/%E6%95%B0%E5%AD%A6/"/>
     
-      <category term="公式" scheme="http://tle666.github.io/tags/%E5%85%AC%E5%BC%8F/"/>
-    
       <category term="三角函数" scheme="http://tle666.github.io/tags/%E4%B8%89%E8%A7%92%E5%87%BD%E6%95%B0/"/>
     
       <category term="代数" scheme="http://tle666.github.io/tags/%E4%BB%A3%E6%95%B0/"/>
     
       <category term="几何" scheme="http://tle666.github.io/tags/%E5%87%A0%E4%BD%95/"/>
+    
+      <category term="公式" scheme="http://tle666.github.io/tags/%E5%85%AC%E5%BC%8F/"/>
     
   </entry>
   
@@ -426,11 +424,11 @@
     
       <category term="C++" scheme="http://tle666.github.io/tags/C/"/>
     
-      <category term="题解" scheme="http://tle666.github.io/tags/%E9%A2%98%E8%A7%A3/"/>
-    
       <category term="LCA" scheme="http://tle666.github.io/tags/LCA/"/>
     
       <category term="倍增" scheme="http://tle666.github.io/tags/%E5%80%8D%E5%A2%9E/"/>
+    
+      <category term="题解" scheme="http://tle666.github.io/tags/%E9%A2%98%E8%A7%A3/"/>
     
   </entry>
   
