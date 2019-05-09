@@ -252,18 +252,17 @@ var _hmt = _hmt || [];
         <p>快读是干蛤的呐？这篇文章将讲述快读及其用法和C++模板</p>
 <a id="more"></a>
 <p>当你在信息学竞赛$(OI)$中进入了提高组时，你可能会被卡常！</p>
-<h2 id="卡常！"><a href="#卡常！" class="headerlink" title="卡常！"></a>卡常！</h2><blockquote>
+<h2 id="常数"><a href="#常数" class="headerlink" title="常数"></a>常数</h2><blockquote>
 <p>程序被卡常数，一般指程序虽然渐进复杂度可以接受，但是由于实现/算法本身的时间常数因子较大，使得无法在OI/ICPC等算法竞赛规定的时限内运行结束。</p>
 <p>常数被称为计算机算法竞赛之中最神奇的一类数字，主要特点集中于令人捉摸不透，有时候会让水平很高的选手迷之超时或者超空间。</p>
 </blockquote>
-<pre><code>                    ——来自~~某度~~百科……
-</code></pre><h2 id="快速读入"><a href="#快速读入" class="headerlink" title="快速读入"></a>快速读入</h2><blockquote>
+<h2 id="快速读入"><a href="#快速读入" class="headerlink" title="快速读入"></a>快速读入</h2><blockquote>
 <p>简称快读，是信息学竞赛中卡常数最为常见的方法。</p>
 </blockquote>
 <p>一般来讲，大多数题目的出题人都不会到这种<del>丧心病狂的</del>地步。</p>
 <p>不过，以防万一肯定没坏处啊~ <del>反正代码很简单啦</del></p>
 <h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><p>先上代码！讲解在后面。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> s = <span class="number">0</span>, w = <span class="number">1</span>; <span class="keyword">char</span> ch = getchar();</span><br><span class="line">    <span class="keyword">while</span>(ch &lt; <span class="string">'0'</span> || ch &gt; <span class="string">'9'</span>)&#123; <span class="keyword">if</span>(ch == <span class="string">'-'</span>) w = <span class="number">-1</span>; ch = getchar();&#125;</span><br><span class="line">    <span class="keyword">while</span>(ch &gt;= <span class="string">'0'</span> &amp;&amp; ch &lt;= <span class="string">'9'</span>) s = s * <span class="number">10</span> + ch - <span class="string">'0'</span>, ch = getchar();</span><br><span class="line">    <span class="keyword">return</span> s * w;</span><br><span class="line">&#125; <span class="comment">// 这是能判负数的C++快读模板</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> s = <span class="number">0</span>, w = <span class="number">1</span>; <span class="keyword">char</span> ch = getchar();</span><br><span class="line">    <span class="keyword">while</span>(ch &lt; <span class="string">'0'</span> || ch &gt; <span class="string">'9'</span>) &#123; <span class="keyword">if</span>(ch == <span class="string">'-'</span>) w = <span class="number">-1</span>; ch = getchar();&#125;</span><br><span class="line">    <span class="keyword">while</span>(ch &gt;= <span class="string">'0'</span> &amp;&amp; ch &lt;= <span class="string">'9'</span>) s = s * <span class="number">10</span> + ch - <span class="string">'0'</span>, ch = getchar();</span><br><span class="line">    <span class="keyword">return</span> s * w;</span><br><span class="line">&#125; <span class="comment">// 这是能判负数的C++快读模板</span></span><br></pre></td></tr></table></figure>
 <p>在代码中，只需将<code>cin &gt;&gt; n</code>或<code>scanf(&quot;%d&quot;, &amp;n)</code>改成<code>n  = read()</code>即可！</p>
 <h3 id="原理分析"><a href="#原理分析" class="headerlink" title="原理分析"></a>原理分析</h3><p>为什么$cin$慢？因为它需要和$stdio$保持同步，也就是<code>sync_with_stdio</code>。</p>
 <p>为什么$scanf$慢？原因有点复杂。</p>
@@ -282,8 +281,8 @@ var _hmt = _hmt || [];
         
           <section class='meta' id="footer-meta">
             
-              <time class="metatag time" itemprop="dateUpdated" datetime="2019-01-27T11:52:07+08:00" content="2019-01-27"><i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>
-                &nbsp;2019-01-27
+              <time class="metatag time" itemprop="dateUpdated" datetime="2019-05-09T19:20:15+08:00" content="2019-05-09"><i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>
+                &nbsp;2019-05-09
               </time>
             
             
@@ -563,7 +562,7 @@ var _hmt = _hmt || [];
 </header>
 
     <div class='content pure'>
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#卡常！"><span class="toc-text">卡常！</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#快速读入"><span class="toc-text">快速读入</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#代码"><span class="toc-text">代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#原理分析"><span class="toc-text">原理分析</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#常数"><span class="toc-text">常数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#快速读入"><span class="toc-text">快速读入</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#代码"><span class="toc-text">代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#原理分析"><span class="toc-text">原理分析</span></a></li></ol></li></ol>
     </div>
   </section>
 
