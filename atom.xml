@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://tle666.github.io/"/>
-  <updated>2019-05-08T15:09:02.598Z</updated>
+  <updated>2019-05-11T13:33:26.393Z</updated>
   <id>http://tle666.github.io/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>代码风格推荐</title>
+    <link href="http://tle666.github.io/2019/05/11/%E4%BB%A3%E7%A0%81%E9%A3%8E%E6%A0%BC%E6%8E%A8%E8%8D%90/"/>
+    <id>http://tle666.github.io/2019/05/11/代码风格推荐/</id>
+    <published>2019-05-11T13:26:52.000Z</published>
+    <updated>2019-05-11T13:33:26.393Z</updated>
+    
+    <content type="html"><![CDATA[<p>这是 $Google$ 的代码风格</p><a id="more"></a><p> ( 建议在新标签页中查看大图 )</p><p><img src="https://i.loli.net/2019/05/11/5cd6cdf9517df.jpg" alt="google"></p><p><a href="https://zh-google-styleguide.readthedocs.io/en/latest/google-cpp-styleguide/" target="_blank" rel="noopener">更详细的中文文字版在这里</a></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;这是 $Google$ 的代码风格&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="C++" scheme="http://tle666.github.io/tags/C/"/>
+    
+      <category term="优化" scheme="http://tle666.github.io/tags/%E4%BC%98%E5%8C%96/"/>
+    
+  </entry>
   
   <entry>
     <title>「JZOJ4964」Rhyme</title>
@@ -34,9 +56,9 @@
     
       <category term="C++" scheme="http://tle666.github.io/tags/C/"/>
     
-      <category term="图论" scheme="http://tle666.github.io/tags/%E5%9B%BE%E8%AE%BA/"/>
-    
       <category term="题解" scheme="http://tle666.github.io/tags/%E9%A2%98%E8%A7%A3/"/>
+    
+      <category term="图论" scheme="http://tle666.github.io/tags/%E5%9B%BE%E8%AE%BA/"/>
     
       <category term="字符串哈希" scheme="http://tle666.github.io/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%93%88%E5%B8%8C/"/>
     
@@ -49,7 +71,7 @@
     <link href="http://tle666.github.io/2019/05/04/%E5%86%B3%E7%AD%96%E5%8D%95%E8%B0%83%E6%80%A7/"/>
     <id>http://tle666.github.io/2019/05/04/决策单调性/</id>
     <published>2019-05-04T08:42:42.000Z</published>
-    <updated>2019-05-08T15:07:54.340Z</updated>
+    <updated>2019-05-11T13:31:31.602Z</updated>
     
     <content type="html"><![CDATA[<p>在做动归题时，我们常会遇到复杂度过高的情况。</p><p>决策单调性可以帮你减轻复杂度带来的负担。</p><a id="more"></a><h1 id="Monge-Condition"><a href="#Monge-Condition" class="headerlink" title="Monge Condition"></a><strong>Monge Condition</strong></h1><p>即 <strong>四边形不等式</strong>；</p><p>对于 $w(i,j)$ 和依次递增的四个数 $a, b, c, d$</p><p>只要</p><script type="math/tex; mode=display">w(a, c) + w(b, d) \leq w(a, d) + w(b, c)</script><p>那么我们就说函数 $w(i, j)$ 满足四边形不等式。</p><p>就好比一个矩形，其左上角为 $(a, c)$，右下角为 $(b, d)$，左上角的值加右下角的值</p><p>其名称也是因此而来的。</p><h1 id="决策单调性"><a href="#决策单调性" class="headerlink" title="决策单调性"></a><strong>决策单调性</strong></h1><p>对于一个转移方程</p><script type="math/tex; mode=display">f_i = \min(f_j + w_{j, i})</script><p>其中 $1 \leq j &lt; i$；</p><p>设 $opt(i)$ 代表 $(f_j + w_{j, i})$ 最小时的 $j$，即</p><script type="math/tex; mode=display">f_i = f_{opt(i)} + w_{opt(i), i}</script><p>这里显然有 $opt(i) &lt; i$</p><p><strong>决策单调性</strong>就是指 $opt(i) \leq opt(i + 1)$</p><p>结论：若 $w_{i, j}$ 满足四边形不等式，则转移方程满足决策单调性，即</p><p><strong>四边形不等式推出决策单调性</strong>。</p><p>证明:</p><p>由定义，</p><script type="math/tex; mode=display">f_i = f_{opt(i)} + w_{opt(i), i}</script><script type="math/tex; mode=display">f_{i + 1} = f_{opt(i + 1)} + w_{opt(i + 1), i + 1}</script><p>$w$ 满足 $Monge\ Condition$；</p><p>若 $opt(i) &gt; opt(i + 1)$，即决策单调性不成立；</p><script type="math/tex; mode=display">opt(i + 1) < opt(i) \leq i < i + 1</script><p>令 $a = opt(i + 1),\ b = opt(i),\ c = i,\ d = i + 1$；</p><p>由 $Monge\ Condition$，</p><script type="math/tex; mode=display">w(a, c) + w(b, d) \leq w(a, d) + w(b, c)</script><p>因为 $f_i$ 和 $f_{i + 1}$ 都取到了最小值，所以 $(f_i + f_{i + 1})_{\min}$</p><p>而</p><p>$(f_i + f_{i + 1}) = f_a + f_b + w(a, d) + w(b, c)$</p><p>​                 $\geq f_a + f_b + w(a, c) + w(b, d)$</p><p>矛盾！</p><p>取法：</p><p>令 $f_i = f_{opt(i + 1)} + w_{opt(i + 1), i}$，$f_(i + 1) = f_{opt(i)} + w_{opt(i), i + 1}$，</p><p>即互换 $opt(i),\ opt(i + 1)$ 即可。</p><p>∴$opt(i) \leq opt(i + 1)$</p><p>证毕。</p><p>简单例题：</p><p><a href="https://www.luogu.org/problemnew/show/CF321E" target="_blank" rel="noopener">「CF321E」Ciel and Gondolas</a></p><p><a href="https://www.luogu.org/problemnew/show/P1912" target="_blank" rel="noopener">「NOI2009」诗人小G</a></p>]]></content>
     
@@ -63,13 +85,15 @@
     
       <category term="C++" scheme="http://tle666.github.io/tags/C/"/>
     
+      <category term="优化" scheme="http://tle666.github.io/tags/%E4%BC%98%E5%8C%96/"/>
+    
       <category term="DP" scheme="http://tle666.github.io/tags/DP/"/>
     
-      <category term="公式" scheme="http://tle666.github.io/tags/%E5%85%AC%E5%BC%8F/"/>
+      <category term="四边形不等式" scheme="http://tle666.github.io/tags/%E5%9B%9B%E8%BE%B9%E5%BD%A2%E4%B8%8D%E7%AD%89%E5%BC%8F/"/>
     
       <category term="算法讲解" scheme="http://tle666.github.io/tags/%E7%AE%97%E6%B3%95%E8%AE%B2%E8%A7%A3/"/>
     
-      <category term="四边形不等式" scheme="http://tle666.github.io/tags/%E5%9B%9B%E8%BE%B9%E5%BD%A2%E4%B8%8D%E7%AD%89%E5%BC%8F/"/>
+      <category term="公式" scheme="http://tle666.github.io/tags/%E5%85%AC%E5%BC%8F/"/>
     
   </entry>
   
@@ -146,11 +170,11 @@
     
       <category term="C++" scheme="http://tle666.github.io/tags/C/"/>
     
-      <category term="树状数组" scheme="http://tle666.github.io/tags/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/"/>
-    
       <category term="LCA" scheme="http://tle666.github.io/tags/LCA/"/>
     
       <category term="倍增" scheme="http://tle666.github.io/tags/%E5%80%8D%E5%A2%9E/"/>
+    
+      <category term="树状数组" scheme="http://tle666.github.io/tags/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/"/>
     
       <category term="DFS序" scheme="http://tle666.github.io/tags/DFS%E5%BA%8F/"/>
     
@@ -198,9 +222,9 @@
     
       <category term="C++" scheme="http://tle666.github.io/tags/C/"/>
     
-      <category term="图论" scheme="http://tle666.github.io/tags/%E5%9B%BE%E8%AE%BA/"/>
-    
       <category term="题解" scheme="http://tle666.github.io/tags/%E9%A2%98%E8%A7%A3/"/>
+    
+      <category term="图论" scheme="http://tle666.github.io/tags/%E5%9B%BE%E8%AE%BA/"/>
     
       <category term="DP" scheme="http://tle666.github.io/tags/DP/"/>
     
@@ -305,9 +329,9 @@
     </summary>
     
     
-      <category term="数学" scheme="http://tle666.github.io/tags/%E6%95%B0%E5%AD%A6/"/>
-    
       <category term="公式" scheme="http://tle666.github.io/tags/%E5%85%AC%E5%BC%8F/"/>
+    
+      <category term="数学" scheme="http://tle666.github.io/tags/%E6%95%B0%E5%AD%A6/"/>
     
       <category term="平面向量" scheme="http://tle666.github.io/tags/%E5%B9%B3%E9%9D%A2%E5%90%91%E9%87%8F/"/>
     
@@ -333,9 +357,9 @@
     
       <category term="C++" scheme="http://tle666.github.io/tags/C/"/>
     
-      <category term="图论" scheme="http://tle666.github.io/tags/%E5%9B%BE%E8%AE%BA/"/>
-    
       <category term="题解" scheme="http://tle666.github.io/tags/%E9%A2%98%E8%A7%A3/"/>
+    
+      <category term="图论" scheme="http://tle666.github.io/tags/%E5%9B%BE%E8%AE%BA/"/>
     
       <category term="最短路" scheme="http://tle666.github.io/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF/"/>
     
@@ -364,13 +388,13 @@
     
       <category term="C++" scheme="http://tle666.github.io/tags/C/"/>
     
-      <category term="图论" scheme="http://tle666.github.io/tags/%E5%9B%BE%E8%AE%BA/"/>
-    
       <category term="题解" scheme="http://tle666.github.io/tags/%E9%A2%98%E8%A7%A3/"/>
     
-      <category term="树链剖分" scheme="http://tle666.github.io/tags/%E6%A0%91%E9%93%BE%E5%89%96%E5%88%86/"/>
+      <category term="图论" scheme="http://tle666.github.io/tags/%E5%9B%BE%E8%AE%BA/"/>
     
       <category term="线段树" scheme="http://tle666.github.io/tags/%E7%BA%BF%E6%AE%B5%E6%A0%91/"/>
+    
+      <category term="树链剖分" scheme="http://tle666.github.io/tags/%E6%A0%91%E9%93%BE%E5%89%96%E5%88%86/"/>
     
   </entry>
   
@@ -390,6 +414,8 @@
     </summary>
     
     
+      <category term="公式" scheme="http://tle666.github.io/tags/%E5%85%AC%E5%BC%8F/"/>
+    
       <category term="数学" scheme="http://tle666.github.io/tags/%E6%95%B0%E5%AD%A6/"/>
     
       <category term="三角函数" scheme="http://tle666.github.io/tags/%E4%B8%89%E8%A7%92%E5%87%BD%E6%95%B0/"/>
@@ -397,8 +423,6 @@
       <category term="代数" scheme="http://tle666.github.io/tags/%E4%BB%A3%E6%95%B0/"/>
     
       <category term="几何" scheme="http://tle666.github.io/tags/%E5%87%A0%E4%BD%95/"/>
-    
-      <category term="公式" scheme="http://tle666.github.io/tags/%E5%85%AC%E5%BC%8F/"/>
     
   </entry>
   
@@ -427,9 +451,9 @@
     
       <category term="C++" scheme="http://tle666.github.io/tags/C/"/>
     
-      <category term="树链剖分" scheme="http://tle666.github.io/tags/%E6%A0%91%E9%93%BE%E5%89%96%E5%88%86/"/>
-    
       <category term="线段树" scheme="http://tle666.github.io/tags/%E7%BA%BF%E6%AE%B5%E6%A0%91/"/>
+    
+      <category term="树链剖分" scheme="http://tle666.github.io/tags/%E6%A0%91%E9%93%BE%E5%89%96%E5%88%86/"/>
     
       <category term="算法讲解" scheme="http://tle666.github.io/tags/%E7%AE%97%E6%B3%95%E8%AE%B2%E8%A7%A3/"/>
     
@@ -440,9 +464,9 @@
     <link href="http://tle666.github.io/2019/02/02/%5BBZOJ5165%5D%20%E6%A0%91%E4%B8%8A%E5%80%8D%E5%A2%9E/"/>
     <id>http://tle666.github.io/2019/02/02/[BZOJ5165] 树上倍增/</id>
     <published>2019-02-02T09:59:01.000Z</published>
-    <updated>2019-03-27T13:04:18.299Z</updated>
+    <updated>2019-05-11T13:31:13.585Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a><strong>Description</strong></h1><p>维护一棵支持插入节点与求$k$个节点的$LCA$的树。</p><p>总节点数 $n\leq 3 \times 10^6$  ，操作次数 $m \leq 10^3$，$k \leq 10^3$</p><a id="more"></a><p>题目链接： <a href="https://www.lydsy.com/JudgeOnline/problem.php?id=5165" target="_blank" rel="noopener">BZOJ P5165</a></p><h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a><strong>Solution</strong></h1><p>思路题目名称已经给了好嘛。。。</p><p>就是倍增啊。。</p><p>其实这题的难点不是在于思路想法，而是在于<strong>卡空间</strong>！</p><h2 id="操作1"><a href="#操作1" class="headerlink" title="操作1"></a>操作1</h2><blockquote><p>$A \ x$ 新建一个节点，将它作为$x$节点的儿子，编号为当前节点总数$+1​$。</p></blockquote><p>维护一下倍增$LCA$所需的信息：深度信息$dep$、倍增数组$st$</p><p>具体的维护方法见下面的代码</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">dep[i] = j 代表 编号为i的节点深度为j，我们默认dep[root] = <span class="number">1</span></span><br><span class="line">st[i][j] = k 代表 编号为i的节点向上跳<span class="number">2</span> ^ j个点到编号为k的节点</span><br><span class="line">因此st[i][<span class="number">0</span>]即为节点i的父亲</span><br><span class="line"></span><br><span class="line">dep[++n] = dep[x] + <span class="number">1</span>; <span class="comment">// 即 n++, dep[n] = dep[x] + 1。 n是当前节点编号</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">20</span>; i &gt;= <span class="number">0</span>; i--) <span class="comment">// 2 ^ 21 &gt; 3e6，因此只需维护到20即可</span></span><br><span class="line">    st[n][i] = st[st[n][i - <span class="number">1</span>]][i - <span class="number">1</span>]; <span class="comment">// 倍增数组标准维护语句</span></span><br></pre></td></tr></table></figure><h2 id="操作2"><a href="#操作2" class="headerlink" title="操作2"></a>操作2</h2><blockquote><p>$Q \ k\  p1\  p2\ p3\ …$ 查询$p1,\ p2,\ p3\ …$这些节点的$LCA$。其中$k$表示查询节点的个数。</p></blockquote><p>这个我想没什么好讲的吧。</p><p>就是依次求$LCA$就行啦。<del>如果不懂详见代码</del></p><h1 id="Code"><a href="#Code" class="headerlink" title="Code"></a><strong>Code</strong></h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdlib&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXN 3000003</span></span><br><span class="line"><span class="keyword">int</span> n = <span class="number">1</span>, m, dep[MAXN], st[MAXN][<span class="number">21</span>], P;</span><br><span class="line"><span class="keyword">char</span> ch[<span class="number">2</span>]; <span class="comment">// 读入操作用，char可能会咕掉</span></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">insert</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123; <span class="comment">// 新建节点操作，上文讲过</span></span><br><span class="line">    dep[++n] = dep[x] + <span class="number">1</span>, st[n][<span class="number">0</span>] = x;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= <span class="number">20</span>; i++)</span><br><span class="line">        st[n][i] = st[st[n][i - <span class="number">1</span>]][i - <span class="number">1</span>];</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">LCA</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span> v)</span> </span>&#123; <span class="comment">// 基本的LCA操作，不解释</span></span><br><span class="line">    <span class="keyword">if</span>(dep[u] &gt; dep[v]) swap(u, v);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">20</span>; i &gt;= <span class="number">0</span>; i--)</span><br><span class="line">        <span class="keyword">if</span>(dep[v] - dep[u] &gt;= (<span class="number">1</span> &lt;&lt; i))</span><br><span class="line">            v = st[v][i];</span><br><span class="line">    <span class="keyword">if</span>(u == v) <span class="keyword">return</span> u;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">20</span>; i &gt;= <span class="number">0</span>; i--)</span><br><span class="line">        <span class="keyword">if</span>(st[u][i] != st[v][i])</span><br><span class="line">            u = st[u][i],</span><br><span class="line">            v = st[v][i];</span><br><span class="line">    <span class="keyword">return</span> st[u][<span class="number">0</span>];</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> k, lca; dep[<span class="number">1</span>] = <span class="number">1</span>; <span class="comment">// 将root的深度设为1</span></span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;m);</span><br><span class="line">    <span class="keyword">while</span>(m--) &#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%s%d"</span>, ch, &amp;k);</span><br><span class="line">        <span class="keyword">if</span>(ch[<span class="number">0</span>] == <span class="string">'A'</span>) insert(k);</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;lca); <span class="comment">//依次求LCA</span></span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">1</span>; i &lt; k; i++)</span><br><span class="line">                <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;P), lca = LCA(lca, P);</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, lca);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    <content type="html"><![CDATA[<h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a><strong>Description</strong></h1><p>维护一棵支持插入节点与求$k$个节点的$LCA$的树。</p><p>总节点数 $n\leq 3 \times 10^6$  ，操作次数 $m \leq 10^3$，$k \leq 10^3$</p><a id="more"></a><p>题目链接： <a href="https://www.lydsy.com/JudgeOnline/problem.php?id=5165" target="_blank" rel="noopener">BZOJ P5165</a></p><h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a><strong>Solution</strong></h1><p>思路题目名称已经给了好嘛。。。</p><p>就是倍增啊。。</p><p>其实这题的难点不是在于思路想法，而是在于<strong>卡空间</strong>！</p><h2 id="操作1"><a href="#操作1" class="headerlink" title="操作1"></a>操作1</h2><blockquote><p>$A \ x$ 新建一个节点，将它作为$x$节点的儿子，编号为当前节点总数$+1$。</p></blockquote><p>维护一下倍增$LCA$所需的信息：深度信息$dep$、倍增数组$st$</p><p>具体的维护方法见下面的代码</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">dep[i] = j 代表 编号为i的节点深度为j，我们默认dep[root] = <span class="number">1</span></span><br><span class="line">st[i][j] = k 代表 编号为i的节点向上跳<span class="number">2</span> ^ j个点到编号为k的节点</span><br><span class="line">因此st[i][<span class="number">0</span>]即为节点i的父亲</span><br><span class="line"></span><br><span class="line">dep[++n] = dep[x] + <span class="number">1</span>; <span class="comment">// 即 n++, dep[n] = dep[x] + 1。 n是当前节点编号</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">20</span>; i &gt;= <span class="number">0</span>; i--) <span class="comment">// 2 ^ 21 &gt; 3e6，因此只需维护到20即可</span></span><br><span class="line">    st[n][i] = st[st[n][i - <span class="number">1</span>]][i - <span class="number">1</span>]; <span class="comment">// 倍增数组标准维护语句</span></span><br></pre></td></tr></table></figure><h2 id="操作2"><a href="#操作2" class="headerlink" title="操作2"></a>操作2</h2><blockquote><p>$Q \ k\  p1\  p2\ p3\ …$ 查询$p1,\ p2,\ p3\ …$这些节点的$LCA$。其中$k$表示查询节点的个数。</p></blockquote><p>这个我想没什么好讲的吧。</p><p>就是依次求$LCA$就行啦。<del>如果不懂详见代码</del></p><h1 id="Code"><a href="#Code" class="headerlink" title="Code"></a><strong>Code</strong></h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdlib&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXN 3000003</span></span><br><span class="line"><span class="keyword">int</span> n = <span class="number">1</span>, m, dep[MAXN], st[MAXN][<span class="number">21</span>], P;</span><br><span class="line"><span class="keyword">char</span> ch[<span class="number">2</span>]; <span class="comment">// 读入操作用，char可能会咕掉</span></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">insert</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123; <span class="comment">// 新建节点操作，上文讲过</span></span><br><span class="line">    dep[++n] = dep[x] + <span class="number">1</span>, st[n][<span class="number">0</span>] = x;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= <span class="number">20</span>; i++)</span><br><span class="line">        st[n][i] = st[st[n][i - <span class="number">1</span>]][i - <span class="number">1</span>];</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">LCA</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span> v)</span> </span>&#123; <span class="comment">// 基本的LCA操作，不解释</span></span><br><span class="line">    <span class="keyword">if</span>(dep[u] &gt; dep[v]) swap(u, v);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">20</span>; i &gt;= <span class="number">0</span>; i--)</span><br><span class="line">        <span class="keyword">if</span>(dep[v] - dep[u] &gt;= (<span class="number">1</span> &lt;&lt; i))</span><br><span class="line">            v = st[v][i];</span><br><span class="line">    <span class="keyword">if</span>(u == v) <span class="keyword">return</span> u;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">20</span>; i &gt;= <span class="number">0</span>; i--)</span><br><span class="line">        <span class="keyword">if</span>(st[u][i] != st[v][i])</span><br><span class="line">            u = st[u][i],</span><br><span class="line">            v = st[v][i];</span><br><span class="line">    <span class="keyword">return</span> st[u][<span class="number">0</span>];</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> k, lca; dep[<span class="number">1</span>] = <span class="number">1</span>; <span class="comment">// 将root的深度设为1</span></span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;m);</span><br><span class="line">    <span class="keyword">while</span>(m--) &#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%s%d"</span>, ch, &amp;k);</span><br><span class="line">        <span class="keyword">if</span>(ch[<span class="number">0</span>] == <span class="string">'A'</span>) insert(k);</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;lca); <span class="comment">//依次求LCA</span></span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">1</span>; i &lt; k; i++)</span><br><span class="line">                <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;P), lca = LCA(lca, P);</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, lca);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
     
     <summary type="html">
     
@@ -460,6 +484,8 @@
     
       <category term="题解" scheme="http://tle666.github.io/tags/%E9%A2%98%E8%A7%A3/"/>
     
+      <category term="优化" scheme="http://tle666.github.io/tags/%E4%BC%98%E5%8C%96/"/>
+    
   </entry>
   
   <entry>
@@ -467,7 +493,7 @@
     <link href="http://tle666.github.io/2019/01/27/%E5%BF%AB%E9%80%9F%E8%AF%BB%E5%85%A5%E8%AF%A6%E8%A7%A3/"/>
     <id>http://tle666.github.io/2019/01/27/快速读入详解/</id>
     <published>2019-01-27T03:41:50.000Z</published>
-    <updated>2019-05-09T11:20:15.273Z</updated>
+    <updated>2019-05-11T13:31:41.459Z</updated>
     
     <content type="html"><![CDATA[<p>快读是干蛤的呐？这篇文章将讲述快读及其用法和C++模板</p><a id="more"></a><p>当你在信息学竞赛$(OI)$中进入了提高组时，你可能会被卡常！</p><h2 id="常数"><a href="#常数" class="headerlink" title="常数"></a>常数</h2><blockquote><p>程序被卡常数，一般指程序虽然渐进复杂度可以接受，但是由于实现/算法本身的时间常数因子较大，使得无法在OI/ICPC等算法竞赛规定的时限内运行结束。</p><p>常数被称为计算机算法竞赛之中最神奇的一类数字，主要特点集中于令人捉摸不透，有时候会让水平很高的选手迷之超时或者超空间。</p></blockquote><h2 id="快速读入"><a href="#快速读入" class="headerlink" title="快速读入"></a>快速读入</h2><blockquote><p>简称快读，是信息学竞赛中卡常数最为常见的方法。</p></blockquote><p>一般来讲，大多数题目的出题人都不会到这种<del>丧心病狂的</del>地步。</p><p>不过，以防万一肯定没坏处啊~ <del>反正代码很简单啦</del></p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><p>先上代码！讲解在后面。</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> s = <span class="number">0</span>, w = <span class="number">1</span>; <span class="keyword">char</span> ch = getchar();</span><br><span class="line">    <span class="keyword">while</span>(ch &lt; <span class="string">'0'</span> || ch &gt; <span class="string">'9'</span>) &#123; <span class="keyword">if</span>(ch == <span class="string">'-'</span>) w = <span class="number">-1</span>; ch = getchar();&#125;</span><br><span class="line">    <span class="keyword">while</span>(ch &gt;= <span class="string">'0'</span> &amp;&amp; ch &lt;= <span class="string">'9'</span>) s = s * <span class="number">10</span> + ch - <span class="string">'0'</span>, ch = getchar();</span><br><span class="line">    <span class="keyword">return</span> s * w;</span><br><span class="line">&#125; <span class="comment">// 这是能判负数的C++快读模板</span></span><br></pre></td></tr></table></figure><p>在代码中，只需将<code>cin &gt;&gt; n</code>或<code>scanf(&quot;%d&quot;, &amp;n)</code>改成<code>n  = read()</code>即可！</p><h3 id="原理分析"><a href="#原理分析" class="headerlink" title="原理分析"></a>原理分析</h3><p>为什么$cin$慢？因为它需要和$stdio$保持同步，也就是<code>sync_with_stdio</code>。</p><p>为什么$scanf$慢？原因有点复杂。</p><ol><li>它可以接受多种形式的输入（数字、字符串等等），因此需要判断。</li><li>它因为某些安全原因——输入太快可能会有些玄学的$bug$，具体的我也不太清楚。</li></ol><p>其实在$C++$中，依次读入单个字符是比一次读入一个数要快的，因此我们可以用$getchar()$来负责读入。</p><p>在实际的文件中，会有许多不必要的隐藏字符，比如换行符<code>\n</code>等。</p><p>因此，我们需要先排除掉这些字符，也就是第一个$while$循环。但是有一个特例：$-21904$中的$-$号。这个负号不是数字啊！于是我们用$w$当数的符号。有负号时，$w$从原来的$1$转化成了$-1$。</p><p>于是，我们要特判！<code>if(ch == ‘-’) w = -1;</code>这就是判负号的语句。</p><p>下一个循环中，就是<a href="https://wenku.baidu.com/view/7fdcf9727dd184254b35eefdc8d376eeafaa1716.html" target="_blank" rel="noopener">位值原理</a>。数$\overline{abcd} = 10 \times (10 \times (10 \times a + b) + c) + d$，读者自证不难。</p><p>最后返回$n = sgn(n) \times |n|$，其中$sgn(x)$为$x$的符号。</p>]]></content>
     
@@ -479,6 +505,8 @@
     
     
       <category term="C++" scheme="http://tle666.github.io/tags/C/"/>
+    
+      <category term="优化" scheme="http://tle666.github.io/tags/%E4%BC%98%E5%8C%96/"/>
     
       <category term="算法讲解" scheme="http://tle666.github.io/tags/%E7%AE%97%E6%B3%95%E8%AE%B2%E8%A7%A3/"/>
     
@@ -504,9 +532,9 @@
     
       <category term="C++" scheme="http://tle666.github.io/tags/C/"/>
     
-      <category term="二分" scheme="http://tle666.github.io/tags/%E4%BA%8C%E5%88%86/"/>
-    
       <category term="算法讲解" scheme="http://tle666.github.io/tags/%E7%AE%97%E6%B3%95%E8%AE%B2%E8%A7%A3/"/>
+    
+      <category term="二分" scheme="http://tle666.github.io/tags/%E4%BA%8C%E5%88%86/"/>
     
   </entry>
   
@@ -531,38 +559,15 @@
     
       <category term="C++" scheme="http://tle666.github.io/tags/C/"/>
     
-      <category term="图论" scheme="http://tle666.github.io/tags/%E5%9B%BE%E8%AE%BA/"/>
-    
       <category term="题解" scheme="http://tle666.github.io/tags/%E9%A2%98%E8%A7%A3/"/>
+    
+      <category term="图论" scheme="http://tle666.github.io/tags/%E5%9B%BE%E8%AE%BA/"/>
     
       <category term="最短路" scheme="http://tle666.github.io/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF/"/>
     
       <category term="SPFA" scheme="http://tle666.github.io/tags/SPFA/"/>
     
       <category term="二分" scheme="http://tle666.github.io/tags/%E4%BA%8C%E5%88%86/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>「CQOI2009」中位数</title>
-    <link href="http://tle666.github.io/2019/01/27/%5BCQOI2009%5D%20%E4%B8%AD%E4%BD%8D%E6%95%B0/"/>
-    <id>http://tle666.github.io/2019/01/27/[CQOI2009] 中位数/</id>
-    <published>2019-01-27T03:33:40.000Z</published>
-    <updated>2019-03-27T13:04:38.269Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a><strong>Description</strong></h1><p>给出$1-n$的一个排列，统计该排列有多少个长度为奇数的连续子序列的中位数是b。</p><p>对于100%的数据，满足$n \leq 100000,\ 1 \leq b \leq n$。</p><a id="more"></a><h5 id="题目传送门"><a href="#题目传送门" class="headerlink" title="题目传送门"></a><a href="https://www.luogu.org/problem/show?pid=1627" target="_blank" rel="noopener">题目传送门</a></h5><h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a><strong>Solution</strong></h1><h3 id="标记一遍相对大小，大的标1，小的标-1。只要连续-n-项和为0，就能满足题目条件。"><a href="#标记一遍相对大小，大的标1，小的标-1。只要连续-n-项和为0，就能满足题目条件。" class="headerlink" title="标记一遍相对大小，大的标1，小的标-1。只要连续 n 项和为0，就能满足题目条件。"></a>标记一遍相对大小，大的标1，小的标-1。只要连续 n 项和为0，就能满足题目条件。</h3><h3 id="首先一遍找到中位数位置-pos，放个数组-flag-标记查找中的数与目标中位数的相对大小："><a href="#首先一遍找到中位数位置-pos，放个数组-flag-标记查找中的数与目标中位数的相对大小：" class="headerlink" title="首先一遍找到中位数位置 pos，放个数组 flag 标记查找中的数与目标中位数的相对大小："></a>首先一遍找到中位数位置 pos，放个数组 flag 标记查找中的数与目标中位数的相对大小：</h3><p>1 -&gt; 比中位数大</p><p>-1 -&gt; 比中位数小</p><p>0 -&gt; 找到中位数！标记pos</p><p>还是举个实例吧……</p><p>数组：1 1 -1 -1 -1 pos 1 -1 1</p><h3 id="然后从-pos-1-走一遍到1，也就是反过来。再拿一个变量-sum-标记每往左走一个时数组-flag-这一项与这之前的项之和。怎么标？用哈希的方法！（开个数组-f-）那万一-sum-值为负怎么办？数组的下标可没有负的！凉拌-把所有-sum-值统统加上一个足够大的值-“KEY”-。这样下标的值就不会为负啦。"><a href="#然后从-pos-1-走一遍到1，也就是反过来。再拿一个变量-sum-标记每往左走一个时数组-flag-这一项与这之前的项之和。怎么标？用哈希的方法！（开个数组-f-）那万一-sum-值为负怎么办？数组的下标可没有负的！凉拌-把所有-sum-值统统加上一个足够大的值-“KEY”-。这样下标的值就不会为负啦。" class="headerlink" title="然后从 (pos - 1) 走一遍到1，也就是反过来。再拿一个变量 sum 标记每往左走一个时数组 flag 这一项与这之前的项之和。怎么标？用哈希的方法！（开个数组 f ）那万一 sum 值为负怎么办？数组的下标可没有负的！凉拌~ 把所有 sum 值统统加上一个足够大的值 “KEY” 。这样下标的值就不会为负啦。"></a>然后从 (pos - 1) 走一遍到1，也就是反过来。再拿一个变量 sum 标记每往左走一个时数组 flag 这一项与这之前的项之和。怎么标？用哈希的方法！（开个数组 f ）那万一 sum 值为负怎么办？数组的下标可没有负的！凉拌~ 把所有 sum 值统统加上一个足够大的值 “KEY” 。这样下标的值就不会为负啦。</h3><p>这时的 sum 数组：-1 -2 -3 -2 -1</p><p>这时的 f 数组：f [ -1 + KEY ] = 2 ;  f [ -2 + KEY ] = 2 ; f [ -3 + KEY ] = 1 ;</p><h3 id="做完这些以后，最后从-pos-1-走一遍到-n-正着走。和上边一样，记录-sum-值。不过这次得多一个步骤——每次要找-pos-左边的对应值。"><a href="#做完这些以后，最后从-pos-1-走一遍到-n-正着走。和上边一样，记录-sum-值。不过这次得多一个步骤——每次要找-pos-左边的对应值。" class="headerlink" title="做完这些以后，最后从 (pos + 1) 走一遍到 n ,正着走。和上边一样，记录 sum 值。不过这次得多一个步骤——每次要找 pos 左边的对应值。"></a>做完这些以后，最后从 (pos + 1) 走一遍到 n ,正着走。和上边一样，记录 sum 值。不过这次得多一个步骤——每次要找 pos 左边的对应值。</h3><p>从 pos 向右</p><ol><li><p>sum=1 -&gt; 左边 sum=-1 -&gt; 两次 ∴ ans+=2;</p></li><li><p>sum=0 -&gt; 左边 sum=0 -&gt; 无</p></li><li><p>sum=1 -&gt; 左边 sum=-1 -&gt; 两次 ∴ ans+=2;</p></li></ol><h3 id="最后输出-ans-即可。"><a href="#最后输出-ans-即可。" class="headerlink" title="最后输出 ans 即可。"></a>最后输出 ans 即可。</h3><p>C++ 代码如下：</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;//头文件</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdlib&gt;//头文件</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;<span class="comment">//命名空间</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> KEY 100001<span class="comment">//定义一个足够大的数</span></span></span><br><span class="line"><span class="keyword">int</span> n,b,pos,a[<span class="number">100010</span>],flag[<span class="number">100010</span>],f[<span class="number">200010</span>],s,ans;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;n,&amp;b);<span class="comment">//输入</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;<span class="comment">//第一次循环</span></span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;a[i]);</span><br><span class="line">        <span class="keyword">if</span>(a[i]==b) pos=i;<span class="comment">//就是中位数</span></span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(a[i]&gt;b) flag[i]=<span class="number">1</span>;<span class="comment">//大的标1</span></span><br><span class="line">        <span class="keyword">else</span> flag[i]=<span class="number">-1</span>;<span class="comment">//小的标-1</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=pos<span class="number">-1</span>;i&gt;=<span class="number">1</span>;i--)&#123;<span class="comment">//第二次循环</span></span><br><span class="line">        s+=flag[i];<span class="comment">//计算此次sum值</span></span><br><span class="line">        f[s+KEY]++;</span><br><span class="line">        <span class="keyword">if</span>(s==<span class="number">0</span>) ans++;<span class="comment">//找到满足题意只在 pos 左侧的连续子序列！</span></span><br><span class="line">    &#125;</span><br><span class="line">    s=<span class="number">0</span>;<span class="comment">//为第三次循环的累加做准备</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=pos+<span class="number">1</span>;i&lt;=n;i++)&#123;<span class="comment">//第三次循环</span></span><br><span class="line">        s+=flag[i];<span class="comment">//计算此次sum值</span></span><br><span class="line">        <span class="keyword">if</span>(s==<span class="number">0</span>) ans++;<span class="comment">//找到满足题意只在 pos 右侧的连续子序列！</span></span><br><span class="line">        ans+=f[-s+KEY];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,++ans);<span class="comment">//还少一次只由 pos 自己组成的连续子序列（也满足条件！）</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;Description&quot;&gt;&lt;a href=&quot;#Description&quot; class=&quot;headerlink&quot; title=&quot;Description&quot;&gt;&lt;/a&gt;&lt;strong&gt;Description&lt;/strong&gt;&lt;/h1&gt;&lt;p&gt;给出$1-n$的一个排列，统计该排列有多少个长度为奇数的连续子序列的中位数是b。&lt;/p&gt;
-&lt;p&gt;对于100%的数据，满足$n \leq 100000,\ 1 \leq b \leq n$。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="C++" scheme="http://tle666.github.io/tags/C/"/>
-    
-      <category term="题解" scheme="http://tle666.github.io/tags/%E9%A2%98%E8%A7%A3/"/>
     
   </entry>
   
