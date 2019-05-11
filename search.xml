@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[代码风格推荐]]></title>
     <url>%2F2019%2F05%2F11%2F%E4%BB%A3%E7%A0%81%E9%A3%8E%E6%A0%BC%E6%8E%A8%E8%8D%90%2F</url>
-    <content type="text"><![CDATA[这是 $Google$ 的代码风格 ( 建议在新标签页中查看大图 ) 更详细的中文文字版在这里]]></content>
+    <content type="text"><![CDATA[这是 Google 的代码风格 ( 建议在新标签页中查看大图 ) 更详细的中文文字版在这里]]></content>
       <tags>
         <tag>C++</tag>
         <tag>优化</tag>
@@ -15,8 +15,8 @@
     <content type="text"><![CDATA[Description由于多次交换邮票没有满足所有人的需求，小$Z$被赶出了集邮部。无处可去的小$Z$决定加入音乐部，为了让音乐部的人注意到自己的才华，小$Z$想写一首曲子。为了让自己的曲子更好听，小$Z$找到了一些好听曲子作为模板。曲谱可以表示成只包含小写字母的字符串，小$Z$希望自己最终的曲谱中任意一个长度为$K$的子串都是一个模板的子串。现在小$Z$想知道自己的曲谱最长可以是多长，如果可以无限长的话请输出INF。 Input本题的每个测试点有多组数据，对于每组数据： 第一行两个整数$N$，$K$分别表示模板的个数与$K$值。 接下来$N$行，每行一个字符串表示一个模板。（只包含$’a’$~$’z’$） 每组数据字符串总长不超过$100000$，$1\leq K\leq100000$。每个测试点数据不超过$10$组。 Output对于每组数据输出一行表示曲子最长可以是多长，如果可以无限长的话输出$INF$。 Sample Input12341 4abcabc1 5abcabc Sample Output12INF6 样例解释 第一个样例的曲子可以是$”abc”$不断循环。 第二个样例的曲子最长是$”abcabc”$。 Hint对于一个$K$值来说，任意一个长度小于$K$的字符串均可行。 Solution字符串哈希 + 拓扑排序。 题目中给了固定的$K$，因此很容易想到字符串哈希。 于是我们可以哈希一下所有长度为$(K-1)$的子串，前一个与后一个以哈希值连边。最后拓扑一下就行了。 特别地，如果图上有环，那就说明是$INF$。 Code123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108#include &lt;bits/stdc++.h&gt;using namespace std;typedef unsigned long long ull;const int N = 100100;const int M = 2e6;const ull MOD = 9223372036854775807;queue&lt;int&gt; Q;char str[N];int T, n, k, ans;int ind[M], S[N], f[M];ull hs[M], K;bool vis[M];struct edge &#123; int v; edge *next;&#125; pool[N &lt;&lt; 1], *h[M], *cnt = pool;inline int num(const char &amp;x) &#123; return x - 'a' + 1;&#125;inline void addedge(int u, int v) &#123; edge *p = ++cnt; ind[v]++; vis[u] = vis[v] = true; p-&gt;v = v, p-&gt;next = h[u], h[u] = p;&#125;inline ull qpow(ull a, ull b) &#123; ull res = 1; while(b) &#123; if(b &amp; 1) (res *= a) %= MOD; b &gt;&gt;= 1, (a *= a) %= MOD; &#125; return res;&#125;inline ull Hash(ull d) &#123; ull p = d % M; while(hs[p] &amp;&amp; hs[p] != d) &#123; p++; if(p &gt;= M) p -= M; &#125; hs[p] = d; return p;&#125;inline void tpsort() &#123; int u, v; while(!Q.empty()) &#123; u = Q.front(); Q.pop(); ans = max(ans, f[u]); for(edge *p = h[u]; p; p = p-&gt;next) &#123; if(!(--ind[v = p-&gt;v])) Q.push(v); f[v] = max(f[v], f[u] + 1); &#125; &#125;&#125;inline void prework() &#123; K = qpow(26, k - 1); cnt = pool; memset(h, 0, sizeof(h)); memset(f, 0, sizeof(f)); memset(ind, 0, sizeof(ind)); memset(vis, false, sizeof(vis)); while(!Q.empty()) Q.pop();&#125;int main() &#123; while(scanf("%d%d", &amp;T, &amp;k) != EOF) &#123; prework(); while(T--) &#123; scanf("%s", str + 1); n = strlen(str + 1); if(n &lt; k) continue ; for(int i = 1; i &lt;= n; i++) S[i] = num(str[i]); ull tmp = 0, u = 0, v = 0; for(int i = 1; i &lt; k; i++) (tmp *= 26) += S[i]; for(int i = k; i &lt;= n; i++) &#123; u = Hash(tmp); (tmp *= 26) += (ull) (S[i] - S[i - k + 1] * K); v = Hash(tmp); addedge(u, v); &#125; &#125; ans = k - 1; for(int i = 0; i &lt; M; i++) if(vis[i] &amp;&amp; !ind[i]) Q.push(i), f[i] = k - 1; tpsort(); bool flag = false; for(int i = 0; i &lt; M; i++) if(ind[i] &amp;&amp; vis[i]) &#123; flag = true; break ; &#125; if(flag) puts("INF"); else printf("%d\n", ans); &#125; return 0;&#125;]]></content>
       <tags>
         <tag>C++</tag>
-        <tag>题解</tag>
         <tag>图论</tag>
+        <tag>题解</tag>
         <tag>字符串哈希</tag>
         <tag>拓扑排序</tag>
       </tags>
@@ -83,8 +83,8 @@
     <content type="text"><![CDATA[Description一棵有$N$个结点，带边权的有根树，求至少需要增加多少边权才能使根结点到叶子结点的所有路径的权值和相同。 对于$100\%$的数据，$N \leq 500000$，边权$t_e \leq 1000000$。 题目连接戳这里 Solution树形$DP$的板子题。 令$dp_x$为叶子结点到$x$结点的最大时间。 则有 $dp_x = \max (dp_{son[x]} + dis_{x,\ son[x]})$ 因此 $ans = \sum (dp_x - dp_{son[x]} - dis_{x,\ son[x]})$ Code1234567891011121314151617181920212223242526272829303132333435363738#include &lt;cstdio&gt;#include &lt;cstdlib&gt;#include &lt;iostream&gt;using namespace std;#define MAXN 500500#define int long longint n, root, dp[MAXN], ans, fa[MAXN];bool vis[MAXN];struct edge &#123; int v, w; edge *next;&#125; pool[MAXN &lt;&lt; 1], *h[MAXN], *cnt = pool;inline void addedge(int u, int v, int w) &#123; edge *p = ++cnt, *q = ++cnt; p-&gt;v = v, p-&gt;w = w, p-&gt;next = h[u], h[u] = p; q-&gt;v = u, q-&gt;w = w, q-&gt;next = h[v], h[v] = q;&#125;inline void dfs(int u) &#123; int v; vis[u] = true; for(edge *p = h[u]; p; p = p-&gt;next) if(!vis[v = p-&gt;v]) &#123; fa[v] = u, dfs(v); dp[u] = max(dp[u], dp[v] + p-&gt;w); &#125; for(edge *p = h[u]; p; p = p-&gt;next) if((v = p-&gt;v) != fa[u]) ans += (dp[u] - dp[v] - p-&gt;w);&#125;signed main() &#123; int u, v, w; scanf("%lld%lld", &amp;n, &amp;root); for(int i = 1; i &lt; n; i++) &#123; scanf("%lld%lld%lld", &amp;u, &amp;v, &amp;w); addedge(u, v, w); &#125; dfs(root); printf("%lld\n", ans); return 0;&#125;]]></content>
       <tags>
         <tag>C++</tag>
-        <tag>题解</tag>
         <tag>图论</tag>
+        <tag>题解</tag>
         <tag>DP</tag>
         <tag>树形DP</tag>
       </tags>
@@ -133,8 +133,8 @@
     <content type="text"><![CDATA[Description给你$n$个矩形，每个矩形自己的四个顶点两两相同，并且经过的费用为长度乘$t$；而所有矩形之间路程的费用为长度乘$T$（不包括同一矩形内两点的边）。 求$A$点到$B$点的最小费用。 对于$100$%的数据，数据组数$\leq10$，矩形个数$\leq100$。 题目链接戳这里 Solution打死我也不告诉你我Floyd模板打错了 通过$floyd$处理出任意两点（注意不是矩形）之间的最小费用即可。 但这道题细节还是不少的—— 只给你矩形的三个顶点 先通过勾股定理逆定理来求出哪个是直角，然后第四个点的坐标就出来了。 矩形可以是歪的，即它的边不一定平行于坐标轴。 多组数据注意初始化。 飞机和汽车费用不一样，需要分别计算。 最后只输出1位小数 $Hint$：两点间距离公式 $dis\ =\ \sqrt{(x_1 - x_2) ^ 2 + (y_1 - y_2) ^ 2}$ Code12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485#include &lt;cmath&gt;#include &lt;cstdio&gt;#include &lt;cstdlib&gt;#include &lt;cstring&gt;#include &lt;iostream&gt;using namespace std;#define MAXN 110int _, S, t, A, B, tot;double w[MAXN][MAXN], ans; // w 是两点间的最小费用inline double sq(int x) &#123; return (double)x * x;&#125;struct point &#123; int id, t, x, y; // id 城市编号，t 列车费用 inline void INIT(int _id, int _t, int _x, int _y) &#123; id = _id, t = _t, x = _x, y = _y; &#125; // 赋值函数（更简单的忘了怎么写了 QwQ inline double dis(point &amp;a) &#123; return sqrt(sq(x - a.x) + sq(y - a.y)); &#125; // 两点间距离 inline void rct(point &amp;a, point &amp;b, point &amp;c) &#123; id = a.id, t = a.t; int P = sq(a.x - b.x) + sq(a.y - b.y), Q = sq(b.x - c.x) + sq(b.y - c.y), R = sq(c.x - a.x) + sq(c.y - a.y); if(P + Q == R) x = a.x + c.x - b.x, y = a.y + c.y - b.y; else if(P + R == Q) x = b.x + c.x - a.x, y = b.y + c.y - a.y; else x = a.x + b.x - c.x, y = a.y + b.y - c.y; &#125; // 处理第四个点的坐标&#125; p[MAXN];inline void prework() &#123; static point P, Q; static double c, d; memset(w, 0x3f, sizeof(w)); for(int i = 1; i &lt;= tot; i++) for(int j = 1; j &lt;= tot; j++) &#123; if(i == j) continue ; P = p[i], Q = p[j], d = P.dis(Q), c = 0.0; if(P.id == Q.id) c = d * P.t; else c = d * (double)t; w[i][j] = w[j][i] = c; &#125;&#125; // 处理距离，注意初始化int main() &#123; int x1, y1, x2, y2, x3, y3, _t; point p1, p2, p3, p4; scanf("%d", &amp;_); while(_--) &#123; // 多组数据 scanf("%d%d%d%d", &amp;S, &amp;t, &amp;A, &amp;B); tot = 0; for(int i = 1; i &lt;= S; i++) &#123; scanf("%d%d%d%d%d%d%d", &amp;x1, &amp;y1, &amp;x2, &amp;y2, &amp;x3, &amp;y3, &amp;_t); p1.INIT(i, _t, x1, y1), p2.INIT(i, _t, x2, y2), p3.INIT(i, _t, x3, y3), p4.rct(p1, p2, p3); p[++tot] = p1, p[++tot] = p2, p[++tot] = p3, p[++tot] = p4; &#125; prework(); for(int k = 1; k &lt;= tot; k++) // 一开始把 k 套到最里面了。。 for(int i = 1; i &lt;= tot; i++) for(int j = 1; j &lt;= tot; j++) w[i][j] = min(w[i][j], w[i][k] + w[k][j]); ans = 0x7f7f7f7f; for(int i = 1; i &lt;= tot; i++) for(int j = 1; j &lt;= tot; j++) if(p[i].id == A &amp;&amp; p[j].id == B) ans = min(ans, w[i][j]); printf("%.1lf\n", ans); // 只保留1位！ &#125; return 0;&#125;/*13 10 1 31 1 1 3 3 1 302 5 7 4 5 2 18 6 8 8 11 6 3*/]]></content>
       <tags>
         <tag>C++</tag>
-        <tag>题解</tag>
         <tag>图论</tag>
+        <tag>题解</tag>
         <tag>最短路</tag>
         <tag>Floyd</tag>
       </tags>
@@ -145,8 +145,8 @@
     <content type="text"><![CDATA[Description给你一颗$n$个结点的树。 有$k$个操作，每个操作有两个数$u$和$v$，使$u$到$v$路径上的所有点权都加一。 最后输出最大的点权值。 对于$100$%的的数据，满足$2 \leq n \leq 50000,\ 1 \leq k \leq 100000$ 题目链接戳这里 Solution树链剖分模板题！没学过的戳这里 对于每次操作$u$，$v​$，我们只需要执行一次树链剖分里最基本的修改操作：路径修改即可。 最后你再用基本操作$query$求一次区间点权最大值就A了啊！ 详见代码 Code123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102#include &lt;cstdio&gt;#include &lt;cstdlib&gt;#include &lt;iostream&gt;using namespace std;#define MAXN 100100int n, k, tot, wson[MAXN], dep[MAXN], fa[MAXN], dfn[MAXN], pre[MAXN], size[MAXN], top[MAXN];struct edge &#123; // 存图 int v; edge *next;&#125; epool[MAXN &lt;&lt; 1], *h[MAXN], *ecnt = epool;struct node &#123; // 存树 int left, right, Max, tag; node *ls, *rs; inline void seta(int x) &#123; tag += x, Max += x;&#125; inline void upd() &#123; Max = max(ls-&gt;Max, rs-&gt;Max);&#125; inline void push() &#123; if(tag) &#123; if(ls) ls-&gt;seta(tag); if(rs) rs-&gt;seta(tag); tag = 0; &#125; &#125;&#125; pool[MAXN &lt;&lt; 3], *root, *cnt = pool;inline void addedge(int u, int v) &#123; // 加边 edge *p = ++ecnt, *q = ++ecnt; p-&gt;v = v, p-&gt;next = h[u], h[u] = p; q-&gt;v = u, q-&gt;next = h[v], h[v] = q;&#125;inline void dfs1(int u, int f) &#123; int v; size[u] = 1; for(edge *p = h[u]; p; p = p-&gt;next) if((v = p-&gt;v) != f) &#123; fa[v] = u, dep[v] = dep[u] + 1; dfs1(v, u); size[u] += size[v]; if(size[wson[u]] &lt; size[v]) wson[u] = v; &#125;&#125;inline void dfs2(int u, int tp) &#123; int v; top[u] = tp; dfn[u] = ++tot, pre[tot] = u; if(wson[u]) dfs2(wson[u], tp); for(edge *p = h[u]; p; p = p-&gt;next) if((v = p-&gt;v) != fa[u] &amp;&amp; v != wson[u]) dfs2(v, v);&#125;inline void build(node *r, int left, int right) &#123; r-&gt;left = left, r-&gt;right = right; if(left == right) &#123; r-&gt;Max = 0; return ; &#125; int mid = (left + right) &gt;&gt; 1; node *ls = ++cnt, *rs = ++cnt; r-&gt;ls = ls, r-&gt;rs = rs; build(ls, left, mid), build(rs, mid + 1, right); r-&gt;upd();&#125;inline void change(node *r, int left, int right) &#123; if(r-&gt;left == left &amp;&amp; r-&gt;right == right) &#123; r-&gt;seta(1); return ; &#125; r-&gt;push(); if(r-&gt;ls-&gt;right &gt;= right) change(r-&gt;ls, left, right); else if(r-&gt;rs-&gt;left &lt;= left) change(r-&gt;rs, left, right); else change(r-&gt;ls, left, r-&gt;ls-&gt;right), change(r-&gt;rs, r-&gt;rs-&gt;left, right); r-&gt;upd();&#125;inline int query(node *r, int left, int right) &#123; // 区间求 max r-&gt;push(); if(r-&gt;left == left &amp;&amp; r-&gt;right == right) return r-&gt;Max; if(r-&gt;ls-&gt;right &gt;= right) return query(r-&gt;ls, left, right); else if(r-&gt;rs-&gt;left &lt;= left) return query(r-&gt;rs, left, right); else return max(query(r-&gt;ls, left, r-&gt;ls-&gt;right), query(r-&gt;rs, r-&gt;rs-&gt;left, right));&#125;inline void Qchange(int u, int v) &#123; // 路径点权加一 int left, right; while(top[u] != top[v]) &#123; if(dep[top[u]] &gt; dep[top[v]]) swap(u, v); change(root, dfn[top[v]], dfn[v]); v = fa[top[v]]; &#125; left = dfn[u], right = dfn[v]; if(left &gt; right) swap(left, right); change(root, left, right);&#125;int main() &#123; int u, v; scanf("%d%d", &amp;n, &amp;k); for(int i = 1; i &lt; n; i++) &#123; scanf("%d%d", &amp;u, &amp;v); addedge(u, v); &#125; dep[1] = 1; dfs1(1, 0), dfs2(1, 1); build(root = cnt, 1, n); while(k--) &#123; scanf("%d%d", &amp;u, &amp;v); Qchange(u, v); &#125; printf("%d\n", query(root, 1, n)); // 最后输出最大值 return 0;&#125;]]></content>
       <tags>
         <tag>C++</tag>
-        <tag>题解</tag>
         <tag>图论</tag>
+        <tag>题解</tag>
         <tag>线段树</tag>
         <tag>树链剖分</tag>
       </tags>
@@ -180,9 +180,9 @@
     <content type="text"><![CDATA[Description维护一棵支持插入节点与求$k$个节点的$LCA$的树。 总节点数 $n\leq 3 \times 10^6$ ，操作次数 $m \leq 10^3$，$k \leq 10^3$ 题目链接： BZOJ P5165 Solution思路题目名称已经给了好嘛。。。 就是倍增啊。。 其实这题的难点不是在于思路想法，而是在于卡空间！ 操作1 $A \ x$ 新建一个节点，将它作为$x$节点的儿子，编号为当前节点总数$+1$。 维护一下倍增$LCA$所需的信息：深度信息$dep$、倍增数组$st$ 具体的维护方法见下面的代码 1234567dep[i] = j 代表 编号为i的节点深度为j，我们默认dep[root] = 1st[i][j] = k 代表 编号为i的节点向上跳2 ^ j个点到编号为k的节点因此st[i][0]即为节点i的父亲dep[++n] = dep[x] + 1; // 即 n++, dep[n] = dep[x] + 1。 n是当前节点编号for(int i = 20; i &gt;= 0; i--) // 2 ^ 21 &gt; 3e6，因此只需维护到20即可 st[n][i] = st[st[n][i - 1]][i - 1]; // 倍增数组标准维护语句 操作2 $Q \ k\ p1\ p2\ p3\ …$ 查询$p1,\ p2,\ p3\ …$这些节点的$LCA$。其中$k$表示查询节点的个数。 这个我想没什么好讲的吧。 就是依次求$LCA$就行啦。如果不懂详见代码 Code1234567891011121314151617181920212223242526272829303132333435363738#include &lt;cstdio&gt;#include &lt;cstdlib&gt;#include &lt;iostream&gt;using namespace std;#define MAXN 3000003int n = 1, m, dep[MAXN], st[MAXN][21], P;char ch[2]; // 读入操作用，char可能会咕掉inline void insert(int x) &#123; // 新建节点操作，上文讲过 dep[++n] = dep[x] + 1, st[n][0] = x; for(register int i = 1; i &lt;= 20; i++) st[n][i] = st[st[n][i - 1]][i - 1];&#125;inline int LCA(int u, int v) &#123; // 基本的LCA操作，不解释 if(dep[u] &gt; dep[v]) swap(u, v); for(register int i = 20; i &gt;= 0; i--) if(dep[v] - dep[u] &gt;= (1 &lt;&lt; i)) v = st[v][i]; if(u == v) return u; for(register int i = 20; i &gt;= 0; i--) if(st[u][i] != st[v][i]) u = st[u][i], v = st[v][i]; return st[u][0];&#125;int main() &#123; int k, lca; dep[1] = 1; // 将root的深度设为1 scanf("%d", &amp;m); while(m--) &#123; scanf("%s%d", ch, &amp;k); if(ch[0] == 'A') insert(k); else &#123; scanf("%d", &amp;lca); //依次求LCA for(register int i = 1; i &lt; k; i++) scanf("%d", &amp;P), lca = LCA(lca, P); printf("%d\n", lca); &#125; &#125;&#125;]]></content>
       <tags>
         <tag>C++</tag>
+        <tag>题解</tag>
         <tag>LCA</tag>
         <tag>倍增</tag>
-        <tag>题解</tag>
         <tag>优化</tag>
       </tags>
   </entry>
@@ -203,8 +203,8 @@
     <content type="text"><![CDATA[二分法的定义是什么？它的用途又是什么呢？这篇文章将会介绍一下二分法在各类问题中的应用。 大家一定对二分法有所耳闻吧！它的定义是什么？它的用途又是什么？下面我就来介绍一下二分法及其用途。 引子例题找出函数$f(x) = 3x - 3$在闭区间$[0，4]$的零点。 解法 首先，令$L = -1$，$R = 1$。 然后进行如下操作，直到$f(mid) = 0$为止。 算出$L$和$R$的代数平均数$mid$，且$mid \in \mathbb{Z}$，即整数$mid = \lfloor \dfrac{a + b}{2} \rfloor$。 若$f(mid) = 0$，找到答案 若$f(mid) &gt; 0$，让$b = mid$，缩小区间 若$f(mid) &lt; 0$，让$a = mid$，缩小区间 回到步骤$1$。 如果你没有明白的话，那就看图吧。。。 $L = 0, R = 4, mid = \lfloor \dfrac{0 + 4}{2} \rfloor = 2$ $f(mid) = f(2) = 3 &gt; 0$ 因为$f(x)$为单调递增函数，所以零点肯定在$2$左边。 缩小范围至$[0,2]$，$R = 2$。 此时$mid = \lfloor \dfrac{0 + 2}{2} \rfloor= 1$ $f(mid) = f(1) = 0$！ 找到答案$0$。 例题回顾（条件） 在上面的例题中，能够正确地使用以上“缩小范围区间”的解法的条件是什么呢? 显然，函数$f(x)$需要是单调的，而到底是递增还是递减就无所谓了。 二分法 对于区间$[a, b]$上连续不断且$f(a) \times f(b) &lt; 0$的函数$y=f(x)$，通过不断地把函数$f(x)$的零点所在的区间一分为二，使区间的两个端点逐步逼近零点，进而得到零点近似值的方法叫二分法。 在信息学中，二分法最常见的体现就是二分答案。 在这篇随笔中，我主要讲解的就是二分答案。 二分答案 二分答案,是通过不断缩小解可能存在的范围,从而求得问题答案的方法。 举例猜数字 事先准备一个$[1, 100]$的正整数，让电脑猜。每次猜测会告诉猜数与答案的大小关系。 朴素的方法：枚举法，从$1 - 100$依次尝试，直到猜对为止。时间复杂度为$O(n)$。 二分答案： $L = 1, R = 100, mid = \lfloor \dfrac{L + R}{2} \rfloor = 50$，设答案为$ans$。 只要$L \leqslant R$，尝试$mid$，\left\{ \begin{aligned} & 若mid > ans，则R = mid； \\ & 若mid < ans，则L = mid + 1； \\ & 若mid = ans，猜对了。 \end{aligned} \right. 时间复杂度为$O(log n)$。 为什么二分 更充分地利用已知条件，大幅度减少遍历范围 二分答案具有“先猜后证”的特点，可以给题目多增加一个条件，也许可以大幅度减小算法的时间开销 在什么情况下可以二分 答案存在单调性 什么意思呢？ 我们不妨假设答案满足条件为$1$，不满足为$0$； 那么如果一个答案序列为$0000000111$或$1111100000$，都存在单调性，那就都可以； 而如果序列是$000011011000110000$，那就不满足单调性，于是就不能进行二分答案了。 能够解决的问题二分答案能够解决哪些问题呢？如下： 最大的最小值 最小的最大值 在满足条件的情况下的最小（大）值 最接近一个值的值 …… 在一个单调序列中特殊的点基本上都能二分。 模板（$C++$）1234567// 这是一个求满足条件的最小值的二分模板int left = 0, right = MAX, mid, ans; // left为左边界，right为右边界while(left &lt;= right)&#123; // 只要存在区间 mid = (left + right) &gt;&gt; 1; // 等价于(left + right) / 2，只不过这样写运行速度会稍快一些 if(check(mid)) ans = mid, right = mid - 1; // 如果mid满足条件，那ans（答案）肯定不大于mid else left = mid + 1; // 如果不能满足条件，ans区间最小值肯定大于mid&#125; printf("%d\n", ans); // 输出答案 为什么第五行要加上ans = mid呢？ 原因：如果$mid$恰好就是正确答案，$check(mid)$满足，为$true$，于是进入本句。如果将$right$设为$mid - 1$的话，就永远得不到$ans$了（可以想一想为什么） 这就出现了另一种写法—— 1234567// 这是一个求满足条件的最小值的二分模板int left = 0, right = MAX, mid; // left为左边界，right为右边界while(left &lt; right)&#123; // #注意这里改变# mid = (left + right) &gt;&gt; 1; // 等价于(left + right) / 2，只不过这样写运行速度会稍快一些 if(check(mid)) right = mid; // #注意这里也改变# else left = mid + 1; // 如果不能满足条件，ans区间最小值肯定大于mid&#125; printf("%d\n", right); // 输出答案 不过我个人建议还是写第一种好（更好理解，不容易错）。 那这两段代码中的$check$函数是干什么的呢？ 其实，布尔型函数$check(x)$是用来判断$x$条件下是否能成功（满足题目条件）。 练习题 奶牛晒衣服 营救 （如果不会最小生成树请自动跳过~） $NOIP2015$ 跳石头 【模板】最长公共子序列 ……]]></content>
       <tags>
         <tag>C++</tag>
-        <tag>算法讲解</tag>
         <tag>二分</tag>
+        <tag>算法讲解</tag>
       </tags>
   </entry>
   <entry>
@@ -213,8 +213,8 @@
     <content type="text"><![CDATA[Description$n$个点$m​$条边的带权无向图 每个点还有一个点权 求$1-n$的一条最短路径，使得路径长度比$b​$短，并且经过的点权之和最大。 输出这个最大值 看完题面感觉语文要挂科。。。o(╥﹏╥)o Solution这题正解 $SPFA\ +​$ 二分 二分答案，$check()$函数中过一遍$SPFA$，然后跑一下$path$，也就是回溯函数（用来求最短路径），然后判一下符不符合题意就行了 Code1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465#include &lt;queue&gt;#include &lt;cstdio&gt;#include &lt;cstdlib&gt;#include &lt;cstring&gt;#include &lt;algorithm&gt;using namespace std;#define MAXN 50010#define INF (int)1e9int n, m, cnt, blood, f[MAXN], dis[MAXN], pre[MAXN], ans; //pre[u]代表u到1的最短路的上一个节点bool flag[MAXN];queue&lt;int&gt; Q;struct edge&#123; //邻接表 int v, w; edge *next;&#125;pool[MAXN &lt;&lt; 1], *h[MAXN];inline void addedge(int u, int v, int w)&#123; //建边函数 edge *p = &amp;pool[++cnt], *q = &amp;pool[++cnt]; p-&gt;v = v, p-&gt;w = w, p-&gt;next = h[u], h[u] = p; q-&gt;v = u, q-&gt;w = w, q-&gt;next = h[v], h[v] = q;&#125;inline void spfa(int money)&#123; //money代表这次至少收取多少钱，所能够走道的最短路 int u, v; for(int i = 2; i &lt;= n; i++) dis[i] = INF; flag[1] = true, Q.push(1); while(!Q.empty())&#123; u = Q.front(), Q.pop(), flag[u] = false; for(edge *p = h[u]; p; p = p-&gt;next) if(dis[v = p-&gt;v] &gt; dis[u] + p-&gt;w &amp;&amp; f[u] &lt;= money)&#123; //注意这里要判一下点权（钱）是否满足要求（money） dis[v] = dis[u] + p-&gt;w, pre[v] = u; if(!flag[v]) Q.push(v), flag[v] = true; &#125; &#125;&#125;inline int path(int u)&#123; //最短路回溯函数（递归调用） if(u == 1) return f[1]; //到头 if(u != 1 &amp;&amp; !pre[u]) return -1; //走不通了（不连通） return max(f[u], path(pre[u])); //最多一次的钱&#125;inline bool check(int x)&#123; //二分函数 spfa(x); int tmp = path(n); if(tmp &lt;= x &amp;&amp; tmp &gt;= 0 &amp;&amp; dis[n] &lt;= blood) return true; return false;&#125;int main()&#123; int u, v, w, left = INF, right = 0, mid, Max = 0; scanf("%d%d%d", &amp;n, &amp;m, &amp;blood); for(int i = 1; i &lt;= n; i++)&#123; scanf("%d", &amp;f[i]); left = min(left, f[i]), Max = right = max(right, f[i]); &#125; for(int i = 1; i &lt;= m; i++)&#123; scanf("%d%d%d", &amp;u, &amp;v, &amp;w); addedge(u, v, w); &#125; while(left &lt;= right)&#123; mid = (left + right) &gt;&gt; 1; if(check(mid)) right = mid - 1; else left = mid + 1; &#125; if(left &gt; Max) puts("AFK"); else printf("%d\n", left); return 0;&#125;]]></content>
       <tags>
         <tag>C++</tag>
-        <tag>题解</tag>
         <tag>图论</tag>
+        <tag>题解</tag>
         <tag>最短路</tag>
         <tag>SPFA</tag>
         <tag>二分</tag>
@@ -241,13 +241,13 @@
   </entry>
   <entry>
     <title></title>
-    <url>%2Fbaidu_verify_U51fhF2DWG.html</url>
-    <content type="text"><![CDATA[U51fhF2DWG]]></content>
+    <url>%2Fbaidu_verify_o1tQMBIJO5.html</url>
+    <content type="text"><![CDATA[o1tQMBIJO5]]></content>
   </entry>
   <entry>
     <title></title>
-    <url>%2Fbaidu_verify_o1tQMBIJO5.html</url>
-    <content type="text"><![CDATA[o1tQMBIJO5]]></content>
+    <url>%2Fbaidu_verify_U51fhF2DWG.html</url>
+    <content type="text"><![CDATA[U51fhF2DWG]]></content>
   </entry>
   <entry>
     <title><![CDATA[关于]]></title>
@@ -260,14 +260,14 @@
     <content type="text"></content>
   </entry>
   <entry>
-    <title><![CDATA[友链]]></title>
-    <url>%2Ffriends%2Findex.html</url>
-    <content type="text"><![CDATA[常用网站网址洛谷 | BZOJ | Graph Editor | 图床 | OIerDb | BZOJ离线题库 | DarkBzoj 同学$AcF’s\ Blog$ $HLT’s\ Blog$ $WZL’s\ Blog$ $TLL’s\ Blog$ 欢迎互换友链！]]></content>
-  </entry>
-  <entry>
     <title><![CDATA[搜索]]></title>
     <url>%2Fsearch%2Findex.html</url>
     <content type="text"></content>
+  </entry>
+  <entry>
+    <title><![CDATA[友链]]></title>
+    <url>%2Ffriends%2Findex.html</url>
+    <content type="text"><![CDATA[常用网站网址洛谷 | BZOJ | Graph Editor | 图床 | OIerDb | BZOJ离线题库 | DarkBzoj 同学$AcF’s\ Blog$ $HLT’s\ Blog$ $WZL’s\ Blog$ $TLL’s\ Blog$ 欢迎互换友链！]]></content>
   </entry>
   <entry>
     <title><![CDATA[标签]]></title>
