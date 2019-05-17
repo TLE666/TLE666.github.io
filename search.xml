@@ -46,8 +46,8 @@
       <tags>
         <tag>优化</tag>
         <tag>DP</tag>
-        <tag>公式</tag>
         <tag>四边形不等式</tag>
+        <tag>公式</tag>
       </tags>
   </entry>
   <entry>
@@ -182,8 +182,8 @@
       </categories>
       <tags>
         <tag>图论</tag>
-        <tag>树链剖分</tag>
         <tag>线段树</tag>
+        <tag>树链剖分</tag>
       </tags>
   </entry>
   <entry>
@@ -194,10 +194,10 @@
         <category>数学</category>
       </categories>
       <tags>
+        <tag>公式</tag>
         <tag>三角函数</tag>
         <tag>代数</tag>
         <tag>几何</tag>
-        <tag>公式</tag>
       </tags>
   </entry>
   <entry>
@@ -208,8 +208,8 @@
         <category>算法讲解</category>
       </categories>
       <tags>
-        <tag>树链剖分</tag>
         <tag>线段树</tag>
+        <tag>树链剖分</tag>
       </tags>
   </entry>
   <entry>
@@ -294,9 +294,14 @@
     <content type="text"><![CDATA[o1tQMBIJO5]]></content>
   </entry>
   <entry>
-    <title><![CDATA[标签]]></title>
-    <url>%2Ftags%2Findex.html</url>
-    <content type="text"><![CDATA[( 挖坑 )]]></content>
+    <title><![CDATA[关于]]></title>
+    <url>%2Fabout%2Findex.html</url>
+    <content type="text"><![CDATA[这是一个弱鸡 OIer 瞎搞出来的一个博客~]]></content>
+  </entry>
+  <entry>
+    <title><![CDATA[友链]]></title>
+    <url>%2Ffriends%2Findex.html</url>
+    <content type="text"><![CDATA[常用网站网址洛谷 | BZOJ | Graph Editor | 图床 | OIerDb | BZOJ离线题库 | DarkBzoj 同学$AcF’s\ Blog$ $HLT’s\ Blog$ $WZL’s\ Blog$ $TLL’s\ Blog$ 欢迎互换友链！]]></content>
   </entry>
   <entry>
     <title><![CDATA[文章分类]]></title>
@@ -304,18 +309,13 @@
     <content type="text"><![CDATA[( 挖坑 )]]></content>
   </entry>
   <entry>
-    <title><![CDATA[关于]]></title>
-    <url>%2Fabout%2Findex.html</url>
-    <content type="text"><![CDATA[这是一个弱鸡 OIer 瞎搞出来的一个博客~]]></content>
-  </entry>
-  <entry>
     <title><![CDATA[搜索]]></title>
     <url>%2Fsearch%2Findex.html</url>
     <content type="text"></content>
   </entry>
   <entry>
-    <title><![CDATA[友链]]></title>
-    <url>%2Ffriends%2Findex.html</url>
-    <content type="text"><![CDATA[常用网站网址洛谷 | BZOJ | Graph Editor | 图床 | OIerDb | BZOJ离线题库 | DarkBzoj 同学$AcF’s\ Blog$ $HLT’s\ Blog$ $WZL’s\ Blog$ $TLL’s\ Blog$ 欢迎互换友链！]]></content>
+    <title><![CDATA[标签]]></title>
+    <url>%2Ftags%2Findex.html</url>
+    <content type="text"><![CDATA[( 挖坑 )]]></content>
   </entry>
 </search>
