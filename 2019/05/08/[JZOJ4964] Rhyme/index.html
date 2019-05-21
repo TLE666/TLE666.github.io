@@ -451,7 +451,7 @@
                             
                                 
                                 <h6 class="tags">
-                                    <a class="tag" href="/tags/优化/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>优化</a> <a class="tag" href="/tags/DP/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>DP</a> <a class="tag" href="/tags/四边形不等式/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>四边形不等式</a> <a class="tag" href="/tags/公式/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>公式</a>
+                                    <a class="tag" href="/tags/优化/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>优化</a> <a class="tag" href="/tags/DP/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>DP</a> <a class="tag" href="/tags/公式/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>公式</a> <a class="tag" href="/tags/四边形不等式/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>四边形不等式</a>
                                 </h6>
                             
                         </span>
@@ -468,7 +468,21 @@
 
 
 
-  
+  <article class="post white-box comments">
+    <section class="article typo">
+      <h4><i class="fas fa-comments fa-fw" aria-hidden="true"></i>&nbsp;评论</h4>
+      
+      
+      
+      
+        <section id="comments">
+          <div id="valine_container" class="valine_thread">
+            <i class="fas fa-spinner fa-spin fa-fw"></i>
+          </div>
+        </section>
+      
+    </section>
+  </article>
 
 
   
@@ -925,6 +939,36 @@
 
 
 
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  
+    
+      <script src="https://cdn.jsdelivr.net/gh/xaoxuu/volantis@1/js/volantis.min.js"></script>
+    
+  
+  <script>
+  var GUEST_INFO = ['nick','mail','link'];
+  var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+    return GUEST_INFO.indexOf(item) > -1
+  });
+  var notify = 'false' == true;
+  var verify = 'false' == true;
+  var valine = new Valine();
+  valine.init({
+    el: '#valine_container',
+    notify: notify,
+    verify: verify,
+    guest_info: guest_info,
+    
+    appId: "nhey5vBr1JxoWsVjN7D8fXVF-gzGzoHsz",
+    appKey: "0KiWa6yKIgaIzKv1m1zd6W94",
+    placeholder: "想说点什么~",
+    pageSize:'10',
+    avatar:'mp',
+    lang:'zh-cn',
+    highlight:'false'
+  })
+  </script>
 
 
 
