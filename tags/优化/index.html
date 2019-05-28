@@ -57,8 +57,9 @@
 </head>
 
 <body>
-  <!-- 样式一（鼠标点击更换样式） -->
-  <script src="https://g.joyinshare.com/hc/ribbon.min.js" type="text/javascript"></script>
+  <!-- 数字雨 -->
+  <canvas id="canvas" width="1440" height="900" ></canvas>
+  <script type="text/javascript" src="/js/DigitalRain.js"></script>
   
   
   <div class="cover-wrapper">
@@ -489,9 +490,9 @@
         
           <a href="/tags/DP/" rel="nofollow"><i class="fas fa-hashtag fa-fw"></i>DP</a>
         
-          <a href="/tags/公式/" rel="nofollow"><i class="fas fa-hashtag fa-fw"></i>公式</a>
-        
           <a href="/tags/四边形不等式/" rel="nofollow"><i class="fas fa-hashtag fa-fw"></i>四边形不等式</a>
+        
+          <a href="/tags/公式/" rel="nofollow"><i class="fas fa-hashtag fa-fw"></i>公式</a>
         
       </div>
     
@@ -1031,23 +1032,6 @@
     </div>
     <br>
   
-  <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
-  <script>
-      var now = new Date();
-      function createtime() {
-          var grt= new Date("08/29/2018 19:37:05");//在此处修改你的建站时间
-          now.setTime(now.getTime()+250);
-          days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
-          hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
-          if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
-          mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
-          seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
-          snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
-          document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 ";
-          document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
-      }
-  setInterval("createtime()",250);
-</script>
   
     <div class="social-wrapper">
       
@@ -1078,23 +1062,38 @@
     </div>
   
   <br>
-  <div><p>博客内容遵循 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</a></p>
-</div>
-  <div>
-    本站使用
-    <a href="https://xaoxuu.com/wiki/material-x/" target="_blank" class="codename">Material X</a>
-    作为主题
-    
-      ，
-      总访问量为
-      <span id="busuanzi_value_site_pv"><i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
-      次
-    
-    。
-  </div>
+  Copyright <i class="far fa-copyright"></i> 2018-2019
+  <a href="https://tle666.github.io" target="_blank"> P_Wang </a>&nbsp;&nbsp;|&nbsp;&nbsp;
+  <!-- 网站运行时间 -->
+  <span id="timeDate">正在载入...</span><span id="times"><span><i class="fa fa-spinner fa-spin"> </i></span></span>
+  <script>
+  var now = new Date();
+  function createtime() {
+    var grt= new Date("08/29/2018 19:37:05");
+    now.setTime(now.getTime()+250);
+    days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+    hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+    if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+    mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+    seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+    snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
+    document.getElementById("timeDate").innerHTML = "本站已勉强存活了 "
+    document.getElementById("times").innerHTML = dnum +" 天 " + hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
+    /*document.getElementById("times").style.color="#0056FF";*/
+    }
+    setInterval("createtime()",250);
+  </script><br><br>
+  Powered by <a href="https://hexo.io/zh-cn/" target="_blank" class="codename">Hexo</a>
+  Theme <a href="https://xaoxuu.com/wiki/material-x/" target="_blank" class="codename">Material X</a> by <a href="https://xaoxuu.com/" target="_blank" class="codename">xaoxuu</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+  <!--<i class="fa fa-user"></i>-->
+  <span id="busuanzi_container_site_uv">UV:<span id="busuanzi_value_site_uv"></span></span>&nbsp;&nbsp;|&nbsp;&nbsp;
+  <!--<i class="fa fa-eye"></i>-->
+  <span id="busuanzi_container_site_pv">PV:<span id="busuanzi_value_site_pv"></span></span>&nbsp;&nbsp;|&nbsp;&nbsp;
+  <!--<i class="fas fa-chart-area"></i>-->
+  <span class="post-count">Word Count:17.4k</span>&nbsp;&nbsp;|&nbsp;&nbsp;
+  <i class="fab fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" title="本站点采用知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议进行许可" target="_blank">BY-NC-SA 4.0</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+  <a href="https://tle666.github.io/sitemap.xml" target="_blank">站点地图</a>&nbsp;&nbsp;</script>
 </footer>
-<script>setLoadingBarProgress(80);</script>
-
 
       <script>setLoadingBarProgress(60);</script>
     </div>
@@ -1149,31 +1148,6 @@
 
 
 
-
-  
-  
-  
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script>
-    <script type="text/javascript">
-      $(function(){
-        if ('.cover') {
-          $('.cover').backstretch(
-          ["https://img.vim-cn.com/6d/a0c9e6f9efad8b731cb7376504bd10d79d2053.jpg"],
-          {
-            duration: "6000",
-            fade: "2500"
-          });
-        } else {
-          $.backstretch(
-          ["https://img.vim-cn.com/6d/a0c9e6f9efad8b731cb7376504bd10d79d2053.jpg"],
-          {
-            duration: "6000",
-            fade: "2500"
-          });
-        }
-      });
-    </script>
-  
 
 
 
