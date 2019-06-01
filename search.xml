@@ -196,8 +196,8 @@
       </categories>
       <tags>
         <tag>图论</tag>
-        <tag>树链剖分</tag>
         <tag>线段树</tag>
+        <tag>树链剖分</tag>
       </tags>
   </entry>
   <entry>
@@ -223,8 +223,8 @@
         <category>算法讲解</category>
       </categories>
       <tags>
-        <tag>树链剖分</tag>
         <tag>线段树</tag>
+        <tag>树链剖分</tag>
       </tags>
   </entry>
   <entry>
@@ -320,9 +320,19 @@
     <content type="text"><![CDATA[o1tQMBIJO5]]></content>
   </entry>
   <entry>
+    <title><![CDATA[关于]]></title>
+    <url>%2Fabout%2Findex.html</url>
+    <content type="text"><![CDATA[这是一个弱鸡 OIer 瞎搞出来的一个博客~]]></content>
+  </entry>
+  <entry>
     <title><![CDATA[我的朋友们]]></title>
     <url>%2Ffriends%2Findex.html</url>
     <content type="text"><![CDATA[欢迎互换友链！ 如需友链请说明备注名、链接地址与背景颜色和字体颜色的十六进制表示。 常用网站网址洛谷 | BZOJ | Graph Editor | 图床 | OIerDb | BZOJ离线题库 | DarkBzoj]]></content>
+  </entry>
+  <entry>
+    <title><![CDATA[搜索]]></title>
+    <url>%2Fsearch%2Findex.html</url>
+    <content type="text"></content>
   </entry>
   <entry>
     <title><![CDATA[所有分类]]></title>
@@ -330,18 +340,8 @@
     <content type="text"></content>
   </entry>
   <entry>
-    <title><![CDATA[关于]]></title>
-    <url>%2Fabout%2Findex.html</url>
-    <content type="text"><![CDATA[这是一个弱鸡 OIer 瞎搞出来的一个博客~]]></content>
-  </entry>
-  <entry>
     <title><![CDATA[所有标签]]></title>
     <url>%2Ftags%2Findex.html</url>
-    <content type="text"></content>
-  </entry>
-  <entry>
-    <title><![CDATA[搜索]]></title>
-    <url>%2Fsearch%2Findex.html</url>
     <content type="text"></content>
   </entry>
 </search>
