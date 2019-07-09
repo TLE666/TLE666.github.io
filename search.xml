@@ -73,8 +73,8 @@
         <category>算法讲解</category>
       </categories>
       <tags>
-        <tag>DP</tag>
         <tag>优化</tag>
+        <tag>DP</tag>
         <tag>四边形不等式</tag>
         <tag>公式</tag>
       </tags>
@@ -142,8 +142,8 @@
         <category>题解</category>
       </categories>
       <tags>
-        <tag>图论</tag>
         <tag>DP</tag>
+        <tag>图论</tag>
         <tag>数位DP</tag>
         <tag>树形DP</tag>
       </tags>
@@ -261,9 +261,9 @@
         <category>题解</category>
       </categories>
       <tags>
-        <tag>优化</tag>
         <tag>LCA</tag>
         <tag>倍增</tag>
+        <tag>优化</tag>
       </tags>
   </entry>
   <entry>
