@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   
-  <title>「CF518D」Ilya and Escalator | P_Wang&#39;s Blog</title>
+  <title>Tag: 欧拉定理 | P_Wang&#39;s Blog</title>
   
   
   <meta name="description" content="OIer!">
@@ -60,7 +60,7 @@
   
   
   <div class="cover-wrapper">
-    <cover class="cover post half">
+    <cover class="cover  half">
       
         
   <h1 class="title">P_Wang</h1>
@@ -214,12 +214,25 @@
 
   <div class="l_body">
     <div class='body-wrapper'>
-      <div class="l_main">
-  
-
-  
-    <article id="post" class="post white-box article-type-post" itemscope itemprop="blogPost">
       
+<div class="l_main">
+  
+    
+      
+  <section class="post-list">
+    
+      
+        
+          
+        
+      
+    
+    
+      
+        
+          <div class="post-wrapper">
+            <article class="post reveal ">
+  
 
 
   <section class="meta">
@@ -228,13 +241,11 @@
     <div class="meta" id="header-meta">
       
         
-  
-    <h1 class="title">
-      <a href="/2019/06/05/[CF518D] Ilya and Escalator/">
-        「CF518D」Ilya and Escalator
-      </a>
-    </h1>
-  
+  <h2 class="title">
+    <a href="/2019/07/18/[BZOJ3884] 上帝与集合的正确用法/">
+      「BZOJ3884」上帝与集合的正确用法
+    </a>
+  </h2>
 
 
       
@@ -260,7 +271,7 @@
             <div class="new-meta-item date">
   <a class="notlink">
     <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2019-06-05</p>
+    <p>2019-07-18</p>
   </a>
 </div>
 
@@ -281,19 +292,6 @@
         
           
             
-  
-    <div class="new-meta-item browse busuanzi">
-      <a class="notlink">
-        <i class="fas fa-eye" aria-hidden="true"></i>
-        <p>
-          <span id="busuanzi_value_page_pv">
-            <i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i>
-          </span>
-        </p>
-      </a>
-    </div>
-  
-
 
           
         
@@ -310,152 +308,42 @@
   </section>
 
 
-      <section class="article typo">
-        <div class="article-entry" itemprop="articleBody">
-          <h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a><strong>Description</strong></h1><p>有 $n$ 个人排成一列，每秒中队伍最前面的人 $p$ 的概率走上电梯（一旦走上就不会下电梯）或者有 $(1-p)$ 的概率不动。问 $t$ 秒过后，在电梯上的人的数量的期望。</p>
-<p>对于 $100 \%$ 的数据，满足 $n,t\leq2000$</p>
-<a id="more"></a>
-<p><a href="https://www.luogu.org/problemnew/show/CF518D" target="_blank" rel="noopener">题目链接戳这里</a></p>
-<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a><strong>Solution</strong></h1><p>期望 $DP$ 。</p>
-<p>设 $dp_{i,j}$ 表示第 $i$ 秒已经走上 $j$ 个人的概率。</p>
-<p>则有</p>
-<script type="math/tex; mode=display">ans = \sum_{i = 1}^n dp_{t, i}</script><p>转移方程如下（一定注意边界！）：</p>
-<script type="math/tex; mode=display">dp_{i, j}=\left\{ \begin{array}{ll}dp_{i -1,0}\times(1-p)  & j=0\\dp_{i - 1, j - 1}\times p+dp_{i-1,j}\times (1-p) & 1\le j<n \\dp_{i - 1, n}+dp_{i - 1, n - 1}\times p & j=n\end{array} \right.\ \ \\\</script><h1 id="Code"><a href="#Code" class="headerlink" title="Code"></a><strong>Code</strong></h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">2020</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n, t;</span><br><span class="line"></span><br><span class="line"><span class="keyword">double</span> p, dp[N][N], ans;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">DP</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  dp[<span class="number">0</span>][<span class="number">0</span>] = <span class="number">1.0</span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= t; i++) &#123;</span><br><span class="line">    dp[i][<span class="number">0</span>] = (<span class="number">1.0</span> - p) * dp[i - <span class="number">1</span>][<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt; n; j++)</span><br><span class="line">      dp[i][j] = dp[i - <span class="number">1</span>][j - <span class="number">1</span>] * p + (<span class="number">1.0</span> - p) * dp[i - <span class="number">1</span>][j];</span><br><span class="line">    dp[i][n] = dp[i - <span class="number">1</span>][n] + p * dp[i - <span class="number">1</span>][n - <span class="number">1</span>];</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="built_in">scanf</span>(<span class="string">"%d%lf%d"</span>, &amp;n, &amp;p, &amp;t);</span><br><span class="line">  DP();</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">    ans += (<span class="keyword">double</span>) (i * dp[t][i]);</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">"%lf\n"</span>, ans);</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      <h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a><strong>Description</strong></h1><p>求 <script type="math/tex">2^{2^{2 \cdots}} \bmod p</script></p>
+<p>对于 $100\%$ 的数据，有数据组数 $T \leq 1000$ ， $p \leq 10^7$</p>
+      
+        <div class="readmore">
+          <a href="/2019/07/18/[BZOJ3884] 上帝与集合的正确用法/" class="flat-box">
+            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
+            阅读全文
+          </a>
         </div>
-        
-          
-
-
-  <section class="meta" id="footer-meta">
-    <hr>
-    <div class="new-meta-box">
-      
-        
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-06-05T22:23:31+08:00">
-  <a class="notlink">
-    <i class="fas fa-clock" aria-hidden="true"></i>
-    <p>最后更新于 2019年6月5日</p>
-  </a>
-</div>
-
-        
-      
-        
-          
-  
-  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/DP/" rel="nofollow"><i class="fas fa-hashtag" aria-hidden="true"></i>&nbsp;<p>DP</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/期望/" rel="nofollow"><i class="fas fa-hashtag" aria-hidden="true"></i>&nbsp;<p>期望</p></a></div>
-
-
-        
-      
-        
-          
-
-        
       
     </div>
+    
+      <div class="full-width auto-padding tags">
+        
+          <a href="/tags/欧拉函数/" rel="nofollow"><i class="fas fa-hashtag fa-fw"></i>欧拉函数</a>
+        
+          <a href="/tags/欧拉定理/" rel="nofollow"><i class="fas fa-hashtag fa-fw"></i>欧拉定理</a>
+        
+      </div>
+    
   </section>
+</article>
 
-
-        
-        
-            <div class="prev-next">
-            
-                <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">160字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">1分</span>
-      </span>
-    </span>
-</div>
-                
-                
-                    <section class="prev">
-                        <span class="art-item-left">
-                            <h6><i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;上一页</h6>
-                            <h4>
-                                <a href="/2019/06/13/Coding Style/" rel="prev" title="Coding Style">
-                                  
-                                      Coding Style
-                                  
-                                </a>
-                            </h4>
-                            
-                                
-                                <h6 class="tags">
-                                    <a class="tag" href="/tags/优化/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>优化</a>
-                                </h6>
-                            
-                        </span>
-                    </section>
-                
-                
-                    <section class="next">
-                        <span class="art-item-right" aria-hidden="true">
-                            <h6>下一页&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
-                            <h4>
-                                <a href="/2019/05/17/[HAOI2007] 反素数/" rel="prev" title="「HAOI2007」反素数">
-                                    
-                                        「HAOI2007」反素数
-                                    
-                                </a>
-                            </h4>
-                            
-                                
-                                <h6 class="tags">
-                                    <a class="tag" href="/tags/数学/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>数学</a> <a class="tag" href="/tags/递归/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>递归</a>
-                                </h6>
-                            
-                        </span>
-                    </section>
-                
-            </div>
-        
-      </section>
-    </article>
-  
-
-  
-    <!-- 显示推荐文章和评论 -->
-
-
-
-  <article class="post white-box comments">
-    <section class="article typo">
-      <h4><i class="fas fa-comments fa-fw" aria-hidden="true"></i>&nbsp;评论</h4>
-      
-      
-      
-      
-        <section id="comments">
-          <div id="valine_container" class="valine_thread">
-            <i class="fas fa-spinner fa-spin fa-fw"></i>
           </div>
-        </section>
+        
       
-    </section>
-  </article>
-
-
+    
+  </section>
   
-
-
-
-
-<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
-
-  <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
+    
+    <!-- 根据主题中的设置决定是否在archive中针对摘要部分的MathJax公式加载mathjax.js文件 -->
+    
+    
+      <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config({
     "HTML-CSS": {
@@ -491,17 +379,13 @@
 <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
 </script>
 
+    
+
+  
 
 
-
-  <script>
-    window.subData = {
-      title: '「CF518D」Ilya and Escalator',
-      tools: true
-    }
-  </script>
-
-
+    
+  
 </div>
 <aside class="l_side">
   
@@ -558,20 +442,6 @@
           
           
             
-  <section class="widget toc-wrapper">
-    
-<header class="pure">
-  <div><i class="fas fa-list fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;本文目录</div>
-  
-    <div class="wrapper"><a class="s-toc rightBtn" rel="external nofollow noopener noreferrer" href="javascript:void(0)"><i class="fas fa-thumbtack fa-fw"></i></a></div>
-  
-</header>
-
-    <div class="content pure">
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Description"><span class="toc-text">Description</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Solution"><span class="toc-text">Solution</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Code"><span class="toc-text">Code</span></a></li></ol>
-    </div>
-  </section>
-
 
           
         
@@ -839,36 +709,6 @@
 
 
 
-
-  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-  
-    
-      <script src="https://cdn.jsdelivr.net/gh/xaoxuu/volantis@1/js/volantis.min.js"></script>
-    
-  
-  <script>
-  var GUEST_INFO = ['nick','mail','link'];
-  var guest_info = 'nick,mail,link'.split(',').filter(function(item){
-    return GUEST_INFO.indexOf(item) > -1
-  });
-  var notify = 'false' == true;
-  var verify = 'false' == true;
-  var valine = new Valine();
-  valine.init({
-    el: '#valine_container',
-    notify: notify,
-    verify: verify,
-    guest_info: guest_info,
-    
-    appId: "nhey5vBr1JxoWsVjN7D8fXVF-gzGzoHsz",
-    appKey: "0KiWa6yKIgaIzKv1m1zd6W94",
-    placeholder: "想说点什么~",
-    pageSize:'10',
-    avatar:'mp',
-    lang:'zh-cn',
-    highlight:'false'
-  })
-  </script>
 
 
 
