@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[「USACO10MAR」Great Cow Gathering]]></title>
+    <url>%2F2019%2F07%2F22%2F%5BUSACO10MAR%5D%20Great%20Cow%20Gathering%2F</url>
+    <content type="text"><![CDATA[Description给一个带边权与点权的树 $T$ （ $N$ 个结点 ），找一个点 $x$ 使 $\sum_{u \in T\ \&amp;\ u \neq x} dis_{u,x} \times c_u$ 取最大值。 对于 $100\%$ 的数据，有 $1 \leq N \leq 100000,\ 1 \leq C_i \leq 1000$ 。 题目链接戳这里 Solution树形 DP 。其实也不能完全算是 DP 。 我们使用调整法。对于点 $1$ ，我们可以 $O(n)$ 地算出 $f_1 = \sum_{u \in T\ \&amp;\ u \neq 1} dis_{u,1} \times C_u$ 然后递归考虑 $1$ 的儿子结点 $u$ 。我们比较一下 $f_1$ 和 $f_u$ 。可以将这棵树分为两部分。其中一部分（ $up$ ）与点 $1$ 在点 $u$ 的同一边，而另一部分（ $dn$ ）则与点 $u$ 在点 $1$ 同一边。当我们的注意力从 $1$ 转到 $u$ 上时，我们发现 $f$ 的值发生了一些变化。对于 $up$ 那部分的所有点，它们都被加上了一段路程 $dis_{1,u}$ ；而对于 $dn$ 那部分的所有点，它们都减去了 $dis_{1, u}$ 。 举个例子。对于图上的 $3$ ，我们发现 $f_3 = 1\times 1 + 1 \times 2 + 2 \times 6 = 15$ 。把它分成 $up$ 和 $dn$ ， $up = 3,\ dn = 12$ 。同理对于 $4$ ， $up = up_3 + 3 \times (1 + 1) = 9,\ dn = dn_3 - 3 \times 2 = 6$ 。 结果，我们发现 $up$ 和 $dn$ 都与前面有关系，所以只用记变化值就行啦。 注意开 long long 。。 Code123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960#include &lt;bits/stdc++.h&gt;using namespace std;const int N = 100100;#define int long longint n, c[N], f[N], up[N], dn[N], size[N], ans = 1e18;// f up dn 如上文；size[u] 以 u 为根的子树大小（此处指子树中 c[i] 之和）struct edge &#123; int v, w; edge *next; &#125; pool[N &lt;&lt; 1], *h[N], *cur = pool;inline void addedge(int u, int v, int w) &#123; edge *p = ++cur, *q = ++cur; p-&gt;v = v, p-&gt;w = w, p-&gt;next = h[u], h[u] = p; q-&gt;v = u, q-&gt;w = w, q-&gt;next = h[v], h[v] = q;&#125;inline int calc(int u, int dis, int fa) &#123; // 求 f[1] int v, res = c[u] * dis; for (edge *p = h[u]; p; p = p-&gt;next) if ((v = p-&gt;v) != fa) &#123; res += calc(v, dis + p-&gt;w, u); &#125; return res;&#125;inline void pre(int u, int fa) &#123; // 求 size int v; size[u] = c[u]; for (edge *p = h[u]; p; p = p-&gt;next) if ((v = p-&gt;v) != fa) &#123; pre(v, u); size[u] += size[v]; &#125;&#125;inline void dfs(int u, int fa) &#123; // 求 f int v; for (edge *p = h[u]; p; p = p-&gt;next) if ((v = p-&gt;v) != fa) &#123; up[v] = (size[1] - size[v]) * p-&gt;w; dn[v] = -size[v] * p-&gt;w; f[v] = f[u] + up[v] + dn[v]; // 记得 up 和 dn 只是相对 u 的变化值 dfs(v, u); &#125;&#125;signed main() &#123; int u, v, w; scanf("%lld", &amp;n); for (int i = 1; i &lt;= n; i++) scanf("%lld", &amp;c[i]); for (int i = 1; i &lt; n; i++) &#123; scanf("%lld%lld%lld", &amp;u, &amp;v, &amp;w); addedge(u, v, w); &#125; pre(1, 0); f[1] = calc(1, 0, 0); dfs(1, 0); for (int i = 1; i &lt;= n; i++) ans = min(ans, f[i]); printf("%lld\n", ans); return 0;&#125;]]></content>
+      <categories>
+        <category>OI</category>
+        <category>题解</category>
+      </categories>
+      <tags>
+        <tag>DP</tag>
+        <tag>树形DP</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[「AtCoder Grand Contest 025 B」RGB Coloring]]></title>
     <url>%2F2019%2F07%2F20%2F%5BAtCoder%20Grand%20Contest%20025%20B%5D%20RGB%20Coloring%2F</url>
     <content type="text"><![CDATA[Description一个 n 层塔，每层可以不涂颜色或涂红绿蓝三种颜色之一。不涂颜色美观度 $0$ ，涂红色美观度 $A$ ，涂绿色美观度 $A + B$ ，涂蓝色美观度 $B$ 。求使所有层的美观度之和 $=K$ 的涂色方案数 $\pmod {998244353}$ 对于 $100 \%$ 的数据， $1 \leq N \leq 3 \times 10^5$ $1 \leq A,B \leq 3 \times 10^5$ $0 \leq K \leq 18 \times 10^{10}$ 题目链接戳这里 Solution好像不是特别难吧（雾 换一个角度想，我们从 $A$ 和 $B$ 处入手。对于 $A$ 和 $B$ ， 我们发现这两个数可以随便地放到任意一层中，即只需满足 $0 \leq num_A,num_B \leq N$ 即可，其中 $num_x$ 表示 $x$ 在塔中出现的次数。因此可以写成 Ax + By = K (0 \leq x,y \leq N)的形式。我们只需要 $O(N)$ 枚举 $x$ 的取值，再判断与之对应的 $y$ 是否是整数。一对 $x,y$ 对答案的贡献是 $C(n, x) \times C(n, y)$ ，即 $\binom{n}{x} \times \binom{n}{y}$ 。至于为什么呢，就是因为 $A$ 和 $B$ 两个数并不冲突 —— 可以同时放在一层中，可以独自一层，也可以一层两个都没有；所以 $x$ 个 $A$ 和 $y$ 个 $B$ 可以随便在 $n$ 层中分布。 Code12345678910111213141516171819202122232425262728293031323334353637383940414243444546#include &lt;bits/stdc++.h&gt;using namespace std;typedef long long ll;const int N = 300300;const int mod = 998244353;#define int long long#define M(x) (((x) + mod) % mod)int n, a, b, k, c[N], inv[N], s[N], t[N], fac[N], ans, inv2[N];inline int qpow(int a, int b) &#123; int res = 1; while (b) &#123; if (b &amp; 1) (res *= a) %= mod; (a *= a) %= mod, b &gt;&gt;= 1; &#125; return res;&#125;inline void prework() &#123; fac[0] = s[0] = 1; inv[0] = 1; // 注意赋初值 for (int i = 1; i &lt;= n; i++) fac[i] = 1ll * fac[i - 1] * i % mod; // 阶乘 for (int i = 1; i &lt;= n; i++) s[i] = 1ll * s[i - 1] * fac[i] % mod; t[n] = qpow(s[n], mod - 2); // 前缀积 O(n + logP) 逆元求法 for (int i = n; i &gt;= 1; i--) t[i - 1] = 1ll * t[i] * fac[i] % mod; for (int i = 1; i &lt;= n; i++) inv[i] = 1ll * t[i] * s[i - 1] % mod;&#125;inline ll C(int M, int N) &#123; // C(M, N) if (N &lt; 0 || N &gt; M) return 0; return M(1ll * fac[M] * M(inv[N] * inv[M - N]));&#125;signed main() &#123; scanf("%lld%lld%lld%lld", &amp;n, &amp;a, &amp;b, &amp;k); prework(); for (int x = 0, y; x &lt;= n; x++) // 枚举 x if ((k - a * x) % b == 0) &#123; // 判断 y 是不是整数 y = (k - a * x) / b; ans += M(1ll * C(n, x) * C(n, y)); // 贡献 &#125; printf("%lld\n", M(ans)); return 0;&#125;]]></content>
@@ -87,7 +100,6 @@
       </categories>
       <tags>
         <tag>数学</tag>
-        <tag>递归</tag>
       </tags>
   </entry>
   <entry>
@@ -184,8 +196,8 @@
       <tags>
         <tag>图论</tag>
         <tag>DP</tag>
-        <tag>数位DP</tag>
         <tag>树形DP</tag>
+        <tag>数位DP</tag>
       </tags>
   </entry>
   <entry>
@@ -261,8 +273,8 @@
       </categories>
       <tags>
         <tag>图论</tag>
-        <tag>树链剖分</tag>
         <tag>线段树</tag>
+        <tag>树链剖分</tag>
       </tags>
   </entry>
   <entry>
@@ -288,8 +300,8 @@
         <category>算法讲解</category>
       </categories>
       <tags>
-        <tag>树链剖分</tag>
         <tag>线段树</tag>
+        <tag>树链剖分</tag>
       </tags>
   </entry>
   <entry>
@@ -375,18 +387,23 @@
     <content type="text"><![CDATA[o1tQMBIJO5]]></content>
   </entry>
   <entry>
-    <title></title>
-    <url>%2Fbaidu_verify_U51fhF2DWG.html</url>
-    <content type="text"><![CDATA[U51fhF2DWG]]></content>
-  </entry>
-  <entry>
     <title><![CDATA[404 Not Found]]></title>
     <url>%2F404.html</url>
     <content type="text"><![CDATA[**404 Not Found** **很抱歉，您访问的页面不存在** 可能是输入地址有误或该地址已被删除]]></content>
   </entry>
   <entry>
-    <title><![CDATA[所有标签]]></title>
-    <url>%2Ftags%2Findex.html</url>
+    <title></title>
+    <url>%2Fbaidu_verify_U51fhF2DWG.html</url>
+    <content type="text"><![CDATA[U51fhF2DWG]]></content>
+  </entry>
+  <entry>
+    <title><![CDATA[关于]]></title>
+    <url>%2Fabout%2Findex.html</url>
+    <content type="text"><![CDATA[这是一个弱鸡 OIer 瞎搞出来的一个博客~]]></content>
+  </entry>
+  <entry>
+    <title><![CDATA[所有分类]]></title>
+    <url>%2Fcategories%2Findex.html</url>
     <content type="text"></content>
   </entry>
   <entry>
@@ -395,18 +412,13 @@
     <content type="text"><![CDATA[欢迎互换友链！ 如需友链请说明备注名、链接地址与背景颜色和字体颜色的十六进制表示。 常用网站网址洛谷 | BZOJ | Graph Editor | 图床 | OIerDb | BZOJ离线题库 | DarkBzoj]]></content>
   </entry>
   <entry>
-    <title><![CDATA[关于]]></title>
-    <url>%2Fabout%2Findex.html</url>
-    <content type="text"><![CDATA[这是一个弱鸡 OIer 瞎搞出来的一个博客~]]></content>
+    <title><![CDATA[所有标签]]></title>
+    <url>%2Ftags%2Findex.html</url>
+    <content type="text"></content>
   </entry>
   <entry>
     <title><![CDATA[搜索]]></title>
     <url>%2Fsearch%2Findex.html</url>
-    <content type="text"></content>
-  </entry>
-  <entry>
-    <title><![CDATA[所有分类]]></title>
-    <url>%2Fcategories%2Findex.html</url>
     <content type="text"></content>
   </entry>
 </search>

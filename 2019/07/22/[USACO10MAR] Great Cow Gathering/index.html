@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   
-  <title>Tag: 递归 | P_Wang&#39;s Blog</title>
+  <title>「USACO10MAR」Great Cow Gathering | P_Wang&#39;s Blog</title>
   
   
   <meta name="description" content="OIer!">
@@ -60,7 +60,7 @@
   
   
   <div class="cover-wrapper">
-    <cover class="cover  half">
+    <cover class="cover post half">
       
         
   <h1 class="title">P_Wang</h1>
@@ -214,25 +214,12 @@
 
   <div class="l_body">
     <div class='body-wrapper'>
-      
-<div class="l_main">
+      <div class="l_main">
   
-    
-      
-  <section class="post-list">
-    
-      
-        
-          
-        
-      
-    
-    
-      
-        
-          <div class="post-wrapper">
-            <article class="post reveal ">
+
   
+    <article id="post" class="post white-box article-type-post" itemscope itemprop="blogPost">
+      
 
 
   <section class="meta">
@@ -241,11 +228,13 @@
     <div class="meta" id="header-meta">
       
         
-  <h2 class="title">
-    <a href="/2019/05/17/[HAOI2007] 反素数/">
-      「HAOI2007」反素数
-    </a>
-  </h2>
+  
+    <h1 class="title">
+      <a href="/2019/07/22/[USACO10MAR] Great Cow Gathering/">
+        「USACO10MAR」Great Cow Gathering
+      </a>
+    </h1>
+  
 
 
       
@@ -271,7 +260,7 @@
             <div class="new-meta-item date">
   <a class="notlink">
     <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2019-05-17</p>
+    <p>2019-07-22</p>
   </a>
 </div>
 
@@ -292,6 +281,19 @@
         
           
             
+  
+    <div class="new-meta-item browse busuanzi">
+      <a class="notlink">
+        <i class="fas fa-eye" aria-hidden="true"></i>
+        <p>
+          <span id="busuanzi_value_page_pv">
+            <i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i>
+          </span>
+        </p>
+      </a>
+    </div>
+  
+
 
           
         
@@ -308,41 +310,137 @@
   </section>
 
 
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      <h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a><strong>Description</strong></h1><p>对于一个数 $x$ ，只要它满足对于任意一个 $&lt; x$ 的数 $i$ ，均有 $g(i) &lt; g(x)$，其中 $g(i)$ 表示 $i$ 的约数个数。</p>
-      
-        <div class="readmore">
-          <a href="/2019/05/17/[HAOI2007] 反素数/" class="flat-box">
-            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-            阅读全文
-          </a>
+      <section class="article typo">
+        <div class="article-entry" itemprop="articleBody">
+          <h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a><strong>Description</strong></h1><p>给一个带边权与点权的树 $T$ （ $N$ 个结点 ），找一个点 $x$ 使 $\sum_{u \in T\ \&amp;\ u \neq x} dis_{u,x} \times c_u$ 取最大值。</p>
+<p>对于 $100\%$ 的数据，有 $1 \leq N \leq 100000,\ 1 \leq C_i \leq 1000$ 。</p>
+<a id="more"></a>
+<p><a href="https://www.luogu.org/problemnew/show/P2986" target="_blank" rel="noopener">题目链接戳这里</a></p>
+<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a><strong>Solution</strong></h1><p>树形 DP 。其实也不能完全算是 DP 。</p>
+<p>我们使用调整法。对于点 $1$ ，我们可以 $O(n)$ 地算出 $f_1 = \sum_{u \in T\ \&amp;\ u \neq 1} dis_{u,1} \times C_u$</p>
+<p>然后递归考虑 $1$ 的儿子结点 $u$ 。我们比较一下 $f_1$ 和 $f_u$ 。可以将这棵树分为两部分。其中一部分（ $up$ ）与点 $1$ 在点 $u$ 的同一边，而另一部分（ $dn$ ）则与点 $u$ 在点 $1$ 同一边。当我们的注意力从 $1$ 转到 $u$ 上时，我们发现 $f$ 的值发生了一些变化。对于 $up$ 那部分的所有点，它们都被加上了一段路程 $dis_{1,u}$ ；而对于 $dn$ 那部分的所有点，它们都减去了 $dis_{1, u}$ 。</p>
+<p><img src="https://i.loli.net/2019/07/22/5d35c8f32385195587.png" alt="题目中的样例"></p>
+<p>举个例子。对于图上的 $3$ ，我们发现 $f_3 = 1\times 1 + 1 \times 2 + 2 \times 6 = 15$ 。把它分成 $up$ 和 $dn$ ， $up = 3,\ dn = 12$ 。同理对于 $4$ ， $up = up_3 + 3 \times (1 + 1) = 9,\ dn = dn_3 - 3 \times 2 = 6$ 。</p>
+<p>结果，我们发现 $up$ 和 $dn$ 都与前面有关系，所以只用记变化值就行啦。</p>
+<p><strong>注意开 <code>long long</code> 。。</strong></p>
+<h1 id="Code"><a href="#Code" class="headerlink" title="Code"></a><strong>Code</strong></h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">100100</span>;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> int long long</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n, c[N], f[N], up[N], dn[N], size[N], ans = <span class="number">1e18</span>;</span><br><span class="line"><span class="comment">// f up dn 如上文；size[u] 以 u 为根的子树大小（此处指子树中 c[i] 之和）</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">edge</span> &#123;</span> <span class="keyword">int</span> v, w; edge *next; &#125; pool[N &lt;&lt; <span class="number">1</span>], *h[N], *cur = pool;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">addedge</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span> v, <span class="keyword">int</span> w)</span> </span>&#123;</span><br><span class="line">  edge *p = ++cur, *q = ++cur;</span><br><span class="line">  p-&gt;v = v, p-&gt;w = w, p-&gt;next = h[u], h[u] = p;</span><br><span class="line">  q-&gt;v = u, q-&gt;w = w, q-&gt;next = h[v], h[v] = q;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">calc</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span> dis, <span class="keyword">int</span> fa)</span> </span>&#123; <span class="comment">// 求 f[1]</span></span><br><span class="line">  <span class="keyword">int</span> v, res = c[u] * dis;</span><br><span class="line">  <span class="keyword">for</span> (edge *p = h[u]; p; p = p-&gt;next)</span><br><span class="line">    <span class="keyword">if</span> ((v = p-&gt;v) != fa) &#123;</span><br><span class="line">      res += calc(v, dis + p-&gt;w, u);</span><br><span class="line">    &#125;</span><br><span class="line">  <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">pre</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span> fa)</span> </span>&#123; <span class="comment">// 求 size</span></span><br><span class="line">  <span class="keyword">int</span> v; size[u] = c[u];</span><br><span class="line">  <span class="keyword">for</span> (edge *p = h[u]; p; p = p-&gt;next)</span><br><span class="line">    <span class="keyword">if</span> ((v = p-&gt;v) != fa) &#123;</span><br><span class="line">      pre(v, u); size[u] += size[v];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span> fa)</span> </span>&#123; <span class="comment">// 求 f</span></span><br><span class="line">  <span class="keyword">int</span> v;</span><br><span class="line">  <span class="keyword">for</span> (edge *p = h[u]; p; p = p-&gt;next)</span><br><span class="line">    <span class="keyword">if</span> ((v = p-&gt;v) != fa) &#123;</span><br><span class="line">      up[v] = (size[<span class="number">1</span>] - size[v]) * p-&gt;w;</span><br><span class="line">      dn[v] = -size[v] * p-&gt;w;</span><br><span class="line">      f[v] = f[u] + up[v] + dn[v]; <span class="comment">// 记得 up 和 dn 只是相对 u 的变化值</span></span><br><span class="line">      dfs(v, u);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">signed</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="keyword">int</span> u, v, w;</span><br><span class="line">  <span class="built_in">scanf</span>(<span class="string">"%lld"</span>, &amp;n);</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) <span class="built_in">scanf</span>(<span class="string">"%lld"</span>, &amp;c[i]);</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; n; i++) &#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%lld%lld%lld"</span>, &amp;u, &amp;v, &amp;w);</span><br><span class="line">    addedge(u, v, w);</span><br><span class="line">  &#125;</span><br><span class="line">  pre(<span class="number">1</span>, <span class="number">0</span>); f[<span class="number">1</span>] = calc(<span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>); dfs(<span class="number">1</span>, <span class="number">0</span>);</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) ans = min(ans, f[i]);</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">"%lld\n"</span>, ans);</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
         </div>
+        
+          
+
+
+  <section class="meta" id="footer-meta">
+    <hr>
+    <div class="new-meta-box">
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-07-22T22:43:53+08:00">
+  <a class="notlink">
+    <i class="fas fa-clock" aria-hidden="true"></i>
+    <p>最后更新于 2019年7月22日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/DP/" rel="nofollow"><i class="fas fa-hashtag" aria-hidden="true"></i>&nbsp;<p>DP</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/树形DP/" rel="nofollow"><i class="fas fa-hashtag" aria-hidden="true"></i>&nbsp;<p>树形DP</p></a></div>
+
+
+        
+      
+        
+          
+
+        
       
     </div>
-    
-      <div class="full-width auto-padding tags">
-        
-          <a href="/tags/数学/" rel="nofollow"><i class="fas fa-hashtag fa-fw"></i>数学</a>
-        
-          <a href="/tags/递归/" rel="nofollow"><i class="fas fa-hashtag fa-fw"></i>递归</a>
-        
-      </div>
-    
   </section>
-</article>
 
-          </div>
+
         
-      
-    
-  </section>
+        
+            <div class="prev-next">
+            
+                <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">701字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">3分</span>
+      </span>
+    </span>
+</div>
+                
+                
+                
+                    <section class="next">
+                        <span class="art-item-right" aria-hidden="true">
+                            <h6>下一页&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
+                            <h4>
+                                <a href="/2019/07/20/[AtCoder Grand Contest 025 B] RGB Coloring/" rel="prev" title="「AtCoder Grand Contest 025 B」RGB Coloring">
+                                    
+                                        「AtCoder Grand Contest 025 B」RGB Coloring
+                                    
+                                </a>
+                            </h4>
+                            
+                                
+                                <h6 class="tags">
+                                    <a class="tag" href="/tags/组合数学/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>组合数学</a> <a class="tag" href="/tags/数学/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>数学</a> <a class="tag" href="/tags/排列组合/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>排列组合</a>
+                                </h6>
+                            
+                        </span>
+                    </section>
+                
+            </div>
+        
+      </section>
+    </article>
   
-    
-    <!-- 根据主题中的设置决定是否在archive中针对摘要部分的MathJax公式加载mathjax.js文件 -->
-    
-    
-      <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
+
+  
+    <!-- 显示推荐文章和评论 -->
+
+
+
+  <article class="post white-box comments">
+    <section class="article typo">
+      <h4><i class="fas fa-comments fa-fw" aria-hidden="true"></i>&nbsp;评论</h4>
+      
+      
+      
+      
+        <section id="comments">
+          <div id="valine_container" class="valine_thread">
+            <i class="fas fa-spinner fa-spin fa-fw"></i>
+          </div>
+        </section>
+      
+    </section>
+  </article>
+
+
+  
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+  <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config({
     "HTML-CSS": {
@@ -378,13 +476,17 @@
 <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
 </script>
 
-    
-
-  
 
 
-    
-  
+
+  <script>
+    window.subData = {
+      title: '「USACO10MAR」Great Cow Gathering',
+      tools: true
+    }
+  </script>
+
+
 </div>
 <aside class="l_side">
   
@@ -441,6 +543,20 @@
           
           
             
+  <section class="widget toc-wrapper">
+    
+<header class="pure">
+  <div><i class="fas fa-list fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;本文目录</div>
+  
+    <div class="wrapper"><a class="s-toc rightBtn" rel="external nofollow noopener noreferrer" href="javascript:void(0)"><i class="fas fa-thumbtack fa-fw"></i></a></div>
+  
+</header>
+
+    <div class="content pure">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Description"><span class="toc-text">Description</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Solution"><span class="toc-text">Solution</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Code"><span class="toc-text">Code</span></a></li></ol>
+    </div>
+  </section>
+
 
           
         
@@ -510,13 +626,13 @@
     <div class="content pure">
       <ul class="entry">
         
-          <li><a class="flat-box" title="/categories/OI/" href="/categories/OI/"><div class="name">OI</div><div class="badge">(26)</div></a></li>
+          <li><a class="flat-box" title="/categories/OI/" href="/categories/OI/"><div class="name">OI</div><div class="badge">(27)</div></a></li>
         
           <li><a class="flat-box child" title="/categories/OI/其它/" href="/categories/OI/其它/"><div class="name">其它</div><div class="badge">(2)</div></a></li>
         
           <li><a class="flat-box child" title="/categories/OI/算法讲解/" href="/categories/OI/算法讲解/"><div class="name">算法讲解</div><div class="badge">(6)</div></a></li>
         
-          <li><a class="flat-box child" title="/categories/OI/题解/" href="/categories/OI/题解/"><div class="name">题解</div><div class="badge">(18)</div></a></li>
+          <li><a class="flat-box child" title="/categories/OI/题解/" href="/categories/OI/题解/"><div class="name">题解</div><div class="badge">(19)</div></a></li>
         
           <li><a class="flat-box" title="/categories/数学/" href="/categories/数学/"><div class="name">数学</div><div class="badge">(2)</div></a></li>
         
@@ -543,7 +659,7 @@
 </header>
 
     <div class="content pure">
-      <a href="/tags/DFS序/" style="font-size: 14px; color: #999">DFS序</a> <a href="/tags/DP/" style="font-size: 21.5px; color: #666">DP</a> <a href="/tags/Floyd/" style="font-size: 14px; color: #999">Floyd</a> <a href="/tags/LCA/" style="font-size: 16.5px; color: #888">LCA</a> <a href="/tags/SPFA/" style="font-size: 14px; color: #999">SPFA</a> <a href="/tags/fhq-treap/" style="font-size: 14px; color: #999">fhq-treap</a> <a href="/tags/三角函数/" style="font-size: 14px; color: #999">三角函数</a> <a href="/tags/二分/" style="font-size: 14px; color: #999">二分</a> <a href="/tags/二分答案/" style="font-size: 14px; color: #999">二分答案</a> <a href="/tags/代数/" style="font-size: 14px; color: #999">代数</a> <a href="/tags/优化/" style="font-size: 21.5px; color: #666">优化</a> <a href="/tags/倍增/" style="font-size: 16.5px; color: #888">倍增</a> <a href="/tags/公式/" style="font-size: 19px; color: #777">公式</a> <a href="/tags/几何/" style="font-size: 14px; color: #999">几何</a> <a href="/tags/后缀数组/" style="font-size: 14px; color: #999">后缀数组</a> <a href="/tags/哈希/" style="font-size: 14px; color: #999">哈希</a> <a href="/tags/四边形不等式/" style="font-size: 14px; color: #999">四边形不等式</a> <a href="/tags/图论/" style="font-size: 24px; color: #555">图论</a> <a href="/tags/字符串/" style="font-size: 14px; color: #999">字符串</a> <a href="/tags/字符串哈希/" style="font-size: 14px; color: #999">字符串哈希</a> <a href="/tags/平面向量/" style="font-size: 14px; color: #999">平面向量</a> <a href="/tags/并查集/" style="font-size: 14px; color: #999">并查集</a> <a href="/tags/拓扑排序/" style="font-size: 14px; color: #999">拓扑排序</a> <a href="/tags/排列组合/" style="font-size: 14px; color: #999">排列组合</a> <a href="/tags/数位DP/" style="font-size: 16.5px; color: #888">数位DP</a> <a href="/tags/数学/" style="font-size: 16.5px; color: #888">数学</a> <a href="/tags/最大流/" style="font-size: 14px; color: #999">最大流</a> <a href="/tags/最小割/" style="font-size: 14px; color: #999">最小割</a> <a href="/tags/最小表示法/" style="font-size: 14px; color: #999">最小表示法</a> <a href="/tags/最短路/" style="font-size: 16.5px; color: #888">最短路</a> <a href="/tags/期望/" style="font-size: 14px; color: #999">期望</a> <a href="/tags/树形DP/" style="font-size: 14px; color: #999">树形DP</a> <a href="/tags/树状数组/" style="font-size: 14px; color: #999">树状数组</a> <a href="/tags/树链剖分/" style="font-size: 16.5px; color: #888">树链剖分</a> <a href="/tags/欧拉函数/" style="font-size: 14px; color: #999">欧拉函数</a> <a href="/tags/欧拉定理/" style="font-size: 14px; color: #999">欧拉定理</a> <a href="/tags/线段树/" style="font-size: 21.5px; color: #666">线段树</a> <a href="/tags/组合数学/" style="font-size: 14px; color: #999">组合数学</a> <a href="/tags/网络流/" style="font-size: 14px; color: #999">网络流</a> <a href="/tags/贪心/" style="font-size: 14px; color: #999">贪心</a> <a href="/tags/递归/" style="font-size: 14px; color: #999">递归</a>
+      <a href="/tags/DFS序/" style="font-size: 14px; color: #999">DFS序</a> <a href="/tags/DP/" style="font-size: 22px; color: #636363">DP</a> <a href="/tags/Floyd/" style="font-size: 14px; color: #999">Floyd</a> <a href="/tags/LCA/" style="font-size: 16px; color: #8b8b8b">LCA</a> <a href="/tags/SPFA/" style="font-size: 14px; color: #999">SPFA</a> <a href="/tags/fhq-treap/" style="font-size: 14px; color: #999">fhq-treap</a> <a href="/tags/三角函数/" style="font-size: 14px; color: #999">三角函数</a> <a href="/tags/二分/" style="font-size: 14px; color: #999">二分</a> <a href="/tags/二分答案/" style="font-size: 14px; color: #999">二分答案</a> <a href="/tags/代数/" style="font-size: 14px; color: #999">代数</a> <a href="/tags/优化/" style="font-size: 20px; color: #707070">优化</a> <a href="/tags/倍增/" style="font-size: 16px; color: #8b8b8b">倍增</a> <a href="/tags/公式/" style="font-size: 18px; color: #7e7e7e">公式</a> <a href="/tags/几何/" style="font-size: 14px; color: #999">几何</a> <a href="/tags/后缀数组/" style="font-size: 14px; color: #999">后缀数组</a> <a href="/tags/哈希/" style="font-size: 14px; color: #999">哈希</a> <a href="/tags/四边形不等式/" style="font-size: 14px; color: #999">四边形不等式</a> <a href="/tags/图论/" style="font-size: 24px; color: #555">图论</a> <a href="/tags/字符串/" style="font-size: 14px; color: #999">字符串</a> <a href="/tags/字符串哈希/" style="font-size: 14px; color: #999">字符串哈希</a> <a href="/tags/平面向量/" style="font-size: 14px; color: #999">平面向量</a> <a href="/tags/并查集/" style="font-size: 14px; color: #999">并查集</a> <a href="/tags/拓扑排序/" style="font-size: 14px; color: #999">拓扑排序</a> <a href="/tags/排列组合/" style="font-size: 14px; color: #999">排列组合</a> <a href="/tags/数位DP/" style="font-size: 16px; color: #8b8b8b">数位DP</a> <a href="/tags/数学/" style="font-size: 16px; color: #8b8b8b">数学</a> <a href="/tags/最大流/" style="font-size: 14px; color: #999">最大流</a> <a href="/tags/最小割/" style="font-size: 14px; color: #999">最小割</a> <a href="/tags/最小表示法/" style="font-size: 14px; color: #999">最小表示法</a> <a href="/tags/最短路/" style="font-size: 16px; color: #8b8b8b">最短路</a> <a href="/tags/期望/" style="font-size: 14px; color: #999">期望</a> <a href="/tags/树形DP/" style="font-size: 16px; color: #8b8b8b">树形DP</a> <a href="/tags/树状数组/" style="font-size: 14px; color: #999">树状数组</a> <a href="/tags/树链剖分/" style="font-size: 16px; color: #8b8b8b">树链剖分</a> <a href="/tags/欧拉函数/" style="font-size: 14px; color: #999">欧拉函数</a> <a href="/tags/欧拉定理/" style="font-size: 14px; color: #999">欧拉定理</a> <a href="/tags/线段树/" style="font-size: 20px; color: #707070">线段树</a> <a href="/tags/组合数学/" style="font-size: 14px; color: #999">组合数学</a> <a href="/tags/网络流/" style="font-size: 14px; color: #999">网络流</a> <a href="/tags/贪心/" style="font-size: 14px; color: #999">贪心</a>
     </div>
   </section>
 
@@ -643,7 +759,7 @@
   <i class="fa fa-eye"></i>
   <span id="busuanzi_container_site_pv"> <span id="busuanzi_value_site_pv"></span></span>&nbsp;Views&nbsp;&nbsp;|&nbsp;&nbsp;
   <i class="fas fa-chart-area"></i>
-  <span class="post-count">Word Count:20.4k</span>&nbsp;&nbsp;|&nbsp;&nbsp;
+  <span class="post-count">Word Count:21.1k</span>&nbsp;&nbsp;|&nbsp;&nbsp;
   <a href="https://tle666.github.io/sitemap.xml" target="_blank">站点地图</a>&nbsp;&nbsp;
 </footer>
 
@@ -708,6 +824,36 @@
 
 
 
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  
+    
+      <script src="https://cdn.jsdelivr.net/gh/xaoxuu/volantis@1/js/volantis.min.js"></script>
+    
+  
+  <script>
+  var GUEST_INFO = ['nick','mail','link'];
+  var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+    return GUEST_INFO.indexOf(item) > -1
+  });
+  var notify = 'false' == true;
+  var verify = 'false' == true;
+  var valine = new Valine();
+  valine.init({
+    el: '#valine_container',
+    notify: notify,
+    verify: verify,
+    guest_info: guest_info,
+    
+    appId: "nhey5vBr1JxoWsVjN7D8fXVF-gzGzoHsz",
+    appKey: "0KiWa6yKIgaIzKv1m1zd6W94",
+    placeholder: "想说点什么~",
+    pageSize:'10',
+    avatar:'mp',
+    lang:'zh-cn',
+    highlight:'false'
+  })
+  </script>
 
 
 
