@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   
-  <title>Tag: 字符串 | P_Wang&#39;s Blog</title>
+  <title>「国家集训队」种树 | P_Wang&#39;s Blog</title>
   
   
   <meta name="description" content="OIer!">
@@ -60,7 +60,7 @@
   
   
   <div class="cover-wrapper">
-    <cover class="cover  half">
+    <cover class="cover post half">
       
         
   <h1 class="title">P_Wang</h1>
@@ -214,25 +214,12 @@
 
   <div class="l_body">
     <div class='body-wrapper'>
-      
-<div class="l_main">
+      <div class="l_main">
   
-    
-      
-  <section class="post-list">
-    
-      
-        
-          
-        
-      
-    
-    
-      
-        
-          <div class="post-wrapper">
-            <article class="post reveal ">
+
   
+    <article id="post" class="post white-box article-type-post" itemscope itemprop="blogPost">
+      
 
 
   <section class="meta">
@@ -241,11 +228,13 @@
     <div class="meta" id="header-meta">
       
         
-  <h2 class="title">
-    <a href="/2019/07/14/最小表示法/">
-      最小表示法
-    </a>
-  </h2>
+  
+    <h1 class="title">
+      <a href="/2019/07/23/[国家集训队] 种树/">
+        「国家集训队」种树
+      </a>
+    </h1>
+  
 
 
       
@@ -271,7 +260,7 @@
             <div class="new-meta-item date">
   <a class="notlink">
     <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2019-07-14</p>
+    <p>2019-07-23</p>
   </a>
 </div>
 
@@ -281,9 +270,9 @@
             
   
   <div class="new-meta-item category">
-    <a href="/categories/OI/算法讲解/" rel="nofollow">
+    <a href="/categories/OI/题解/" rel="nofollow">
       <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>OI&nbsp;/&nbsp;算法讲解</p>
+      <p>OI&nbsp;/&nbsp;题解</p>
     </a>
   </div>
 
@@ -292,6 +281,19 @@
         
           
             
+  
+    <div class="new-meta-item browse busuanzi">
+      <a class="notlink">
+        <i class="fas fa-eye" aria-hidden="true"></i>
+        <p>
+          <span id="busuanzi_value_page_pv">
+            <i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i>
+          </span>
+        </p>
+      </a>
+    </div>
+  
+
 
           
         
@@ -308,43 +310,135 @@
   </section>
 
 
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      <p>有一个字符串，当我们要寻找一个位置，使其从这个位置向后形成一个新字符串，这个新字符串的字典序最小时，就能用到这个算法。</p>
-<p>比如对于 $ABCD$ ，就有 $ABCD$ ， $BCDA$ ， $CDAB$ ， $DABC$ 这四种新字符串。</p>
-<p>而最小的那个是 $ABCD$ 。</p>
-      
-        <div class="readmore">
-          <a href="/2019/07/14/最小表示法/" class="flat-box">
-            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-            阅读全文
-          </a>
+      <section class="article typo">
+        <div class="article-entry" itemprop="articleBody">
+          <h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a><strong>Description</strong></h1><p>一个圆环上有 $n$ 个点，每个点都有美观度，要取 $m$ 个点使它们不相邻且总美观度最大。</p>
+<p>对于 $100 \%$ 的数据，有 $n \leq 200000,m \leq n$</p>
+<a id="more"></a>
+<p><a href="https://www.luogu.org/problemnew/show/P1792" target="_blank" rel="noopener">题目链接戳这里</a></p>
+<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a><strong>Solution</strong></h1><p>十分神奇的贪心。。</p>
+<p>首先先种上美观度最大的一棵，然后将其左右两棵合并到中间，且其美观度为 $val_l + val_r - val_i$ 。</p>
+<p>其中 $val_x$ 是 $x$ 的美观度，$i$ 是美观度最大的那棵， $l,r$ 分别是其左边和右边的两棵。</p>
+<p>这中操作其实就是一种反悔机制：如果后来发现一开始选 $i$ 左边和右边的收益更大，那其实加上 $val_l + val_r - val_i$ 后就能把一开始的 $val_i$ 抵消掉，也就是 $val_i + (val_l + val_r - val_i) = val_l + val_r$ 。这时就相当于把一开始不好的 $i$ 替换成更好的 $l,r$ 。</p>
+<p>但如果 $i$ 更好，那么后来也就选不上 $l$ 和 $r$ 了，因为每步都会有个排序。</p>
+<h1 id="Code"><a href="#Code" class="headerlink" title="Code"></a><strong>Code</strong></h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">200200</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n, m, ans; <span class="keyword">bool</span> vis[N];</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">pos</span> &#123;</span> <span class="keyword">int</span> val, l, r; &#125; p[N];</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span> &#123;</span></span><br><span class="line">  <span class="keyword">int</span> val, id;</span><br><span class="line">  <span class="keyword">inline</span> <span class="keyword">bool</span> <span class="keyword">operator</span> &lt; (<span class="keyword">const</span> node &amp;rhs) <span class="keyword">const</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> val &lt; rhs.val;</span><br><span class="line">  &#125;</span><br><span class="line">&#125; ;</span><br><span class="line">priority_queue &lt;node&gt; Q;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">del</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">  p[x].l = p[p[x].l].l, p[x].r = p[p[x].r].r;</span><br><span class="line">  p[p[x].l].r = x, p[p[x].r].l = x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;n, &amp;m);</span><br><span class="line">  <span class="keyword">if</span> ((m &lt;&lt; <span class="number">1</span>) &gt; n) &#123; <span class="built_in">puts</span>(<span class="string">"Error!"</span>); <span class="keyword">return</span> <span class="number">0</span>; &#125;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;p[i].val);</span><br><span class="line">    p[i].l = i - <span class="number">1</span>, p[i].r = i + <span class="number">1</span>;</span><br><span class="line">    Q.push((node) &#123;p[i].val, i&#125;);</span><br><span class="line">  &#125;</span><br><span class="line">  p[<span class="number">1</span>].l = n, p[n].r = <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">while</span> (m--) &#123;</span><br><span class="line">    <span class="keyword">while</span> (vis[Q.top().id]) Q.pop();</span><br><span class="line">    node cur = Q.top(); Q.pop();</span><br><span class="line">    ans += cur.val, vis[p[cur.id].l] = vis[p[cur.id].r] = <span class="literal">true</span>;</span><br><span class="line">    p[cur.id].val = p[p[cur.id].l].val + p[p[cur.id].r].val - p[cur.id].val;</span><br><span class="line">    Q.push((node) &#123;p[cur.id].val, cur.id&#125;); del(cur.id);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, ans); <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
         </div>
+        
+          
+
+
+  <section class="meta" id="footer-meta">
+    <hr>
+    <div class="new-meta-box">
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-07-23T23:03:40+08:00">
+  <a class="notlink">
+    <i class="fas fa-clock" aria-hidden="true"></i>
+    <p>最后更新于 2019年7月23日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/贪心/" rel="nofollow"><i class="fas fa-hashtag" aria-hidden="true"></i>&nbsp;<p>贪心</p></a></div>
+
+
+        
+      
+        
+          
+
+        
       
     </div>
-    
-      <div class="full-width auto-padding tags">
-        
-          <a href="/tags/字符串/" rel="nofollow"><i class="fas fa-hashtag fa-fw"></i>字符串</a>
-        
-          <a href="/tags/最小表示法/" rel="nofollow"><i class="fas fa-hashtag fa-fw"></i>最小表示法</a>
-        
-      </div>
-    
   </section>
-</article>
 
-          </div>
+
         
-      
-    
-  </section>
+        
+            <div class="prev-next">
+            
+                <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">479字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">2分</span>
+      </span>
+    </span>
+</div>
+                
+                
+                
+                    <section class="next">
+                        <span class="art-item-right" aria-hidden="true">
+                            <h6>下一页&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
+                            <h4>
+                                <a href="/2019/07/23/[BZOJ3850] ZCC Loves Codefires/" rel="prev" title="「BZOJ3850」ZCC Loves Codefires">
+                                    
+                                        「BZOJ3850」ZCC Loves Codefires
+                                    
+                                </a>
+                            </h4>
+                            
+                                
+                                <h6 class="tags">
+                                    <a class="tag" href="/tags/贪心/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>贪心</a>
+                                </h6>
+                            
+                        </span>
+                    </section>
+                
+            </div>
+        
+      </section>
+    </article>
   
-    
-    <!-- 根据主题中的设置决定是否在archive中针对摘要部分的MathJax公式加载mathjax.js文件 -->
-    
-    
-      <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
+
+  
+    <!-- 显示推荐文章和评论 -->
+
+
+
+  <article class="post white-box comments">
+    <section class="article typo">
+      <h4><i class="fas fa-comments fa-fw" aria-hidden="true"></i>&nbsp;评论</h4>
+      
+      
+      
+      
+        <section id="comments">
+          <div id="valine_container" class="valine_thread">
+            <i class="fas fa-spinner fa-spin fa-fw"></i>
+          </div>
+        </section>
+      
+    </section>
+  </article>
+
+
+  
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+  <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config({
     "HTML-CSS": {
@@ -380,13 +474,17 @@
 <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
 </script>
 
-    
-
-  
 
 
-    
-  
+
+  <script>
+    window.subData = {
+      title: '「国家集训队」种树',
+      tools: true
+    }
+  </script>
+
+
 </div>
 <aside class="l_side">
   
@@ -443,6 +541,20 @@
           
           
             
+  <section class="widget toc-wrapper">
+    
+<header class="pure">
+  <div><i class="fas fa-list fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;本文目录</div>
+  
+    <div class="wrapper"><a class="s-toc rightBtn" rel="external nofollow noopener noreferrer" href="javascript:void(0)"><i class="fas fa-thumbtack fa-fw"></i></a></div>
+  
+</header>
+
+    <div class="content pure">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Description"><span class="toc-text">Description</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Solution"><span class="toc-text">Solution</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Code"><span class="toc-text">Code</span></a></li></ol>
+    </div>
+  </section>
+
 
           
         
@@ -710,6 +822,36 @@
 
 
 
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  
+    
+      <script src="https://cdn.jsdelivr.net/gh/xaoxuu/volantis@1/js/volantis.min.js"></script>
+    
+  
+  <script>
+  var GUEST_INFO = ['nick','mail','link'];
+  var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+    return GUEST_INFO.indexOf(item) > -1
+  });
+  var notify = 'false' == true;
+  var verify = 'false' == true;
+  var valine = new Valine();
+  valine.init({
+    el: '#valine_container',
+    notify: notify,
+    verify: verify,
+    guest_info: guest_info,
+    
+    appId: "nhey5vBr1JxoWsVjN7D8fXVF-gzGzoHsz",
+    appKey: "0KiWa6yKIgaIzKv1m1zd6W94",
+    placeholder: "想说点什么~",
+    pageSize:'10',
+    avatar:'mp',
+    lang:'zh-cn',
+    highlight:'false'
+  })
+  </script>
 
 
 
