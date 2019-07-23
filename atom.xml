@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://tle666.github.io/"/>
-  <updated>2019-07-23T11:44:34.170Z</updated>
+  <updated>2019-07-23T14:13:10.442Z</updated>
   <id>http://tle666.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>「BZOJ3850」ZCC Loves Codefires</title>
+    <link href="http://tle666.github.io/2019/07/23/%5BBZOJ3850%5D%20ZCC%20Loves%20Codefires/"/>
+    <id>http://tle666.github.io/2019/07/23/[BZOJ3850] ZCC Loves Codefires/</id>
+    <published>2019-07-23T13:36:07.000Z</published>
+    <updated>2019-07-23T14:13:10.442Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a><strong>Description</strong></h1><p>有 $n$ 道题，每道题有两个参数 $E,\ K$ ；需要 $E$ 时间来做完这道题，而在 $T$ 时间完成这道题时，会损失 $K \times T$ 分。要给这 $n$ 道题排个做题顺序，使得最后总损失的分数最少。</p><p>对于 $100 \%$ 的数据，有 $n \leq 10^5;\ E,K \leq 10^4$ 。</p><a id="more"></a><p><a href="http://ruanx.pw/bzojch/p/3850.html" target="_blank" rel="noopener">题目链接戳这里</a></p><h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a><strong>Solution</strong></h1><p>其实这纯是一道推式子的题……</p><p>我们考虑如果交换 $i,j$ 两题的顺序会发生什么。</p><p>令 $S_i$ 表示在 $i$ 前面做（不包括 $i$ ）的所有题所需的总时间。</p><p>若 $i$ 在 $j$ 前面做时两题总损失分数：</p><script type="math/tex; mode=display">(S_i + E_i) \times K_i + (S_i + E_i + E_{j}) \times K_j</script><script type="math/tex; mode=display">\Leftrightarrow S_i \times (K_i + K_j) + E_i \times K_i + E_j \times K_j + E_i \times K_j</script><p>若 $j$ 在 $i$ 前面做时两题总损失分数：</p><script type="math/tex; mode=display">(S_j + E_j) \times K_j + (S_j + E_j + E_i) \times K_i</script><p>而由于 $i$ 和 $j$ 只是交换了位置，所以 $S_j = S_i$ ；</p><script type="math/tex; mode=display">\Leftrightarrow S_i \times (K_i + K_j) + E_i \times K_i + E_j \times K_j + E_j \times K_i</script><p>对比两式可发现，我们只需判断 $E_i \times K_j$ 与 $E_j \times K_i$ 的大小关系即可。</p><p>所以只需将题目按照上述排序。</p><p>最后答案就用定义 $O(n)$ 算一遍就行了。</p><p><strong>注意开 <code>long long</code></strong></p><h1 id="Code"><a href="#Code" class="headerlink" title="Code"></a><strong>Code</strong></h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">100100</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> int long long</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n, ans;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span> &#123;</span></span><br><span class="line">  <span class="keyword">int</span> e, k;</span><br><span class="line">  <span class="keyword">inline</span> <span class="keyword">bool</span> <span class="keyword">operator</span> &lt; (<span class="keyword">const</span> node &amp;rhs) <span class="keyword">const</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> e * rhs.k &lt; rhs.e * k;</span><br><span class="line">  &#125;</span><br><span class="line">&#125; a[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">signed</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="built_in">scanf</span>(<span class="string">"%lld"</span>, &amp;n);</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) <span class="built_in">scanf</span>(<span class="string">"%lld"</span>, &amp;a[i].e);</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) <span class="built_in">scanf</span>(<span class="string">"%lld"</span>, &amp;a[i].k);</span><br><span class="line">  sort(a + <span class="number">1</span>, a + n + <span class="number">1</span>); <span class="keyword">int</span> s = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) ans += (s += a[i].e) * a[i].k;</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">"%lld\n"</span>, ans);</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h1 id="Submission"><a href="#Submission" class="headerlink" title="Submission"></a><strong>Submission</strong></h1><p>由于这是一道权限题，在这里提供一下数据（好像只有一组但超大）</p><p><a href="https://www.lanzous.com/i54n1dg" target="_blank" rel="noopener">一组数据</a></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;Description&quot;&gt;&lt;a href=&quot;#Description&quot; class=&quot;headerlink&quot; title=&quot;Description&quot;&gt;&lt;/a&gt;&lt;strong&gt;Description&lt;/strong&gt;&lt;/h1&gt;&lt;p&gt;有 $n$ 道题，每道题有两个参数 $E,\ K$ ；需要 $E$ 时间来做完这道题，而在 $T$ 时间完成这道题时，会损失 $K \times T$ 分。要给这 $n$ 道题排个做题顺序，使得最后总损失的分数最少。&lt;/p&gt;
+&lt;p&gt;对于 $100 \%$ 的数据，有 $n \leq 10^5;\ E,K \leq 10^4$ 。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="OI" scheme="http://tle666.github.io/categories/OI/"/>
+    
+      <category term="题解" scheme="http://tle666.github.io/categories/OI/%E9%A2%98%E8%A7%A3/"/>
+    
+    
+      <category term="贪心" scheme="http://tle666.github.io/tags/%E8%B4%AA%E5%BF%83/"/>
+    
+  </entry>
   
   <entry>
     <title>「HEOI2014」南园满地堆轻絮</title>
@@ -38,9 +63,9 @@
       <category term="题解" scheme="http://tle666.github.io/categories/OI/%E9%A2%98%E8%A7%A3/"/>
     
     
-      <category term="二分" scheme="http://tle666.github.io/tags/%E4%BA%8C%E5%88%86/"/>
-    
       <category term="贪心" scheme="http://tle666.github.io/tags/%E8%B4%AA%E5%BF%83/"/>
+    
+      <category term="二分" scheme="http://tle666.github.io/tags/%E4%BA%8C%E5%88%86/"/>
     
   </entry>
   
@@ -312,9 +337,9 @@
     
       <category term="DP" scheme="http://tle666.github.io/tags/DP/"/>
     
-      <category term="公式" scheme="http://tle666.github.io/tags/%E5%85%AC%E5%BC%8F/"/>
-    
       <category term="四边形不等式" scheme="http://tle666.github.io/tags/%E5%9B%9B%E8%BE%B9%E5%BD%A2%E4%B8%8D%E7%AD%89%E5%BC%8F/"/>
+    
+      <category term="公式" scheme="http://tle666.github.io/tags/%E5%85%AC%E5%BC%8F/"/>
     
   </entry>
   
@@ -544,31 +569,6 @@
     
     
       <category term="线段树" scheme="http://tle666.github.io/tags/%E7%BA%BF%E6%AE%B5%E6%A0%91/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>平面向量练习小结</title>
-    <link href="http://tle666.github.io/2019/03/02/%E5%B9%B3%E9%9D%A2%E5%90%91%E9%87%8F%E7%BB%83%E4%B9%A0%E5%B0%8F%E7%BB%93/"/>
-    <id>http://tle666.github.io/2019/03/02/平面向量练习小结/</id>
-    <published>2019-03-02T15:02:11.000Z</published>
-    <updated>2019-05-16T14:33:42.764Z</updated>
-    
-    <content type="html"><![CDATA[<p>最近做了一些关于平面向量的习题，发现了一种近乎万能的套路。</p><p><strong>这篇文章不适合向量零基础的同学看。</strong></p><a id="more"></a><h1 id="坐标表示法"><a href="#坐标表示法" class="headerlink" title="坐标表示法"></a><strong>坐标表示法</strong></h1><p>对于向量，我们能不能制定一种与坐标类似，与有序数对一一对应的方法呢？</p><p>这就是向量的“万能方法”——坐标表示法。</p><p>对于向量$\overrightarrow{AB}$，我们令$A$为坐标的原点，以两个夹角不为零的向量为坐标轴，不妨设$\overrightarrow{p}$为$x$轴，$\overrightarrow{q}$为$y$轴。我们可以将$\overrightarrow{AB}$定义为$(x,\ y)$，其中$x,y \in \mathbb{R}$。此时满足$\overrightarrow{AB} = x \overrightarrow{p} + y \overrightarrow{q}$。</p><p>通常，为了方便起见，我们就将$\overrightarrow{p}$和$\overrightarrow{q}$设为$x$轴和$y$轴正半轴方向上的的单位向量。</p><p>这样，题目中复杂的条件就可以通过下面的公式化繁而简了。</p><h1 id="一些有用的公式"><a href="#一些有用的公式" class="headerlink" title="一些有用的公式"></a><strong>一些有用的公式</strong></h1><blockquote><p>在以下公式中，默认$\overrightarrow{A} = (x_1,y_1),\ \overrightarrow{B} = (x_2,y_2)$</p></blockquote><p>$\overrightarrow{A} + \overrightarrow{B} = (x_1 + y_1, x_2 + y_2)$</p><p>$\overrightarrow{A} - \overrightarrow{B} = (x_1 - y_1, x_2 - y_2)$</p><p>$\overrightarrow{A} \cdot \overrightarrow{B} = x_1x_2+y_1y_2$</p><p>由此我们可以推出</p><p>$\cos&lt;\overrightarrow{A}, \overrightarrow{B}&gt; = \frac{x_1x_2 + y_1y_2}{\sqrt{x_1^2 + y_1^2} \cdot \sqrt{x_2^2 + y_2^2}}$</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;最近做了一些关于平面向量的习题，发现了一种近乎万能的套路。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;这篇文章不适合向量零基础的同学看。&lt;/strong&gt;&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="数学" scheme="http://tle666.github.io/categories/%E6%95%B0%E5%AD%A6/"/>
-    
-    
-      <category term="公式" scheme="http://tle666.github.io/tags/%E5%85%AC%E5%BC%8F/"/>
-    
-      <category term="平面向量" scheme="http://tle666.github.io/tags/%E5%B9%B3%E9%9D%A2%E5%90%91%E9%87%8F/"/>
     
   </entry>
   
