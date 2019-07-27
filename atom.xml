@@ -362,9 +362,9 @@
     
       <category term="DP" scheme="http://tle666.github.io/tags/DP/"/>
     
-      <category term="公式" scheme="http://tle666.github.io/tags/%E5%85%AC%E5%BC%8F/"/>
-    
       <category term="四边形不等式" scheme="http://tle666.github.io/tags/%E5%9B%9B%E8%BE%B9%E5%BD%A2%E4%B8%8D%E7%AD%89%E5%BC%8F/"/>
+    
+      <category term="公式" scheme="http://tle666.github.io/tags/%E5%85%AC%E5%BC%8F/"/>
     
   </entry>
   
@@ -505,9 +505,9 @@
     
       <category term="DP" scheme="http://tle666.github.io/tags/DP/"/>
     
-      <category term="数位DP" scheme="http://tle666.github.io/tags/%E6%95%B0%E4%BD%8DDP/"/>
-    
       <category term="树形DP" scheme="http://tle666.github.io/tags/%E6%A0%91%E5%BD%A2DP/"/>
+    
+      <category term="数位DP" scheme="http://tle666.github.io/tags/%E6%95%B0%E4%BD%8DDP/"/>
     
   </entry>
   
