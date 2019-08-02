@@ -356,10 +356,10 @@
 <p>另外我们会注意到，除了根节点以外的所有重链链首都是轻儿子，</p>
 <p>例如 $top[3]\ =\ 3$；</p>
 <p>回顾一下，还有哪些信息没有维护呢？</p>
-<p>$dfn,\ pre,\ top$ </p>
+<p>$dfn,\ pre,\ top$</p>
 <p>其实，这三个只需要另一个递归函数就足够啦！</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs2</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span> tp)</span> <span class="comment">// u 是当前结点，tp 是 u 所在重链的链首</span></span></span><br><span class="line">    top[u] = tp</span><br><span class="line">    dfn[u] = ++tot <span class="comment">// tot 是时间戳</span></span><br><span class="line">    pre[tot] = u <span class="comment">// pre 是 dfn 的反函数</span></span><br><span class="line">    <span class="keyword">if</span>(wson[u]) dfs2(wson[u], tp); <span class="comment">// 只要 u 有重儿子，那就可以继续下去</span></span><br><span class="line">    <span class="keyword">for</span> each v that connects to u : </span><br><span class="line">		<span class="keyword">if</span>(v != fa[u] &amp;&amp; v != wson[u]) <span class="comment">// v 是 u 的轻儿子</span></span><br><span class="line">            dfs2(v, v); <span class="comment">// 轻儿子是重链的链首</span></span><br></pre></td></tr></table></figure>
-<p>图中边上的数字就是 $dfs2$ 递归地顺序，不明白的可以参考一下。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs2</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span> tp)</span> <span class="comment">// u 是当前结点，tp 是 u 所在重链的链首</span></span></span><br><span class="line">    top[u] = tp</span><br><span class="line">    dfn[u] = ++tot <span class="comment">// tot 是时间戳</span></span><br><span class="line">    pre[tot] = u <span class="comment">// pre 是 dfn 的反函数</span></span><br><span class="line">    <span class="keyword">if</span>(wson[u]) dfs2(wson[u], tp); <span class="comment">// 只要 u 有重儿子，那就可以继续下去</span></span><br><span class="line">    <span class="keyword">for</span> each v that connects to u :</span><br><span class="line">		<span class="keyword">if</span>(v != fa[u] &amp;&amp; v != wson[u]) <span class="comment">// v 是 u 的轻儿子</span></span><br><span class="line">            dfs2(v, v); <span class="comment">// 轻儿子是重链的链首</span></span><br></pre></td></tr></table></figure>
+<p>图中边上的数字就是 $dfs2$ 递归的顺序，不明白的可以参考一下。</p>
 <p>检测一下你有没有明白：$2$ 的 $dfn$ 是几？$7$ 的 $pre$ 是几？</p>
 <p>$Answer:\ 10,\ 8$。</p>
 <p><strong>好了，树链剖分阶段到此结束。</strong></p>
@@ -382,7 +382,7 @@
 <p>我们发现因为这是一条重链，所以这条路径上的每个点的 $dfn$ 都是连续的！</p>
 <p>线段树有用了，注意 $dfn[top[11]] &lt; dfn[11]$</p>
 <p><code>res += query(root, dfn[top[11]], dfn[11])</code></p>
-<p>这是，操作变成了求 $res\ +\ 9 \Rightarrow11$ 的路径点权和。 </p>
+<p>这是，操作变成了求 $res\ +\ 9 \Rightarrow11$ 的路径点权和。</p>
 <p>所以我们将 $11$ 变为 $fa[top[11]]\ =\ 1$</p>
 <p>这是，我们发现 $1$ 和 $9$ 共链了。</p>
 <p>所以像刚才一样，</p>
@@ -407,10 +407,10 @@
     <div class="new-meta-box">
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-07-21T15:40:22+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-08-02T15:39:58+08:00">
   <a class="notlink">
     <i class="fas fa-clock" aria-hidden="true"></i>
-    <p>最后更新于 2019年7月21日</p>
+    <p>最后更新于 2019年8月2日</p>
   </a>
 </div>
 
