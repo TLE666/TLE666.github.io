@@ -317,12 +317,16 @@
 <p>在下列规则中，部分来自于文末的谷歌代码规范。</p>
 <h2 id="整体"><a href="#整体" class="headerlink" title="整体"></a>整体</h2><ul>
 <li>两空格缩进</li>
-<li>使用 $Fira\ Mono$ 字体，大小为 14 号</li>
+<li>使用 $Source\ Code\ Pro$ 字体，大小为 14 号</li>
 <li>$Sublime$ 编辑器最佳</li>
 <li>一行的长度通常不要超过 60 列，一定不能超过 90</li>
 <li>大括号不换行，但要在大括号前加空格</li>
 <li>运算符间通常有空格， <code>++</code> 除外</li>
 </ul>
+<h1 id="模板"><a href="#模板" class="headerlink" title="模板"></a><strong>模板</strong></h1><ul>
+<li>update 2019/8/10</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> rep(i, a, b) for (int i = (a); i &lt;= (b); i++)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> per(i, a, b) for (int i = (a); i &gt;= (b); i--)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> trv(u) for (edg *p = h[u]; p; p = p-&gt;nxt)</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1e5</span> + <span class="number">100</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> inf = <span class="number">0x3f3f3f3f</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> mod = <span class="number">1e9</span> + <span class="number">7</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">rd</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="keyword">int</span> s = <span class="number">0</span>, w = <span class="number">1</span>; <span class="keyword">char</span> c = getchar();</span><br><span class="line">  <span class="keyword">while</span> (c &lt; <span class="string">'0'</span> || c &gt; <span class="string">'9'</span>) &#123; <span class="keyword">if</span> (c == <span class="string">'-'</span>) w = <span class="number">-1</span>; c = getchar(); &#125;</span><br><span class="line">  <span class="keyword">while</span> (c &gt;= <span class="string">'0'</span> &amp;&amp; c &lt;= <span class="string">'9'</span>) s = s * <span class="number">10</span> + c - <span class="string">'0'</span>, c = getchar();</span><br><span class="line">  <span class="keyword">return</span> s * w;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="头文件"><a href="#头文件" class="headerlink" title="头文件"></a>头文件</h2><ul>
 <li>通常在程序第一行 （ <code>#pragma</code> 时除外 ）</li>
 <li><code>include</code> 和 <code>&lt;头文件&gt;</code> 之间有一个空格</li>
@@ -421,10 +425,10 @@
     <div class="new-meta-box">
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-06-13T21:15:29+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-08-10T11:20:19+08:00">
   <a class="notlink">
     <i class="fas fa-clock" aria-hidden="true"></i>
-    <p>最后更新于 2019年6月13日</p>
+    <p>最后更新于 2019年8月10日</p>
   </a>
 </div>
 
@@ -456,7 +460,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">1.1k字</span>
+        <span class="post-count">1.2k字</span>
       </span>
     </span>
 
@@ -658,8 +662,8 @@
 </header>
 
     <div class="content pure">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#整体"><span class="toc-text">整体</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#头文件"><span class="toc-text">头文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#命名空间"><span class="toc-text">命名空间</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#定义"><span class="toc-text">定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#变量"><span class="toc-text">变量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#结构体"><span class="toc-text">结构体</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#函数"><span class="toc-text">函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#主函数"><span class="toc-text">主函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#示例代码"><span class="toc-text">示例代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#谷歌代码风格"><span class="toc-text">谷歌代码风格</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#最后的最后"><span class="toc-text">最后的最后</span></a></li></ol>
-    </div>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#整体"><span class="toc-text">整体</span></a></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#模板"><span class="toc-text">模板</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#头文件"><span class="toc-text">头文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#命名空间"><span class="toc-text">命名空间</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#定义"><span class="toc-text">定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#变量"><span class="toc-text">变量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#结构体"><span class="toc-text">结构体</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#函数"><span class="toc-text">函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#主函数"><span class="toc-text">主函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#示例代码"><span class="toc-text">示例代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#谷歌代码风格"><span class="toc-text">谷歌代码风格</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#最后的最后"><span class="toc-text">最后的最后</span></a></li></ol>
+    </li></div>
   </section>
 
 
@@ -864,7 +868,7 @@
   <i class="fa fa-eye"></i>
   <span id="busuanzi_container_site_pv"> <span id="busuanzi_value_site_pv"></span></span>&nbsp;Views&nbsp;&nbsp;|&nbsp;&nbsp;
   <i class="fas fa-chart-area"></i>
-  <span class="post-count">Word Count:23.2k</span>&nbsp;&nbsp;|&nbsp;&nbsp;
+  <span class="post-count">Word Count:23.3k</span>&nbsp;&nbsp;|&nbsp;&nbsp;
   <a href="https://tle666.github.io/sitemap.xml" target="_blank">站点地图</a>&nbsp;&nbsp;
 </footer>
 
