@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://tle666.github.io/friends/index.html</loc>
+    
+    <lastmod>2019-08-18T06:38:00.938Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://tle666.github.io/2019/08/12/%5BPOJ3971%5D%20Scales/</loc>
     
     <lastmod>2019-08-12T06:57:26.973Z</lastmod>
@@ -110,13 +117,6 @@
     <loc>http://tle666.github.io/2019/02/02/%5BBZOJ5165%5D%20%E6%A0%91%E4%B8%8A%E5%80%8D%E5%A2%9E/</loc>
     
     <lastmod>2019-06-18T13:32:59.523Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://tle666.github.io/friends/index.html</loc>
-    
-    <lastmod>2019-06-01T14:05:54.619Z</lastmod>
     
   </url>
   
