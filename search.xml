@@ -995,7 +995,7 @@
     
     
     <entry>
-      <title></title>
+      <title>分类</title>
       <link href="/categories/index.html"/>
       <url>/categories/index.html</url>
       
@@ -1017,18 +1017,7 @@
     
     
     <entry>
-      <title>搜索</title>
-      <link href="/search/index.html"/>
-      <url>/search/index.html</url>
-      
-        <content type="html"><![CDATA[]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title></title>
+      <title>标签</title>
       <link href="/tags/index.html"/>
       <url>/tags/index.html</url>
       
