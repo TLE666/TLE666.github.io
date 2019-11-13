@@ -554,9 +554,9 @@
       <category term="题解" scheme="http://tle666.github.io/categories/OI/%E9%A2%98%E8%A7%A3/"/>
     
     
-      <category term="图论" scheme="http://tle666.github.io/tags/%E5%9B%BE%E8%AE%BA/"/>
-    
       <category term="DP" scheme="http://tle666.github.io/tags/DP/"/>
+    
+      <category term="图论" scheme="http://tle666.github.io/tags/%E5%9B%BE%E8%AE%BA/"/>
     
       <category term="树形DP" scheme="http://tle666.github.io/tags/%E6%A0%91%E5%BD%A2DP/"/>
     
