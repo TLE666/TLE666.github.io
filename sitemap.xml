@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://tle666.github.io/links/index.html</loc>
+    
+    <lastmod>2019-11-13T13:03:50.771Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://tle666.github.io/categories/index.html</loc>
     
     <lastmod>2019-11-13T11:32:26.916Z</lastmod>
@@ -12,13 +19,6 @@
     <loc>http://tle666.github.io/tags/index.html</loc>
     
     <lastmod>2019-11-13T11:32:00.855Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://tle666.github.io/friends/index.html</loc>
-    
-    <lastmod>2019-08-18T06:38:00.938Z</lastmod>
     
   </url>
   
@@ -247,20 +247,6 @@
   </url>
   
   <url>
-    <loc>http://tle666.github.io/404.html</loc>
-    
-    <lastmod>2019-05-19T03:23:26.914Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://tle666.github.io/about/index.html</loc>
-    
-    <lastmod>2019-05-16T14:43:15.055Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://tle666.github.io/2019/03/02/%E5%B9%B3%E9%9D%A2%E5%90%91%E9%87%8F%E7%BB%83%E4%B9%A0%E5%B0%8F%E7%BB%93/</loc>
     
     <lastmod>2019-05-16T14:33:42.764Z</lastmod>
@@ -271,20 +257,6 @@
     <loc>http://tle666.github.io/2019/02/19/%E5%85%AC%E5%BC%8F/</loc>
     
     <lastmod>2019-05-16T14:32:08.222Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://tle666.github.io/baidu_verify_U51fhF2DWG.html</loc>
-    
-    <lastmod>2019-03-10T07:01:41.991Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://tle666.github.io/baidu_verify_o1tQMBIJO5.html</loc>
-    
-    <lastmod>2019-02-02T10:18:16.311Z</lastmod>
     
   </url>
   
