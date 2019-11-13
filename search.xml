@@ -778,9 +778,9 @@
             
             <tag> 图论 </tag>
             
-            <tag> 线段树 </tag>
-            
             <tag> 树链剖分 </tag>
+            
+            <tag> 线段树 </tag>
             
         </tags>
       
@@ -838,9 +838,9 @@
       
         <tags>
             
-            <tag> 线段树 </tag>
-            
             <tag> 树链剖分 </tag>
+            
+            <tag> 线段树 </tag>
             
         </tags>
       
@@ -1035,22 +1035,22 @@
     
     
     <entry>
-      <title>标签</title>
-      <link href="/tags/index.html"/>
-      <url>/tags/index.html</url>
+      <title>友链</title>
+      <link href="/links/index.html"/>
+      <url>/links/index.html</url>
       
-        <content type="html"><![CDATA[]]></content>
+        <content type="html"><![CDATA[<h1 id="常用网站"><a href="#常用网站" class="headerlink" title="常用网站"></a><strong>常用网站</strong></h1><p><a href="https://csacademy.com/app/graph_editor/" target="_blank" rel="noopener">Graph Editor</a> | <a href="https://oi-wiki.org/" target="_blank" rel="noopener">OI Wiki</a> | <a href="http://bytew.net/OIer/" target="_blank" rel="noopener">OIerDb</a> | <a href="http://oeis.org/" target="_blank" rel="noopener">OEIS</a></p><h1 id="友链"><a href="#友链" class="headerlink" title="友链"></a><strong>友链</strong></h1><p><a href="https://blunt-axe.github.io/" target="_blank" rel="noopener">blunt-axe</a> 神仙</p><p><a href="https://acfunction.github.io/" target="_blank" rel="noopener">AcFunction</a> 神仙</p><p><a href="https://www.lcjtql.ml/" target="_blank" rel="noopener">WZL</a> 大佬</p><p>欢迎交换友链 qwq</p>]]></content>
       
     </entry>
     
     
     
     <entry>
-      <title>友链</title>
-      <link href="/links/index.html"/>
-      <url>/links/index.html</url>
+      <title>标签</title>
+      <link href="/tags/index.html"/>
+      <url>/tags/index.html</url>
       
-        <content type="html"><![CDATA[<h2 id="常用网站"><a href="#常用网站" class="headerlink" title="常用网站"></a><strong>常用网站</strong></h2><p><a href="https://csacademy.com/app/graph_editor/" target="_blank" rel="noopener">Graph Editor</a> | <a href="https://oi-wiki.org/" target="_blank" rel="noopener">OI Wiki</a> | <a href="http://bytew.net/OIer/" target="_blank" rel="noopener">OIerDb</a> | <a href="http://oeis.org/" target="_blank" rel="noopener">OEIS</a></p><h2 id="友链"><a href="#友链" class="headerlink" title="友链"></a><strong>友链</strong></h2><p><a href="https://blunt-axe.github.io/" target="_blank" rel="noopener">blunt-axe</a> 神仙</p><p><a href="https://acfunction.github.io/" target="_blank" rel="noopener">AcFunction</a> 神仙</p><p><a href="https://www.lcjtql.ml/" target="_blank" rel="noopener">WZL</a> 大佬</p><p>欢迎交换友链 qwq</p>]]></content>
+        <content type="html"><![CDATA[]]></content>
       
     </entry>
     
