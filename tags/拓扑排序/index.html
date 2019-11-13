@@ -1,827 +1,487 @@
 <!DOCTYPE html>
 <html>
 <head><meta name="generator" content="Hexo 3.8.0">
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  
-  <title>Tag: 拓扑排序 | P_Wang&#39;s Blog</title>
-  
-  
-  <meta name="description" content="OIer!">
-  
+    
 
-  
-  <link rel="alternate" href="/atom.xml" title="P_Wang's Blog">
-  
+    
 
-  <meta name="HandheldFriendly" content="True">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <!-- meta -->
-  
-  
-  <meta name="theme-color" content="#FFFFFF">
-  <meta name="msapplication-TileColor" content="#1BC3FB">
-  <meta name="msapplication-config" content="https://cdn.jsdelivr.net/gh/xaoxuu/assets@master/favicon/favicons/browserconfig.xml">
-  
+    
 
-  <!-- link -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
-  
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
-  
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.6.3/css/all.min.css">
-  
-  
-  <link rel="shortcut icon" type="image/x-icon" href="https://raw.githubusercontent.com/TLE666/TLE666.github.io/master/icon.ico">
-  <link rel="icon" type="image/x-icon" sizes="32x32" href="https://raw.githubusercontent.com/TLE666/TLE666.github.io/master/icon.ico">
-  <link rel="apple-touch-icon" type="image/png" sizes="180x180" href="https://raw.githubusercontent.com/TLE666/TLE666.github.io/master/icon.ico">
-  <link rel="mask-icon" color="#1BC3FB" href="https://cdn.jsdelivr.net/gh/xaoxuu/assets@master/favicon/favicons/safari-pinned-tab.svg">
-  <link rel="manifest" href="https://cdn.jsdelivr.net/gh/xaoxuu/assets@master/favicon/favicons/site.webmanifest">
-  
 
-  
-  <link rel="shortcut icon" type="image/x-icon" href="https://raw.githubusercontent.com/TLE666/TLE666.github.io/master/icon.ico">
-  
 
-  
-    <link rel="stylesheet" href="/style.css">
-  
+    <meta charset="utf-8">
+    
+    
+    
+    <link rel="canonical" href="https://tle666.github.io//tags/拓扑排序/">
+    
+    
+    <title>标签: 拓扑排序 | P_Wang&#39;s Blog | 自己选择的路，跪着也要走完。</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="OI">
+    <meta name="description" content="OIer!">
+<meta name="keywords" content="OI">
+<meta property="og:type" content="website">
+<meta property="og:title" content="P_Wang&#39;s Blog">
+<meta property="og:url" content="http://tle666.github.io/tags/拓扑排序/index.html">
+<meta property="og:site_name" content="P_Wang&#39;s Blog">
+<meta property="og:description" content="OIer!">
+<meta property="og:locale" content="zh-CN">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="P_Wang&#39;s Blog">
+<meta name="twitter:description" content="OIer!">
+    
+        <link rel="alternate" type="application/atom+xml" title="P_Wang&#39;s Blog" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
 
-  <script>
-    function setLoadingBarProgress(num) {
-      document.getElementById('loading-bar').style.width=num+"%";
-    }
-  </script>
+    <!-- custom head -->
+    
 
-  
-  
 </head>
 
 <body>
-  
-  
-  <div class="cover-wrapper">
-    <cover class="cover  half">
-      
-        
-  <h1 class="title">P_Wang</h1>
+    <div id="loading" class="active"></div>
 
-
-  <div class="m_search">
-    <form name="searchform" class="form u-search-form">
-      <input type="text" class="input u-search-input" placeholder>
-      <i class="icon fas fa-search fa-fw"></i>
-    </form>
-  </div>
-
-<div class="menu navgation">
-  <ul class="h-list">
-    
-      
-        <li>
-          <a class="nav home" href="/" id="home">
-            <i class="fas fa-rss fa-fw"></i>&nbsp;博文
-          </a>
-        </li>
-      
-        <li>
-          <a class="nav home" href="/friends/" rel="nofollow" id="friends">
-            <i class="fas fa-link fa-fw"></i>&nbsp;友链
-          </a>
-        </li>
-      
-        <li>
-          <a class="nav home" href="/about/" rel="nofollow" id="about">
-            <i class="fas fa-info-circle fa-fw"></i>&nbsp;关于
-          </a>
-        </li>
-      
-    
-  </ul>
-</div>
-
-      
-    </cover>
-    <header class="l_header pure">
-  <div id="loading-bar-wrapper">
-    <div id="loading-bar" class="pure"></div>
-  </div>
-
-	<div class="wrapper">
-		<div class="nav-main container container--flex">
-      <a class="logo flat-box" href="/">
-        
-          P_Wang's Blog
-        
-      </a>
-			<div class="menu navgation">
-				<ul class="h-list">
-          
-  					
-  						<li>
-								<a class="nav flat-box" href="/" id="home">
-									<i class="fas fa-grin fa-fw"></i>&nbsp;博文
-								</a>
-							</li>
-      			
-  						<li>
-								<a class="nav flat-box" href="/categories/" rel="nofollow" id="categories">
-									<i class="fas fa-folder-open fa-fw"></i>&nbsp;分类
-								</a>
-							</li>
-      			
-  						<li>
-								<a class="nav flat-box" href="/tags/" rel="nofollow" id="tags">
-									<i class="fas fa-hashtag fa-fw"></i>&nbsp;标签
-								</a>
-							</li>
-      			
-  						<li>
-								<a class="nav flat-box" href="/archives/" rel="nofollow" id="archives">
-									<i class="fas fa-archive fa-fw"></i>&nbsp;归档
-								</a>
-							</li>
-      			
-      		
-				</ul>
-			</div>
-
-			
-				<div class="m_search">
-					<form name="searchform" class="form u-search-form">
-						<input type="text" class="input u-search-input" placeholder="搜索">
-						<i class="icon fas fa-search fa-fw"></i>
-					</form>
-				</div>
-			
-			<ul class="switcher h-list">
-				
-					<li class="s-search"><a class="fas fa-search fa-fw" href="javascript:void(0)"></a></li>
-				
-				<li class="s-menu"><a class="fas fa-bars fa-fw" href="javascript:void(0)"></a></li>
-			</ul>
-		</div>
-
-		<div class="nav-sub container container--flex">
-			<a class="logo flat-box"></a>
-			<ul class="switcher h-list">
-				<li class="s-comment"><a class="flat-btn fas fa-comments fa-fw" href="javascript:void(0)"></a></li>
-        
-          <li class="s-toc"><a class="flat-btn fas fa-list fa-fw" href="javascript:void(0)"></a></li>
-        
-			</ul>
-		</div>
-	</div>
-</header>
-	<aside class="menu-phone">
-    <header>
-		<nav class="menu navgation">
-      <ul>
-        
-          
-            <li>
-							<a class="nav flat-box" href="/" id="home">
-								<i class="fas fa-clock fa-fw"></i>&nbsp;近期文章
-							</a>
-            </li>
-          
-            <li>
-							<a class="nav flat-box" href="/archives/" rel="nofollow" id="archives">
-								<i class="fas fa-archive fa-fw"></i>&nbsp;文章归档
-							</a>
-            </li>
-          
-            <li>
-							<a class="nav flat-box" href="/friends/" rel="nofollow" id="friends">
-								<i class="fas fa-link fa-fw"></i>&nbsp;我的友链
-							</a>
-            </li>
-          
-            <li>
-							<a class="nav flat-box" href="/about/" rel="nofollow" id="about">
-								<i class="fas fa-info-circle fa-fw"></i>&nbsp;关于小站
-							</a>
-            </li>
-          
-       
-      </ul>
-		</nav>
-    </header>
-	</aside>
-<script>setLoadingBarProgress(40);</script>
-
-  </div>
-
-
-  <div class="l_body">
-    <div class='body-wrapper'>
-      
-<div class="l_main">
-  
-    
-      
-  <section class="post-list">
-    
-      
-        
-          
-        
-      
-    
-    
-      
-        
-          <div class="post-wrapper">
-            <article class="post reveal ">
-  
-
-
-  <section class="meta">
-    
-    
-    <div class="meta" id="header-meta">
-      
-        
-  <h2 class="title">
-    <a href="/2019/05/08/[JZOJ4964] Rhyme/">
-      「JZOJ4964」Rhyme
+    <aside id="menu">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
     </a>
-  </h2>
-
-
-      
-      <div class="new-meta-box">
-        
-          
-        
-          
-            
-  <div class="new-meta-item author">
-    <a href="http://tle666.github.io" rel="nofollow">
-      
-        <i class="fas fa-user" aria-hidden="true"></i>
-      
-      <p>P_Wang</p>
-    </a>
-  </div>
-
-
-          
-        
-          
-            <div class="new-meta-item date">
-  <a class="notlink">
-    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2019-05-08</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-  
-  <div class="new-meta-item category">
-    <a href="/categories/OI/题解/" rel="nofollow">
-      <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>OI&nbsp;/&nbsp;题解</p>
-    </a>
-  </div>
-
-
-          
-        
-          
-            
-
-          
-        
-          
-            
-
-          
-        
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">P_Wang</h5>
+          <a href="mailto:patrick_rdfz@qq.com" title="patrick_rdfz@qq.com" class="mail">patrick_rdfz@qq.com</a>
+        </hgroup>
       </div>
-      
-        <hr>
-      
     </div>
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      <h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a><strong>Description</strong></h1><p>由于多次交换邮票没有满足所有人的需求，小$Z$被赶出了集邮部。无处可去的小$Z$决定加入音乐部，为了让音乐部的人注意到自己的才华，小$Z$想写一首曲子。为了让自己的曲子更好听，小$Z$找到了一些好听曲子作为模板。曲谱可以表示成只包含小写字母的字符串，小$Z$希望自己最终的曲谱中任意一个长度为$K$的子串都是一个模板的子串。现在小$Z$想知道自己的曲谱最长可以是多长，如果可以无限长的话请输出<code>INF</code>。</p>
-      
-        <div class="readmore">
-          <a href="/2019/05/08/[JZOJ4964] Rhyme/" class="flat-box">
-            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-    
-      <div class="full-width auto-padding tags">
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
         
-          <a href="/tags/图论/" rel="nofollow"><i class="fas fa-hashtag fa-fw"></i>图论</a>
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
         
-          <a href="/tags/字符串哈希/" rel="nofollow"><i class="fas fa-hashtag fa-fw"></i>字符串哈希</a>
+            <li class="waves-block waves-effect">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
         
-          <a href="/tags/拓扑排序/" rel="nofollow"><i class="fas fa-hashtag fa-fw"></i>拓扑排序</a>
+            <li class="waves-block waves-effect active">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
         
-      </div>
-    
-  </section>
-</article>
-
-          </div>
+            <li class="waves-block waves-effect">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
         
-      
-    
-  </section>
-  
-    
-    <!-- 根据主题中的设置决定是否在archive中针对摘要部分的MathJax公式加载mathjax.js文件 -->
-    
-    
-      <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config({
-    "HTML-CSS": {
-      preferredFont: "TeX",
-      availableFonts: ["STIX","TeX"],
-      linebreaks: { automatic:true },
-      EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
-    },
-    tex2jax: {
-      inlineMath: [ ["$", "$"], ["\\(","\\)"] ],
-      processEscapes: true,
-      ignoreClass: "tex2jax_ignore|dno",
-      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-    },
-    TeX: {
-      equationNumbers: { autoNumber: "AMS" },
-      noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } },
-      Macros: { href: "{}" }
-    },
-    messageStyle: "none"
-  });
-</script>
-<!-- 给MathJax元素添加has-jax class -->
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-      all[i].SourceElement().parentNode.className += (all[i].SourceElement().parentNode.className ? ' ' : '') + 'has-jax';
-    }
-  });
-</script>
-<!-- 通过连接CDN加载MathJax的js代码 -->
-<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
-</script>
-
-    
-
-  
-
-
-    
-  
-</div>
-<aside class="l_side">
-  
-    
-    
-      
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/tle666" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
         
-          
-          
-            <section class="widget author">
-  <div class="content pure">
-    
-      <div class="avatar">
-        <img class="avatar" src="https://i.loli.net/2019/05/14/5cdacfe03262877256.jpg">
-      </div>
-    
-    
-    
-      <div class="social-wrapper">
-        
-          
-            <a href="/atom.xml" class="social fas fa-rss flat-btn" target="_blank" rel="external nofollow noopener noreferrer">
-            </a>
-          
-        
-          
-            <a href="mailto:patrick_rdfz@qq.com" class="social fas fa-envelope flat-btn" target="_blank" rel="external nofollow noopener noreferrer">
-            </a>
-          
-        
-          
-            <a href="https://github.com/tle666" class="social fab fa-github flat-btn" target="_blank" rel="external nofollow noopener noreferrer">
-            </a>
-          
-        
-      </div>
-    
-  </div>
-</section>
-          
-        
-      
-        
-          
-          
-            
-
-          
-        
-      
-        
-          
-          
-            <section class="widget grid">
-  
-<header class="pure">
-  <div><i class="fas fa-map-signs fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;站内导航</div>
-  
-</header>
-
-  <div class="content pure">
-    <ul class="grid navgation">
-      
-        <li><a class="flat-box" title="/" href="/" id="home">
-          
-            <i class="fas fa-clock fa-fw" aria-hidden="true"></i>
-          
-          近期文章
-        </a></li>
-      
-        <li><a class="flat-box" title="/archives/" href="/archives/" rel="nofollow" id="archives">
-          
-            <i class="fas fa-archive fa-fw" aria-hidden="true"></i>
-          
-          文章归档
-        </a></li>
-      
-        <li><a class="flat-box" title="/friends/" href="/friends/" rel="nofollow" id="friends">
-          
-            <i class="fas fa-link fa-fw" aria-hidden="true"></i>
-          
-          我的友链
-        </a></li>
-      
-        <li><a class="flat-box" title="/about/" href="/about/" rel="nofollow" id="about">
-          
-            <i class="fas fa-info-circle fa-fw" aria-hidden="true"></i>
-          
-          关于小站
-        </a></li>
-      
-    </ul>
-  </div>
-</section>
-
-          
-        
-      
-        
-          
-          
-            
-  <section class="widget category">
-    
-<header class="pure">
-  <div><i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;文章分类</div>
-  
-    <a class="rightBtn" rel="nofollow" href="/categories/" title="categories/">
-    <i class="fas fa-expand-arrows-alt fa-fw"></i></a>
-  
-</header>
-
-    <div class="content pure">
-      <ul class="entry">
-        
-          <li><a class="flat-box" title="/categories/OI/" href="/categories/OI/"><div class="name">OI</div><div class="badge">(32)</div></a></li>
-        
-          <li><a class="flat-box child" title="/categories/OI/其它/" href="/categories/OI/其它/"><div class="name">其它</div><div class="badge">(2)</div></a></li>
-        
-          <li><a class="flat-box child" title="/categories/OI/算法讲解/" href="/categories/OI/算法讲解/"><div class="name">算法讲解</div><div class="badge">(7)</div></a></li>
-        
-          <li><a class="flat-box child" title="/categories/OI/题解/" href="/categories/OI/题解/"><div class="name">题解</div><div class="badge">(23)</div></a></li>
-        
-          <li><a class="flat-box" title="/categories/数学/" href="/categories/数学/"><div class="name">数学</div><div class="badge">(2)</div></a></li>
+            <li class="waves-block waves-effect">
+              <a href="https://www.luogu.org/user/54628">
+                <i class="icon icon-lg icon-link"></i>
+                Luogu
+              </a>
+            </li>
         
       </ul>
     </div>
-  </section>
-
-
-          
-        
-      
-        
-          
-          
-            
-  <section class="widget tagcloud">
-    
-<header class="pure">
-  <div><i class="fas fa-fire fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;热门标签</div>
-  
-    <a class="rightBtn" rel="nofollow" href="/tags/" title="tags/">
-    <i class="fas fa-expand-arrows-alt fa-fw"></i></a>
-  
-</header>
-
-    <div class="content pure">
-      <a href="/tags/DFS序/" style="font-size: 14px; color: #999">DFS序</a> <a href="/tags/DP/" style="font-size: 24px; color: #555">DP</a> <a href="/tags/Floyd/" style="font-size: 14px; color: #999">Floyd</a> <a href="/tags/LCA/" style="font-size: 16.5px; color: #888">LCA</a> <a href="/tags/SPFA/" style="font-size: 14px; color: #999">SPFA</a> <a href="/tags/fhq-treap/" style="font-size: 14px; color: #999">fhq-treap</a> <a href="/tags/三角函数/" style="font-size: 14px; color: #999">三角函数</a> <a href="/tags/二分/" style="font-size: 16.5px; color: #888">二分</a> <a href="/tags/二分答案/" style="font-size: 14px; color: #999">二分答案</a> <a href="/tags/代数/" style="font-size: 14px; color: #999">代数</a> <a href="/tags/优化/" style="font-size: 21.5px; color: #666">优化</a> <a href="/tags/倍增/" style="font-size: 16.5px; color: #888">倍增</a> <a href="/tags/公式/" style="font-size: 19px; color: #777">公式</a> <a href="/tags/几何/" style="font-size: 14px; color: #999">几何</a> <a href="/tags/后缀数组/" style="font-size: 14px; color: #999">后缀数组</a> <a href="/tags/哈希/" style="font-size: 14px; color: #999">哈希</a> <a href="/tags/四边形不等式/" style="font-size: 14px; color: #999">四边形不等式</a> <a href="/tags/图论/" style="font-size: 24px; color: #555">图论</a> <a href="/tags/字符串/" style="font-size: 14px; color: #999">字符串</a> <a href="/tags/字符串哈希/" style="font-size: 14px; color: #999">字符串哈希</a> <a href="/tags/平面向量/" style="font-size: 14px; color: #999">平面向量</a> <a href="/tags/并查集/" style="font-size: 14px; color: #999">并查集</a> <a href="/tags/拓扑排序/" style="font-size: 14px; color: #999">拓扑排序</a> <a href="/tags/排列组合/" style="font-size: 14px; color: #999">排列组合</a> <a href="/tags/数位DP/" style="font-size: 16.5px; color: #888">数位DP</a> <a href="/tags/数学/" style="font-size: 19px; color: #777">数学</a> <a href="/tags/最大流/" style="font-size: 14px; color: #999">最大流</a> <a href="/tags/最小割/" style="font-size: 14px; color: #999">最小割</a> <a href="/tags/最小表示法/" style="font-size: 14px; color: #999">最小表示法</a> <a href="/tags/最短路/" style="font-size: 16.5px; color: #888">最短路</a> <a href="/tags/期望/" style="font-size: 14px; color: #999">期望</a> <a href="/tags/树形DP/" style="font-size: 16.5px; color: #888">树形DP</a> <a href="/tags/树状数组/" style="font-size: 14px; color: #999">树状数组</a> <a href="/tags/树链剖分/" style="font-size: 16.5px; color: #888">树链剖分</a> <a href="/tags/欧拉函数/" style="font-size: 14px; color: #999">欧拉函数</a> <a href="/tags/欧拉定理/" style="font-size: 14px; color: #999">欧拉定理</a> <a href="/tags/线段树/" style="font-size: 21.5px; color: #666">线段树</a> <a href="/tags/组合数学/" style="font-size: 14px; color: #999">组合数学</a> <a href="/tags/网络流/" style="font-size: 14px; color: #999">网络流</a> <a href="/tags/莫比乌斯反演/" style="font-size: 14px; color: #999">莫比乌斯反演</a> <a href="/tags/贪心/" style="font-size: 21.5px; color: #666">贪心</a>
-    </div>
-  </section>
-
-
-          
-        
-      
-        
-          
-          
-            
-
-
-  <section class="widget music">
-    
-<header class="pure">
-  <div><i class="fas fa-compact-disc fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;最近在听</div>
-  
-    <a class="rightBtn" rel="external nofollow noopener noreferrer" target="_blank" href="https://music.163.com/#/song?id=1297841" title="https://music.163.com/#/song?id=1297841">
-    <i class="far fa-heart fa-fw"></i></a>
-  
-</header>
-
-    <div class="content pure">
-      
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.7.0/dist/APlayer.min.css">
-  <div class="aplayer" data-theme="#1BCDFC" data-mode="circulation" data-server="netease" data-type="song" data-id="1297841" data-volume="0.7">
   </div>
-  <script src="https://cdn.jsdelivr.net/npm/aplayer@1.7.0/dist/APlayer.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/meting@1.1.0/dist/Meting.min.js"></script>
-
-
-    </div>
-  </section>
-
-
-          
-        
-      
-    
-
-  
 </aside>
 
-<footer id="footer" class="clearfix">
-  
-    <div class="footer">
-      <p>© P_Wang 2019</p>
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">标签: 拓扑排序</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+    </div>
+</header>
+<header class="content-header tags-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">标签: 拓扑排序</h1>
+        <h5 class="subtitle">
+            
+        </h5>
+    </div>
+
+    
+<div class="tabs-bar container">
+    <nav class="tags-list">
+        <a href="/tags" style="-webkit-order:-1;order:-1" class="tags-list-item waves-effect waves-button waves-light
+            ">全部</a>
+        
+
+            <a href="/tags/图论/" style="-webkit-order:22;order:22" class="tags-list-item waves-effect waves-button waves-light">图论</a>
+
+        
+
+            <a href="/tags/网络流/" style="-webkit-order:23;order:23" class="tags-list-item waves-effect waves-button waves-light">网络流</a>
+
+        
+
+            <a href="/tags/最大流/" style="-webkit-order:24;order:24" class="tags-list-item waves-effect waves-button waves-light">最大流</a>
+
+        
+
+            <a href="/tags/最小割/" style="-webkit-order:25;order:25" class="tags-list-item waves-effect waves-button waves-light">最小割</a>
+
+        
+
+            <a href="/tags/组合数学/" style="-webkit-order:26;order:26" class="tags-list-item waves-effect waves-button waves-light">组合数学</a>
+
+        
+
+            <a href="/tags/数学/" style="-webkit-order:27;order:27" class="tags-list-item waves-effect waves-button waves-light">数学</a>
+
+        
+
+            <a href="/tags/排列组合/" style="-webkit-order:28;order:28" class="tags-list-item waves-effect waves-button waves-light">排列组合</a>
+
+        
+
+            <a href="/tags/优化/" style="-webkit-order:29;order:29" class="tags-list-item waves-effect waves-button waves-light">优化</a>
+
+        
+
+            <a href="/tags/LCA/" style="-webkit-order:30;order:30" class="tags-list-item waves-effect waves-button waves-light">LCA</a>
+
+        
+
+            <a href="/tags/倍增/" style="-webkit-order:31;order:31" class="tags-list-item waves-effect waves-button waves-light">倍增</a>
+
+        
+
+            <a href="/tags/贪心/" style="-webkit-order:32;order:32" class="tags-list-item waves-effect waves-button waves-light">贪心</a>
+
+        
+
+            <a href="/tags/哈希/" style="-webkit-order:33;order:33" class="tags-list-item waves-effect waves-button waves-light">哈希</a>
+
+        
+
+            <a href="/tags/欧拉函数/" style="-webkit-order:34;order:34" class="tags-list-item waves-effect waves-button waves-light">欧拉函数</a>
+
+        
+
+            <a href="/tags/欧拉定理/" style="-webkit-order:35;order:35" class="tags-list-item waves-effect waves-button waves-light">欧拉定理</a>
+
+        
+
+            <a href="/tags/树状数组/" style="-webkit-order:36;order:36" class="tags-list-item waves-effect waves-button waves-light">树状数组</a>
+
+        
+
+            <a href="/tags/DFS序/" style="-webkit-order:37;order:37" class="tags-list-item waves-effect waves-button waves-light">DFS序</a>
+
+        
+
+            <a href="/tags/DP/" style="-webkit-order:38;order:38" class="tags-list-item waves-effect waves-button waves-light">DP</a>
+
+        
+
+            <a href="/tags/期望/" style="-webkit-order:39;order:39" class="tags-list-item waves-effect waves-button waves-light">期望</a>
+
+        
+
+            <a href="/tags/二分/" style="-webkit-order:40;order:40" class="tags-list-item waves-effect waves-button waves-light">二分</a>
+
+        
+
+            <a href="/tags/字符串哈希/" style="-webkit-order:0;order:0" class="tags-list-item waves-effect waves-button waves-light">字符串哈希</a>
+
+        
+
+            <a href="/tags/拓扑排序/" style="-webkit-order:1;order:1" class="tags-list-item waves-effect waves-button waves-light active">拓扑排序</a>
+
+        
+
+            <a href="/tags/最短路/" style="-webkit-order:2;order:2" class="tags-list-item waves-effect waves-button waves-light">最短路</a>
+
+        
+
+            <a href="/tags/Floyd/" style="-webkit-order:3;order:3" class="tags-list-item waves-effect waves-button waves-light">Floyd</a>
+
+        
+
+            <a href="/tags/数位DP/" style="-webkit-order:4;order:4" class="tags-list-item waves-effect waves-button waves-light">数位DP</a>
+
+        
+
+            <a href="/tags/SPFA/" style="-webkit-order:5;order:5" class="tags-list-item waves-effect waves-button waves-light">SPFA</a>
+
+        
+
+            <a href="/tags/树形DP/" style="-webkit-order:6;order:6" class="tags-list-item waves-effect waves-button waves-light">树形DP</a>
+
+        
+
+            <a href="/tags/线段树/" style="-webkit-order:7;order:7" class="tags-list-item waves-effect waves-button waves-light">线段树</a>
+
+        
+
+            <a href="/tags/后缀数组/" style="-webkit-order:8;order:8" class="tags-list-item waves-effect waves-button waves-light">后缀数组</a>
+
+        
+
+            <a href="/tags/树链剖分/" style="-webkit-order:9;order:9" class="tags-list-item waves-effect waves-button waves-light">树链剖分</a>
+
+        
+
+            <a href="/tags/三角函数/" style="-webkit-order:10;order:10" class="tags-list-item waves-effect waves-button waves-light">三角函数</a>
+
+        
+
+            <a href="/tags/代数/" style="-webkit-order:11;order:11" class="tags-list-item waves-effect waves-button waves-light">代数</a>
+
+        
+
+            <a href="/tags/几何/" style="-webkit-order:12;order:12" class="tags-list-item waves-effect waves-button waves-light">几何</a>
+
+        
+
+            <a href="/tags/公式/" style="-webkit-order:13;order:13" class="tags-list-item waves-effect waves-button waves-light">公式</a>
+
+        
+
+            <a href="/tags/四边形不等式/" style="-webkit-order:14;order:14" class="tags-list-item waves-effect waves-button waves-light">四边形不等式</a>
+
+        
+
+            <a href="/tags/平面向量/" style="-webkit-order:15;order:15" class="tags-list-item waves-effect waves-button waves-light">平面向量</a>
+
+        
+
+            <a href="/tags/并查集/" style="-webkit-order:16;order:16" class="tags-list-item waves-effect waves-button waves-light">并查集</a>
+
+        
+
+            <a href="/tags/二分答案/" style="-webkit-order:17;order:17" class="tags-list-item waves-effect waves-button waves-light">二分答案</a>
+
+        
+
+            <a href="/tags/字符串/" style="-webkit-order:18;order:18" class="tags-list-item waves-effect waves-button waves-light">字符串</a>
+
+        
+
+            <a href="/tags/最小表示法/" style="-webkit-order:19;order:19" class="tags-list-item waves-effect waves-button waves-light">最小表示法</a>
+
+        
+
+            <a href="/tags/莫比乌斯反演/" style="-webkit-order:20;order:20" class="tags-list-item waves-effect waves-button waves-light">莫比乌斯反演</a>
+
+        
+
+            <a href="/tags/fhq-treap/" style="-webkit-order:21;order:21" class="tags-list-item waves-effect waves-button waves-light">fhq-treap</a>
+
+        
+    </nav>
+    <!-- PC show more-->
+    <div class="tags-list-more">
+        <a href="javascript:;" onclick="BLOG.tabBar(this)" class="action tags-list-item waves-effect waves-circle waves-light"><i class="icon icon-ellipsis-h"></i></a>
+    </div>
+</div>
+
+
+
+</header>
+
+<div class="container body-wrap fade">
+    
+            <div class="waterfall">
+          
+
+            <div class="waterfall-item">
+  <article class="article-card archive-article">
+    <div class="post-meta">
+      <time class="post-time" title="2019-05-08 22:53:33" datetime="2019-05-08T14:53:33.000Z" itemprop="datePublished">2019-05-08</time>
+
+      
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/OI/">OI</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/OI/题解/">题解</a></li></ul></li></ul>
+
+
 
     </div>
-    <br>
+    
+
+
   
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2019/05/08/[JZOJ4964] Rhyme/">「JZOJ4964」Rhyme</a>
+    </h3>
   
-    <div class="social-wrapper">
-      
+
+
+
+    
+    <div class="post-footer">
         
-          <a href="/atom.xml" class="social fas fa-rss flat-btn" target="_blank" rel="external nofollow noopener noreferrer">
-          </a>
-        
-      
-        
-          <a href="mailto:patrick_rdfz@qq.com" class="social fas fa-envelope flat-btn" target="_blank" rel="external nofollow noopener noreferrer">
-          </a>
-        
-      
-        
-          <a href="https://github.com/tle666" class="social fab fa-github flat-btn" target="_blank" rel="external nofollow noopener noreferrer">
-          </a>
-        
-      
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/图论/">图论</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/字符串哈希/">字符串哈希</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/拓扑排序/">拓扑排序</a></li></ul>
+
     </div>
-  
-  <br>
-  Copyright <i class="far fa-copyright"></i> 2018-2019
-  <a href="https://tle666.github.io" target="_blank"> P_Wang </a>&nbsp;&nbsp;|&nbsp;&nbsp;
-  <!-- 网站运行时间 -->
-  <span id="timeDate">正在载入...</span><span id="times"><span><i class="fa fa-spinner fa-spin"> </i></span></span>
-  <script>
-  var now = new Date();
-  function createtime() {
-    var grt= new Date("08/29/2018 19:37:05");
-    now.setTime(now.getTime()+250);
-    days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
-    hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
-    if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
-    mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
-    seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
-    snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
-    document.getElementById("timeDate").innerHTML = "本站已勉强存活了 "
-    document.getElementById("times").innerHTML = dnum +" 天 " + hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
-    /*document.getElementById("times").style.color="#0056FF";*/
-    }
-    setInterval("createtime()",250);
-  </script><br><br>
-  <i class="fa fa-user"></i>
-  <span id="busuanzi_container_site_uv"> <span id="busuanzi_value_site_uv"></span></span>&nbsp;Visitors&nbsp;&nbsp;|&nbsp;&nbsp;
-  <i class="fa fa-eye"></i>
-  <span id="busuanzi_container_site_pv"> <span id="busuanzi_value_site_pv"></span></span>&nbsp;Views&nbsp;&nbsp;|&nbsp;&nbsp;
-  <i class="fas fa-chart-area"></i>
-  <span class="post-count">Word Count:24k</span>&nbsp;&nbsp;|&nbsp;&nbsp;
-  <a href="https://tle666.github.io/sitemap.xml" target="_blank">站点地图</a>&nbsp;&nbsp;
+    
+  </article>
+</div>
+
+        
+            </div>
+        
+    
+</div>
+
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>P_Wang &copy; 2018 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
 </footer>
 
-      <script>setLoadingBarProgress(60);</script>
-    </div>
-    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
-  </div>
-  <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
-
-  <script>
-    var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
-    var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
-    var ALGOLIA_API_KEY = "";
-    var ALGOLIA_APP_ID = "";
-    var ALGOLIA_INDEX_NAME = "";
-    var AZURE_SERVICE_NAME = "";
-    var AZURE_INDEX_NAME = "";
-    var AZURE_QUERY_KEY = "";
-    var BAIDU_API_ID = "";
-    var SEARCH_SERVICE = "hexo" || "hexo";
-    var ROOT = "/"||"/";
-    if(!ROOT.endsWith('/'))ROOT += '/';
-  </script>
-
-<script src="//instant.page/1.2.2" type="module" integrity="sha384-2xV8M5griQmzyiY3CDqh1dn4z3llDVqZDqzjzcY+jCBCk/a5fXJmuZ/40JJAPeoU"></script>
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
 
 
-  <script async src="https://cdn.jsdelivr.net/npm/scrollreveal@4.0.5/dist/scrollreveal.min.js"></script>
-  <script type="text/javascript">
-    $(function() {
-      const $reveal = $('.reveal');
-      if ($reveal.length === 0) return;
-      const sr = ScrollReveal({ distance: 0 });
-      sr.reveal('.reveal');
-    });
-  </script>
-
-
-  <script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
-  <script type="text/javascript">
-    $(function() {
-      Waves.attach('.flat-btn', ['waves-button']);
-      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
-      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
-      Waves.attach('.flat-box', ['waves-block']);
-      Waves.attach('.float-box', ['waves-block', 'waves-float']);
-      Waves.attach('.waves-image');
-      Waves.init();
-    });
-  </script>
-
-
-  <script async src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js"></script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.4.19/js/app.js"></script>
-
-
-  <script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.4.19/js/search.js"></script>
-
-
-
-
-<!-- 复制 -->
-<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
 <script>
-  let COPY_SUCCESS = "复制成功";
-  let COPY_FAILURE = "复制失败";
-  /*页面载入完成后，创建复制按钮*/
-  !function (e, t, a) {
-    /* code */
-    var initCopyCode = function(){
-      var copyHtml = '';
-      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
-      copyHtml += '  <i class="fa fa-copy"></i><span>复制</span>';
-      copyHtml += '</button>';
-      $(".highlight .code pre").before(copyHtml);
-      var clipboard = new ClipboardJS('.btn-copy', {
-        target: function(trigger) {
-          return trigger.nextElementSibling;
-        }
-      });
+var BLOG = { ROOT: '/', SHARE: false, REWARD: false };
 
-      clipboard.on('success', function(e) {
-        //您可以加入成功提示
-        console.info('Action:', e.action);
-        console.info('Text:', e.text);
-        console.info('Trigger:', e.trigger);
-        success_prompt(COPY_SUCCESS);
-        e.clearSelection();
-      });
-      clipboard.on('error', function(e) {
-        //您可以加入失败提示
-        console.error('Action:', e.action);
-        console.error('Trigger:', e.trigger);
-        fail_prompt(COPY_FAILURE);
-      });
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
     }
-    initCopyCode();
+});
 
-  }(window, document);
-
-  /**
-   * 弹出式提示框，默认1.5秒自动消失
-   * @param message 提示信息
-   * @param style 提示样式，有alert-success、alert-danger、alert-warning、alert-info
-   * @param time 消失时间
-   */
-  var prompt = function (message, style, time)
-  {
-      style = (style === undefined) ? 'alert-success' : style;
-      time = (time === undefined) ? 1500 : time*1000;
-      $('<div>')
-          .appendTo('body')
-          .addClass('alert ' + style)
-          .html(message)
-          .show()
-          .delay(time)
-          .fadeOut();
-  };
-
-  // 成功提示
-  var success_prompt = function(message, time)
-  {
-      prompt(message, 'alert-success', time);
-  };
-
-  // 失败提示
-  var fail_prompt = function(message, time)
-  {
-      prompt(message, 'alert-danger', time);
-  };
-
-  // 提醒
-  var warning_prompt = function(message, time)
-  {
-      prompt(message, 'alert-warning', time);
-  };
-
-  // 信息提示
-  var info_prompt = function(message, time)
-  {
-      prompt(message, 'alert-info', time);
-  };
-
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
 </script>
 
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 
-<!-- fancybox -->
-<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
 <script>
-  let LAZY_LOAD_IMAGE = "";
-  $(".article-entry").find("fancybox").find("img").each(function () {
-      var element = document.createElement("a");
-      $(element).attr("data-fancybox", "gallery");
-      $(element).attr("href", $(this).attr("src"));
-      /* 图片采用懒加载处理时,
-       * 一般图片标签内会有个属性名来存放图片的真实地址，比如 data-original,
-       * 那么此处将原本的属性名src替换为对应属性名data-original,
-       * 修改如下
-       */
-       if (LAZY_LOAD_IMAGE) {
-         $(element).attr("href", $(this).attr("data-original"));
-       }
-      $(this).wrap(element);
-  });
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '404 Error';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
 </script>
 
 
 
-
-
-  <script>setLoadingBarProgress(100);</script>
 </body>
 </html>
