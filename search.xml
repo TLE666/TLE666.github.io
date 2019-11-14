@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[「USACO07MAR」Gold Balanced Lineup]]></title>
     <url>%2F2019%2F11%2F13%2F%5BUSACO07MAR%5D%20Gold%20Balanced%20Lineup%2F</url>
-    <content type="text"><![CDATA[Description有 $n$ 天， $m$ 种能力。每天都对应着一个给定的二进制数，第 $i$ 位是 $1$ 代表第 $i$ 种能力提升 $1$ 次。否则不提升。如果在连续的一段时间内，每项能力都提升了相同的次数，就称这段时间为一个均衡时期。求均衡时期的最大长度。 对于 $100 \%$ 的数据，有 $n \leq 10^5,m \leq 30$ 题目链接戳这里 Solution我们发现 $m$ 不大，于是考虑一次对每个能力算出前缀和。设第 $i$ 天所有 $m$ 个能力所构成的序列为 $S_i$ ，则一个从第 $l$ 天到第 $r$ 天的均衡时期肯定满足 $S_{l - 1}$ 和 $S_r$ 对应每项的差相同。比如 $\texttt{[1, 3, 2, 4]}$ 和 $\texttt{[3, 5, 4, 6]}$ 由此，我们能够想到哈希。 我们希望给出一种对应法则使所有 对应每项的差相同 的序列都对应成一个哈希值。因为满足这个条件的序列之间一定是一个均衡时期。例如 $\texttt{[2, 1, 4, 0]}$ ， $\texttt{[4, 3, 6, 2]}$ ， 和 $\texttt{[5, 4, 7, 3]}$ 这三个序列应该对应同一种。 由于 $m$ 很小，可以直接把整个序列加上或减去一个数 $d$ ，使得序列的第一个数为 $0$ ，也就是把整个序列同时减去第一个数。比如把 $\texttt{[2, 1, 4, 0]}$ 全部减二，变为 $\texttt{[0, -1, 2, -2]}$ 。（负数也无妨，毕竟哈希跟正负无关） 现在，只需求出依次累积的能力即可。 对于每一次哈希的值： 若没有出现过，则把当前时间（天数）记录到一个数组中。 若出现过，即当前哈希值对应的数组已经有值，则说明 当前 与 数组中记录的时间 这两者间是一个均衡时期。更新答案即可。 特别提醒：如果经过操作（即全序列减去第一个数）后得到全 0 序列，则第 1 天到它也是一个均衡时期，因为第 0 天的序列也是全 0 序列。 例如第 $5$ 天时序列为 $\texttt{[3, 3, 3, 3]}$ ，则对应着 $\texttt{[0, 0, 0, 0]}$ 序列，说明和第 $0$ 天之后一天（第 $1$ 天）构成了一个均衡时期。 Code123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869#include &lt;bits/stdc++.h&gt;using namespace std;#define rep(i, a, b) for (int i = (a); i &lt;= (b); i++)#define per(i, a, b) for (int i = (a); i &gt;= (b); i--)typedef long long ll;const int N = 1e5 + 100;const int bas = 29;const int mod = 998244353;const int bs2 = 19;const int md2 = 19260817;const int bs3 = 101;const int md3 = 9291433;const int bs4 = 67;const int md4 = 1e9 + 7;int n, m, a[N], b[N], ans;unordered_map &lt;ll, int&gt; mp; // 哈希和时间的对应ll Hash() &#123; // 多重哈希，以防被卡 ll num = 1, res = 0; rep(i, 1, m) &#123; res += b[i] * num; res %= mod; num *= bas; &#125; ll rs2 = 0; num = 1; rep(i, 1, m) &#123; rs2 += b[i] * num; res %= md2; num *= bs2; &#125; ll rs3 = 0; num = 1; rep(i, 1, m) &#123; rs3 += b[i] * num; res %= md3; num *= bs3; &#125; return (res * bs4 * bs4 + rs2 * bs4 + rs3) % md4; // “哈希 套 哈希”&#125;void chg(int x) &#123; // 对应序列。把 b 数组对应成上述序列（即第一个数为 0 ） per(i, m - 1, 0) &#123; if (x &gt;= (1 &lt;&lt; i)) &#123; x -= (1 &lt;&lt; i); a[i + 1]++; &#125; &#125; b[1] = 0; rep(i, 2, m) b[i] = a[i] - a[1];&#125;int main() &#123; scanf("%d %d", &amp;n, &amp;m); mp[0] = 0; rep(i, 1, n) &#123; int d; scanf("%d", &amp;d); chg(d); ll tmp = Hash(); if (!mp.count(tmp)) mp[tmp] = i; // 记录第一次时间 else ans = max(ans, i - mp[tmp]); // 计算答案，更新答案 &#125; printf("%d\n", ans); return 0;&#125;]]></content>
+    <content type="text"><![CDATA[Description有 $n$ 天， $m$ 种能力。每天都对应着一个给定的二进制数，第 $i$ 位是 $1$ 代表第 $i$ 种能力提升 $1$ 次。否则不提升。如果在连续的一段时间内，每项能力都提升了相同的次数，就称这段时间为一个均衡时期。求均衡时期的最大长度。 对于 $100 \%$ 的数据，有 $n \leq 10^5,m \leq 30$ 题目链接戳这里 Solution我们发现 $m$ 不大，于是考虑一次对每个能力算出前缀和。设第 $i$ 天所有 $m$ 个能力所构成的序列为 $S_i$ ，则一个从第 $l$ 天到第 $r$ 天的均衡时期肯定满足 $S_{l - 1}$ 和 $S_r$ 对应每项的差相同。比如 $\texttt{[1, 3, 2, 4]}$ 和 $\texttt{[3, 5, 4, 6]}$ 由此，我们能够想到哈希。 我们希望给出一种对应法则使所有 对应每项的差相同 的序列都对应成一个哈希值。因为满足这个条件的序列之间一定是一个均衡时期。例如 $\texttt{[2, 1, 4, 0]}$ ， $\texttt{[4, 3, 6, 2]}$ ， 和 $\texttt{[5, 4, 7, 3]}$ 这三个序列应该对应同一种。 由于 $m$ 很小，可以直接把整个序列加上或减去一个数 $d$ ，使得序列的第一个数为 $0$ ，也就是把整个序列同时减去第一个数。比如把 $\texttt{[2, 1, 4, 0]}$ 全部减二，变为 $\texttt{[0, -1, 2, -2]}$ 。（负数也无妨，毕竟哈希跟正负无关） 现在，只需求出依次累积的能力即可。 对于每一次哈希的值： 若没有出现过，则把当前时间（天数）记录到一个数组中。 若出现过，即当前哈希值对应的数组已经有值，则说明 当前 与 数组中记录的时间 这两者间是一个均衡时期。更新答案即可。 特别提醒：如果经过操作（即全序列减去第一个数）后得到全 0 序列，则第 1 天到它也是一个均衡时期，因为第 0 天的序列也是全 0 序列。 （感谢 $\text{wzj dalao}$ 的帮助） 例如第 $5$ 天时序列为 $\texttt{[3, 3, 3, 3]}$ ，则对应着 $\texttt{[0, 0, 0, 0]}$ 序列，说明和第 $0$ 天之后一天（第 $1$ 天）构成了一个均衡时期。 Code123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869#include &lt;bits/stdc++.h&gt;using namespace std;#define rep(i, a, b) for (int i = (a); i &lt;= (b); i++)#define per(i, a, b) for (int i = (a); i &gt;= (b); i--)typedef long long ll;const int N = 1e5 + 100;const int bas = 29;const int mod = 998244353;const int bs2 = 19;const int md2 = 19260817;const int bs3 = 101;const int md3 = 9291433;const int bs4 = 67;const int md4 = 1e9 + 7;int n, m, a[N], b[N], ans;unordered_map &lt;ll, int&gt; mp; // 哈希和时间的对应ll Hash() &#123; // 多重哈希，以防被卡 ll num = 1, res = 0; rep(i, 1, m) &#123; res += b[i] * num; res %= mod; num *= bas; &#125; ll rs2 = 0; num = 1; rep(i, 1, m) &#123; rs2 += b[i] * num; res %= md2; num *= bs2; &#125; ll rs3 = 0; num = 1; rep(i, 1, m) &#123; rs3 += b[i] * num; res %= md3; num *= bs3; &#125; return (res * bs4 * bs4 + rs2 * bs4 + rs3) % md4; // “哈希 套 哈希”&#125;void chg(int x) &#123; // 对应序列。把 b 数组对应成上述序列（即第一个数为 0 ） per(i, m - 1, 0) &#123; if (x &gt;= (1 &lt;&lt; i)) &#123; x -= (1 &lt;&lt; i); a[i + 1]++; &#125; &#125; b[1] = 0; rep(i, 2, m) b[i] = a[i] - a[1];&#125;int main() &#123; scanf("%d %d", &amp;n, &amp;m); mp[0] = 0; rep(i, 1, n) &#123; int d; scanf("%d", &amp;d); chg(d); ll tmp = Hash(); if (!mp.count(tmp)) mp[tmp] = i; // 记录第一次时间 else ans = max(ans, i - mp[tmp]); // 计算答案，更新答案 &#125; printf("%d\n", ans); return 0;&#125;]]></content>
       <categories>
         <category>OI</category>
         <category>题解</category>
@@ -203,8 +203,8 @@
       <tags>
         <tag>优化</tag>
         <tag>DP</tag>
-        <tag>四边形不等式</tag>
         <tag>公式</tag>
+        <tag>四边形不等式</tag>
       </tags>
   </entry>
   <entry>
@@ -360,10 +360,10 @@
         <category>数学</category>
       </categories>
       <tags>
-        <tag>公式</tag>
         <tag>三角函数</tag>
         <tag>代数</tag>
         <tag>几何</tag>
+        <tag>公式</tag>
       </tags>
   </entry>
   <entry>
@@ -462,13 +462,13 @@
     <content type="text"></content>
   </entry>
   <entry>
-    <title><![CDATA[友链]]></title>
-    <url>%2Flinks%2Findex.html</url>
-    <content type="text"><![CDATA[常用网站Graph Editor | OI Wiki | OIerDb | OEIS 友链blunt-axe 神仙 AcFunction 神仙 WZL 大佬 欢迎交换友链 qwq]]></content>
-  </entry>
-  <entry>
     <title><![CDATA[标签]]></title>
     <url>%2Ftags%2Findex.html</url>
     <content type="text"></content>
+  </entry>
+  <entry>
+    <title><![CDATA[友链]]></title>
+    <url>%2Flinks%2Findex.html</url>
+    <content type="text"><![CDATA[常用网站Graph Editor | OI Wiki | OIerDb | OEIS 友链blunt-axe 神仙 AcFunction 神仙 WZL 大佬 欢迎交换友链 qwq]]></content>
   </entry>
 </search>
