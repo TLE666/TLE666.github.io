@@ -97,20 +97,6 @@
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="https://github.com/tle666" target="_blank">
-                <i class="icon icon-lg icon-github"></i>
-                Github
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="https://www.luogu.org/user/54628">
-                <i class="icon icon-lg icon-code"></i>
-                洛谷
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
               <a href="/links">
                 <i class="icon icon-lg icon-link"></i>
                 友链
@@ -140,6 +126,10 @@
             </a>
         </div>
         
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
         
     </div>
 </header>
@@ -511,9 +501,55 @@
 <a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
 
 
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://tle666.github.io/archives/2019/03/&title=P_Wang's Blog&pic=http://tle666.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://tle666.github.io/archives/2019/03/&title=P_Wang's Blog&source=OIer!" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://tle666.github.io/archives/2019/03/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=P_Wang's Blog&url=http://tle666.github.io/archives/2019/03/&via=http://tle666.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://tle666.github.io/archives/2019/03/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABzklEQVR42u3ay66DMAxFUf7/p7nTSleEfWycUmlnhBBtFgwsP3IceJ0f6/PO/+ur56/+85hYcuXKbXPP5Uq3v3qGvPDaIFeu3P3cdaC5ClXkDv8cKNjJlSv39Vy+MQ9qcuXK/V3ueuO0+JErV+47uTwF6YBIcfVYrSZXrtwGl3cp565H+rty5cotcc9wpenIOiTFu8uVK3cLt9bISBup63QnbaDIlSt3mkvKDL4NL5CKxZVcuXK3cGvFTxrmePvjseaIXLlyG1wyIOENjn75dBPm5MqVu4W7Tlx4ccKLH/4Jbmo1uXLlDnPTpid5vTSrKo5b5MqVO8Dlw480QamxbsonuXLlbuGmqUm6Te3IBSqW5MqVO8x9qvHRaZ7yO3Llyv0Wtx+q0rkNP+wlV67c/dz04EU6ra21S26aI3Llyh3jctDE2LU4ZJUrV+4wN22FpIGJh7zWtEeuXLlt7hmuNInhaRP6f7ly5W7h9ouW9GgFSZX4y8uVK3eOywcktfkt+S0/CCJXrtydXB5oeJqCjljV0he5cuW+mJuy0mMccuXK/RXuOrnpj2bjUYpcuXLHuP2DmCQNSsc5cuXK/RY3rTh46pMOUXgolCtX7hj3D6cNCwkSauHoAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
     <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
 <script>
-var BLOG = { ROOT: '/', SHARE: false, REWARD: false };
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
 
 
 </script>

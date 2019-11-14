@@ -97,20 +97,6 @@
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="https://github.com/tle666" target="_blank">
-                <i class="icon icon-lg icon-github"></i>
-                Github
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="https://www.luogu.org/user/54628">
-                <i class="icon icon-lg icon-code"></i>
-                洛谷
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
               <a href="/links">
                 <i class="icon icon-lg icon-link"></i>
                 友链
@@ -140,6 +126,10 @@
             </a>
         </div>
         
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
         
     </div>
 </header>
@@ -171,11 +161,11 @@
 
         
 
-            <a href="/categories/数学/" style="-webkit-order:3;order:3" class="tags-list-item waves-effect waves-button waves-light">数学</a>
+            <a href="/categories/OI/算法讲解/" style="-webkit-order:3;order:3" class="tags-list-item waves-effect waves-button waves-light active">算法讲解</a>
 
         
 
-            <a href="/categories/OI/算法讲解/" style="-webkit-order:4;order:4" class="tags-list-item waves-effect waves-button waves-light active">算法讲解</a>
+            <a href="/categories/数学/" style="-webkit-order:4;order:4" class="tags-list-item waves-effect waves-button waves-light">数学</a>
 
         
     </nav>
@@ -472,9 +462,55 @@
 <a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
 
 
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://tle666.github.io/categories/OI/算法讲解/&title=P_Wang's Blog&pic=http://tle666.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://tle666.github.io/categories/OI/算法讲解/&title=P_Wang's Blog&source=OIer!" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://tle666.github.io/categories/OI/算法讲解/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=P_Wang's Blog&url=http://tle666.github.io/categories/OI/算法讲解/&via=http://tle666.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://tle666.github.io/categories/OI/算法讲解/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACNklEQVR42u3aS27DMAxF0ex/0+40RWv1PkpOIepqVLh2opMADD96vfC63tb7lbt7xnfeveb4/gVLhgwZ2zKu4Rozxk/93BZ/5fRdZMiQcQLjLoKt3QoJ4jxYy5AhQ8YT2xqH0fH7ypAhQ0bKGG+Ul8H/HHBlyJCxFWM+CJLW20zIXlaLy5AhY0MG77p//u9H5hsyZMjYinGFi48eefp4TS8ZMmT0ZqxN9fjhDJICpiWxDBkyejPSY141GH8WbZfksDJkyGjB4I0wHkzTSrMWsr9dkSFDxgEMXrKmI4Q04NYCtwwZMnozau2zNIGbaqLhEYUMGTJ6M8Y3pclimvA9MtqUIUNGIwZvohFS+l+CQWAZMmQcw6gFR7LRdEZBwvcvZ0ZkyJBxDIM3y3iGloLjkaoMGTJaM2bKWg4ImvsTV2TIkHECo3aElJe+tXZePOCUIUNGO0baRJtvwxFkHKxlyJBxDGOmlJ1vwNXGpUFNLEOGjG0ZpEydCakzxzjQSECGDBmHMdKjWmnoTAeivAyWIUPGOYxaGZnCeCq5eIIhQ4aMpoxai58clUjHnChBlCFDRlPGFS7Sklt1vKyY28qQIaMdI8275gcJPDQXz4zIkCGjKYMH2aBNDxLEWsPu9nuQIUPGAYzaEHGmfK01126fkiFDhoxSupYOR9P4uSDgypAhozWDBNba4h/Nst8NGTJkbMJYdWAiPTzBU8w/PjIZMmS0ZqRBkDTR0tKXb33BfEOGDBk7Mb4Aahsi4GXqU/IAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
     <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
 <script>
-var BLOG = { ROOT: '/', SHARE: false, REWARD: false };
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
 
 
 </script>

@@ -97,20 +97,6 @@
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="https://github.com/tle666" target="_blank">
-                <i class="icon icon-lg icon-github"></i>
-                Github
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="https://www.luogu.org/user/54628">
-                <i class="icon icon-lg icon-code"></i>
-                洛谷
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
               <a href="/links">
                 <i class="icon icon-lg icon-link"></i>
                 友链
@@ -141,6 +127,10 @@
         </div>
         
         
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
     </div>
 </header>
 <header class="content-header categories-header">
@@ -159,23 +149,23 @@
             ">全部</a>
         
 
-            <a href="/categories/OI/" style="-webkit-order:3;order:3" class="tags-list-item waves-effect waves-button waves-light">OI</a>
+            <a href="/categories/OI/" style="-webkit-order:2;order:2" class="tags-list-item waves-effect waves-button waves-light">OI</a>
 
         
 
-            <a href="/categories/OI/其它/" style="-webkit-order:4;order:4" class="tags-list-item waves-effect waves-button waves-light">其它</a>
+            <a href="/categories/OI/其它/" style="-webkit-order:3;order:3" class="tags-list-item waves-effect waves-button waves-light">其它</a>
 
         
 
-            <a href="/categories/OI/题解/" style="-webkit-order:0;order:0" class="tags-list-item waves-effect waves-button waves-light">题解</a>
+            <a href="/categories/OI/题解/" style="-webkit-order:4;order:4" class="tags-list-item waves-effect waves-button waves-light">题解</a>
+
+        
+
+            <a href="/categories/OI/算法讲解/" style="-webkit-order:0;order:0" class="tags-list-item waves-effect waves-button waves-light">算法讲解</a>
 
         
 
             <a href="/categories/数学/" style="-webkit-order:1;order:1" class="tags-list-item waves-effect waves-button waves-light active">数学</a>
-
-        
-
-            <a href="/categories/OI/算法讲解/" style="-webkit-order:2;order:2" class="tags-list-item waves-effect waves-button waves-light">算法讲解</a>
 
         
     </nav>
@@ -302,9 +292,55 @@
 <a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
 
 
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://tle666.github.io/categories/数学/&title=P_Wang's Blog&pic=http://tle666.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://tle666.github.io/categories/数学/&title=P_Wang's Blog&source=OIer!" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://tle666.github.io/categories/数学/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=P_Wang's Blog&url=http://tle666.github.io/categories/数学/&via=http://tle666.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://tle666.github.io/categories/数学/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABwklEQVR42u3aQW7DMAwEwPz/0ynQU4qg7pKUVLcYnQzHkUc+EBLJxyMez8/xev1+5/3X1/vJr8sGLi7umPu8HNfPJAvLFxy9BRcX9yC3GryuZ6gGsnxmXFzcu3Gvr3M6Li7uf+UWXnCHQIaLi9viJoefPHjl26CNZzVcXNwBt5cwXXu9Pb+Li4u7qCqRFEXyTcyCt+Pi4h7h9g4k8+JrNWqNzk+4uLhFbh6MeoeTUfojfwgXF3cpt5ro7N2pLjX6HLi4uJu5vfbKeUGlmSrFxcXdzJ0kO+bllqRx88t/cXFxj3B3bE2qYatcuMXFxT3IzTc0yevzdGryL1xc3Ltxk9JIHtqqQbMcyHBxcRdxewGrF7YWt3Dh4uJu41a3L70WjWq4XPBFcXFxW9x5a0W1qSL5NN/OgIuLe5w7Kb72mirK8+Di4h7hztuz8iRIAZE/j4uLu4E7CSuriq+F8gwuLu4Rbj6qlOqci+fHxcUdc/OEZp7i7CVSo8Xg4uIe5FYDzbzxorcMXFzcu3GrqdU8mZIUX3Fxcf8KtxfskpavH7pFcHFxj3Dzw081kdpLjuDi4v4ut5fcTLYjk1A4ouPi4va5H68jCwkeO2beAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
     <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
 <script>
-var BLOG = { ROOT: '/', SHARE: false, REWARD: false };
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
 
 
 </script>
