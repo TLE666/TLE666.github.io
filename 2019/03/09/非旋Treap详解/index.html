@@ -23,13 +23,13 @@
     
     
     <meta name="keywords" content="fhq-treap">
-    <meta name="description" content="Introduction “$Treap$的旋转好难啊！” “你不知道非旋$treap$吗？” （被一顿吊打。。  这就是$FHQ-Treap$。">
+    <meta name="description" content="Introduction也被称为 $FHQ-Treap$ 。">
 <meta name="keywords" content="fhq-treap">
 <meta property="og:type" content="article">
 <meta property="og:title" content="非旋 Treap 详解">
 <meta property="og:url" content="http://tle666.github.io/2019/03/09/非旋Treap详解/index.html">
 <meta property="og:site_name" content="P_Wang&#39;s Blog">
-<meta property="og:description" content="Introduction “$Treap$的旋转好难啊！” “你不知道非旋$treap$吗？” （被一顿吊打。。  这就是$FHQ-Treap$。">
+<meta property="og:description" content="Introduction也被称为 $FHQ-Treap$ 。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://s2.ax1x.com/2019/03/09/ApKfjU.md.png">
 <meta property="og:image" content="https://s2.ax1x.com/2019/03/09/ApKIHJ.png">
@@ -50,10 +50,10 @@
 <meta property="og:image" content="https://images2018.cnblogs.com/blog/1370382/201808/1370382-20180814154301570-1914457813.png">
 <meta property="og:image" content="https://images2018.cnblogs.com/blog/1370382/201808/1370382-20180814154442044-1133591279.png">
 <meta property="og:image" content="https://images2018.cnblogs.com/blog/1370382/201808/1370382-20180814154513584-1167652573.png">
-<meta property="og:updated_time" content="2019-05-19T03:46:51.746Z">
+<meta property="og:updated_time" content="2019-11-21T12:57:05.378Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="非旋 Treap 详解">
-<meta name="twitter:description" content="Introduction “$Treap$的旋转好难啊！” “你不知道非旋$treap$吗？” （被一顿吊打。。  这就是$FHQ-Treap$。">
+<meta name="twitter:description" content="Introduction也被称为 $FHQ-Treap$ 。">
 <meta name="twitter:image" content="https://s2.ax1x.com/2019/03/09/ApKfjU.md.png">
     
         <link rel="alternate" type="application/atom+xml" title="P_Wang&#39;s Blog" href="/atom.xml">
@@ -207,12 +207,7 @@
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a><strong>Introduction</strong></h1><ul>
-<li>“$Treap$的旋转好难啊！”</li>
-<li>“你不知道非旋$treap$吗？”</li>
-<li>（被一顿吊打。。</li>
-</ul>
-<p>这就是$FHQ-Treap$。</p>
+            <h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a><strong>Introduction</strong></h1><p>也被称为 $FHQ-Treap$ 。</p>
 <a id="more"></a>
 <p>前置技能：小根堆 &amp; $Treap$（不必须）</p>
 <p>提示：此博客图片较多，如无法加载请刷新重试~</p>
@@ -389,7 +384,7 @@
 <h1 id="Other-Operations"><a href="#Other-Operations" class="headerlink" title="Other Operations"></a><strong>Other Operations</strong></h1><p><strong>FHQ treap 的核心操作只有 merge 和 split 两个，其他操作都是基于这两个操作实现的。</strong></p>
 <h2 id="插入"><a href="#插入" class="headerlink" title="插入"></a><strong>插入</strong></h2><p><strong>插入权值为 x 的节点时，先新建一个节点，再以 x 为界按权值 split 整棵树为a,b，再按顺序 merge a，x，b。</strong></p>
 <h2 id="删除"><a href="#删除" class="headerlink" title="删除"></a><strong>删除</strong></h2><p><strong>要删除x，先将整棵树以 x-1 为界按权值split 成a和b，再将 b 以 1 为界 按排名split 成c和d，则 c 就是要删除的节点。最后按顺序merge a，b，d。</strong></p>
-<p><strong>（当然，这是在要删除节点必定存在的情况下才能进行的操作，不存在的情况请自行脑补）</strong> </p>
+<p><strong>（当然，这是在要删除节点必定存在的情况下才能进行的操作，不存在的情况请自行脑补）</strong></p>
 <h2 id="查询-x-的排名"><a href="#查询-x-的排名" class="headerlink" title="查询 x 的排名"></a><strong>查询 x 的排名</strong></h2><p><strong>先将整棵树以x-1按权值split成a和b，则a的siz+1即为x的排名。</strong></p>
 <h2 id="查询排名为-k-的值"><a href="#查询排名为-k-的值" class="headerlink" title="查询排名为 k 的值"></a><strong>查询排名为 k 的值</strong></h2><p><strong>先split出整棵树前k-1小节点，则右树最小节点即为所求节点，再次split 即可。</strong></p>
 <h2 id="查x前驱"><a href="#查x前驱" class="headerlink" title="查x前驱"></a><strong>查x前驱</strong></h2><p><strong>将整棵树以x-1按权值split，左树中最大节点即为所求节点，转入第x小值问题。</strong></p>
@@ -407,7 +402,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2019-05-19T03:46:51.746Z" itemprop="dateUpdated">2019-05-19 11:46:51</time>
+    最后更新时间：<time datetime="2019-11-21T12:57:05.378Z" itemprop="dateUpdated">2019-11-21 20:57:05</time>
 </span><br>
 
 
@@ -449,12 +444,7 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://tle666.github.io/2019/03/09/非旋Treap详解/&title=《非旋 Treap 详解》 — P_Wang's Blog&source=Introduction
-“$Treap$的旋转好难啊！”
-“你不知道非旋$treap$吗？”
-（被一顿吊打。。
-
-这就是$FHQ-Treap$。" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://tle666.github.io/2019/03/09/非旋Treap详解/&title=《非旋 Treap 详解》 — P_Wang's Blog&source=Introduction也被称为 $FHQ-Treap$ 。" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
@@ -611,12 +601,7 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://tle666.github.io/2019/03/09/非旋Treap详解/&title=《非旋 Treap 详解》 — P_Wang's Blog&source=Introduction
-“$Treap$的旋转好难啊！”
-“你不知道非旋$treap$吗？”
-（被一顿吊打。。
-
-这就是$FHQ-Treap$。" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://tle666.github.io/2019/03/09/非旋Treap详解/&title=《非旋 Treap 详解》 — P_Wang's Blog&source=Introduction也被称为 $FHQ-Treap$ 。" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
