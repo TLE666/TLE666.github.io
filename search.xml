@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[「NOI2009」植物大战僵尸]]></title>
+    <url>%2F2019%2F11%2F28%2F%5BNOI2009%5D%E6%A4%8D%E7%89%A9%E5%A4%A7%E6%88%98%E5%83%B5%E5%B0%B8%2F</url>
+    <content type="text"><![CDATA[Description游戏的地图可以抽象为一个 $N$ 行 $M$ 列的矩阵，行从上到下用 $0$ 到 $N - 1$ 编号，列从左到右用 $0$ 到 $M - 1$ 编号；在地图的每个位置上都放有一个 $\text{Plant}$ ，为简单起见，我们把位于第 $r$ 行第 $c$ 列的植物记为 $P_{r, c}$ 。 $\text{Plants}$ 分很多种，有攻击类、防守类和经济类等等。为了简单的描述每个 $\text{Plant}$ ，定义 $\text{Score}$ 和 $\text{Attack}$ 如下： $\text{Score} [P_{r, c}]$ $\text{Zombie}$ 击溃植物 $P_{r, c}$ 可获得的能源。若 $\text{Score} [P_{r, c}]$ 为非负整数，则表示击溃植物 $P_{r, c}$ 可获得能源 $\text{Score} [P_{r, c}]$ ，若为负数表示击溃 $P_{r, c}$ 需要付出能源 $- \text{Score} [P_{r, c}]$ 。 $\text{Attack} [P_{r, c}]$ 植物 $P_{r, c}$ 能够对 $\text{Zombie}$ 进行攻击的位置集合。 $\text{Zombies}$ 必须从地图的右侧进入，且只能沿着水平方向进行移动。 $\text{Zombies}$ 攻击植物的唯一方式就是走到该植物所在的位置并将植物吃掉。因此 $\text{Zombies}$ 的进攻总是从地图的右侧开始。也就是说，对于第r行的进攻， $\text{Zombies}$ 必须首先攻击Pr, M-1；若需要对 $P_{r, c}$ （ $0 \leq c &lt; M - 1$ ）攻击，必须将 $P_{r, M - 1}, P_{r, M - 2} \cdots P_{r, c + 1}$ 先击溃，并移动到位置 $(r, c)$ 才可进行攻击。 在本题的设定中， $\text{Plants}$ 的攻击力是无穷大的，一旦 $\text{Zombie}$ 进入某个 $\text{Plant}$ 的攻击位置，该 $\text{Zombie}$ 会被瞬间消灭，而该 $\text{Zombie}$ 没有时间进行任何攻击操作。因此，即便 $\text{Zombie}$ 进入了一个 $\text{Plant}$ 所在的位置，但该位置属于其他植物的攻击位置集合，则 $\text{Zombie}$ 会被瞬间消灭而所在位置的植物则安然无恙（在我们的设定中， $\text{Plant}$ 的攻击位置不包含自身所在位置，否则你就不可能击溃它了）。 $\text{Zombies}$ 的目标是对 $\text{Plants}$ 的阵地发起进攻并获得最大的能源收入。每一次，你可以选择一个可进攻的植物进行攻击。本题的目标为，制定一套 $\text{Zombies}$ 的进攻方案，选择进攻哪些植物以及进攻的顺序，从而获得最大的能源收入。 对于 $100 \%$ 的数据，有 $1 \leq N \leq 20,\ 1 \leq M \leq 30,\ -10^4 \leq \text{Score} \leq 10^4$ 题目链接戳这里 Solution可以通过建图来表示限制条件，即当且仅当「一个 $\text{Plant}$ 右侧所有的 $\text{Plants}$ 都被消灭」且「所有能够保护这个 $\text{Plant}$ 的 $\text{Plants}$ 都被消灭」时，该 $\text{Plant}$ 才能够被消灭。 将每个 $\text{Plant}$ 向它所有能够保护的 $\text{Plants}$ 连单向边。 这样，只有在一个 $\text{Plant}$ 的入度为 $0$ 时才能被消灭。 这样避免了两个 $\text{Plants}$ 互相保护，永远无法被消灭的情况。 不难想到用拓扑排序选出那些能被消灭的 $\text{Plants}$ 。 接下来只需判断怎么消灭的利益最大即可。 通过 $\text{Plants}$ 能被消灭的性质，可以想到闭合子图：有向图的一个子图中，对于每个点，从它出发，能够走到的所有点都在这个子图中，那么这个子图就是一个闭合子图。 考虑按照以下规则建图： 一个 $\text{Plant}$ 的点权是它的 $\text{Score}$ ； 每个 $\text{Plant}$ 都向其右侧的 $\text{Plant}$ 连边； 每个 $\text{Plant}$ 都向保护自己的 $\text{Plants}$ 连边。 那么以上这个图求出最大权闭合子图的收益即可。 Code123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115116117118119120121122123124125126127128129130131132#include &lt;bits/stdc++.h&gt;using namespace std;#define rep(i, a, b) for (int i = (a); i &lt;= (b); i++)#define trv(p, u) for (edg *p = h[u]; p; p = p-&gt;nxt)#define id(x, y) ((x - 1) * m + y)const int N = 1e6 + 100;const int inf = 0x3f3f3f3f;int n, m, s, t, ind[N], lev[N], sco[N];bool inGra[N];vector &lt;int&gt; e[N];struct edg &#123; int v, c; edg *nxt, *rev;&#125; pol[N &lt;&lt; 1], *h[N], *cur = pol;void add(int u, int v, int c) &#123; edg *p = ++cur, *q = ++cur; p-&gt;rev = q, q-&gt;rev = p; p-&gt;v = v, p-&gt;c = c, p-&gt;nxt = h[u], h[u] = p; q-&gt;v = u, q-&gt;c = 0, q-&gt;nxt = h[v], h[v] = q;&#125;void topo() &#123; queue &lt;int&gt; Q; rep(i, 1, n) &#123; rep(j, 1, m) &#123; if (ind[id(i, j)]) continue ; inGra[id(i, j)] = true; Q.push(id(i, j)); &#125; &#125; while (!Q.empty()) &#123; int u = Q.front(); Q.pop(); rep(i, 0, (int) e[u].size() - 1) &#123; int v = e[u][i]; ind[v]--; if (!ind[v] &amp;&amp; !inGra[v]) &#123; Q.push(v); inGra[v] = true; &#125; &#125; &#125;&#125;bool makelev() &#123; queue &lt;int&gt; Q; memset(lev, -1, sizeof(lev)); lev[s] = 1; Q.push(s); while (!Q.empty()) &#123; int u = Q.front(); Q.pop(); trv(p, u) &#123; int v = p-&gt;v; if (p-&gt;c &amp;&amp; lev[v] == -1) &#123; lev[v] = lev[u] + 1; Q.push(v); &#125; &#125; &#125; return lev[t] != -1;&#125;int dfs(int u, int flo) &#123; int res = 0; if (u == t) return flo; trv(p, u) &#123; int v = p-&gt;v; if (p-&gt;c &amp;&amp; lev[v] == lev[u] + 1) &#123; int f = dfs(v, min(flo, p-&gt;c)); p-&gt;c -= f, p-&gt;rev-&gt;c += f; flo -= f, res += f; if (!flo) break ; &#125; &#125; if (!res) lev[u] = -1; return res;&#125;int dinic() &#123; int res = 0; while (makelev()) res += dfs(s, inf); return res;&#125;int main() &#123; scanf("%d %d", &amp;n, &amp;m); s = 0, t = n * m + 1; rep(i, 1, n) &#123; rep(j, 1, m) &#123; int tot, u = id(i, j); scanf("%d %d", &amp;sco[u], &amp;tot); rep(k, 1, tot) &#123; int x, y; scanf("%d %d", &amp;x, &amp;y); x++, y++; e[u].push_back(id(x, y)); ind[id(x, y)]++; &#125; if (j &lt; m) &#123; e[id(i, j + 1)].push_back(u); ind[u]++; &#125; &#125; &#125; topo(); int sum = 0; rep(i, 1, n) &#123; rep(j, 1, m) &#123; int u = id(i, j); if (!inGra[u]) continue ; if (sco[u] &gt;= 0) &#123; add(s, u, sco[u]); sum += sco[u]; &#125; else &#123; add(u, t, -sco[u]); &#125; rep(k, 0, (int) e[u].size() - 1) &#123; int v = e[u][k]; if (inGra[v]) add(v, u, inf); &#125; &#125; &#125; printf("%d\n", sum - dinic()); return 0;&#125;]]></content>
+      <categories>
+        <category>OI</category>
+        <category>题解</category>
+      </categories>
+      <tags>
+        <tag>图论</tag>
+        <tag>网络流</tag>
+        <tag>最小割</tag>
+        <tag>拓扑排序</tag>
+        <tag>最大权闭合子图</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[「USACO07MAR」Gold Balanced Lineup]]></title>
     <url>%2F2019%2F11%2F13%2F%5BUSACO07MAR%5D%20Gold%20Balanced%20Lineup%2F</url>
     <content type="text"><![CDATA[Description有 $n$ 天， $m$ 种能力。每天都对应着一个给定的二进制数，第 $i$ 位是 $1$ 代表第 $i$ 种能力提升 $1$ 次。否则不提升。如果在连续的一段时间内，每项能力都提升了相同的次数，就称这段时间为一个均衡时期。求均衡时期的最大长度。 对于 $100 \%$ 的数据，有 $n \leq 10^5,m \leq 30$ 题目链接戳这里 Solution我们发现 $m$ 不大，于是考虑一次对每个能力算出前缀和。设第 $i$ 天所有 $m$ 个能力所构成的序列为 $S_i$ ，则一个从第 $l$ 天到第 $r$ 天的均衡时期肯定满足 $S_{l - 1}$ 和 $S_r$ 对应每项的差相同。比如 $\texttt{[1, 3, 2, 4]}$ 和 $\texttt{[3, 5, 4, 6]}$ 由此，我们能够想到哈希。 我们希望给出一种对应法则使所有 对应每项的差相同 的序列都对应成一个哈希值。因为满足这个条件的序列之间一定是一个均衡时期。例如 $\texttt{[2, 1, 4, 0]}$ ， $\texttt{[4, 3, 6, 2]}$ ， 和 $\texttt{[5, 4, 7, 3]}$ 这三个序列应该对应同一种。 由于 $m$ 很小，可以直接把整个序列加上或减去一个数 $d$ ，使得序列的第一个数为 $0$ ，也就是把整个序列同时减去第一个数。比如把 $\texttt{[2, 1, 4, 0]}$ 全部减二，变为 $\texttt{[0, -1, 2, -2]}$ 。（负数也无妨，毕竟哈希跟正负无关） 现在，只需求出依次累积的能力即可。 对于每一次哈希的值： 若没有出现过，则把当前时间（天数）记录到一个数组中。 若出现过，即当前哈希值对应的数组已经有值，则说明 当前 与 数组中记录的时间 这两者间是一个均衡时期。更新答案即可。 特别提醒：如果经过操作（即全序列减去第一个数）后得到全 0 序列，则第 1 天到它也是一个均衡时期，因为第 0 天的序列也是全 0 序列。 （感谢 $\text{wzj dalao}$ 的帮助） 例如第 $5$ 天时序列为 $\texttt{[3, 3, 3, 3]}$ ，则对应着 $\texttt{[0, 0, 0, 0]}$ 序列，说明和第 $0$ 天之后一天（第 $1$ 天）构成了一个均衡时期。 Code123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869#include &lt;bits/stdc++.h&gt;using namespace std;#define rep(i, a, b) for (int i = (a); i &lt;= (b); i++)#define per(i, a, b) for (int i = (a); i &gt;= (b); i--)typedef long long ll;const int N = 1e5 + 100;const int bas = 29;const int mod = 998244353;const int bs2 = 19;const int md2 = 19260817;const int bs3 = 101;const int md3 = 9291433;const int bs4 = 67;const int md4 = 1e9 + 7;int n, m, a[N], b[N], ans;unordered_map &lt;ll, int&gt; mp; // 哈希和时间的对应ll Hash() &#123; // 多重哈希，以防被卡 ll num = 1, res = 0; rep(i, 1, m) &#123; res += b[i] * num; res %= mod; num *= bas; &#125; ll rs2 = 0; num = 1; rep(i, 1, m) &#123; rs2 += b[i] * num; res %= md2; num *= bs2; &#125; ll rs3 = 0; num = 1; rep(i, 1, m) &#123; rs3 += b[i] * num; res %= md3; num *= bs3; &#125; return (res * bs4 * bs4 + rs2 * bs4 + rs3) % md4; // “哈希 套 哈希”&#125;void chg(int x) &#123; // 对应序列。把 b 数组对应成上述序列（即第一个数为 0 ） per(i, m - 1, 0) &#123; if (x &gt;= (1 &lt;&lt; i)) &#123; x -= (1 &lt;&lt; i); a[i + 1]++; &#125; &#125; b[1] = 0; rep(i, 2, m) b[i] = a[i] - a[1];&#125;int main() &#123; scanf("%d %d", &amp;n, &amp;m); mp[0] = 0; rep(i, 1, n) &#123; int d; scanf("%d", &amp;d); chg(d); ll tmp = Hash(); if (!mp.count(tmp)) mp[tmp] = i; // 记录第一次时间 else ans = max(ans, i - mp[tmp]); // 计算答案，更新答案 &#125; printf("%d\n", ans); return 0;&#125;]]></content>
@@ -203,8 +219,8 @@
       <tags>
         <tag>优化</tag>
         <tag>DP</tag>
-        <tag>四边形不等式</tag>
         <tag>公式</tag>
+        <tag>四边形不等式</tag>
       </tags>
   </entry>
   <entry>
@@ -348,10 +364,10 @@
         <category>数学</category>
       </categories>
       <tags>
-        <tag>公式</tag>
         <tag>三角函数</tag>
         <tag>代数</tag>
         <tag>几何</tag>
+        <tag>公式</tag>
       </tags>
   </entry>
   <entry>
